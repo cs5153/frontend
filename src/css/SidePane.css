@@ -1,0 +1,50 @@
+.sidePaneContainer{
+    flex-basis: 30%;
+    height: 100%;
+    overflow-y:auto;
+    scrollbar-width: none/* for Firefox */;
+    border-right: 2px gray solid
+}
+
+.sidePaneContainer::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+}
+
+.tripList{
+    height: 70%;
+    padding:0;
+    margin:0;
+    background-color:  rgb(248, 241, 241);
+}
+
+.profileSection{
+    height: 30%;
+    width: 100%;
+    background-color: rgb(248, 241, 241);
+    border-bottom: 2px gray solid;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.proPicContainer{
+    height: 40%;
+    flex-basis: 100%;
+    position: relative;
+    
+}
+
+.proPic{
+    height: 6rem;
+    width: 6rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: black 5px solid;
+    border-radius: 100%;
+    object-fit: contain;
+    
+}
