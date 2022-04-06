@@ -2,13 +2,14 @@ import React from "react";
 import mockData from "../helper/mockData";
 import "../css/Page.css";
 import SidePane from "./SidePane";
-import MainScreen from "./MainScreen";
+import Main from "./Main";
+
 const Page = () => {
   return (
     <>
       <div className="pageContainer">
-        <SidePane></SidePane>
-        <MainScreen></MainScreen>
+        <SidePane />
+        <Main />
       </div>
     </>
   );
