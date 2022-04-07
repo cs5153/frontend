@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
-import mockData, { addNewUser, existingUsers } from '../helper/mockData';
+import mockData, {isUserFieldBlank} from '../helper/mockData';
 import stickmanLogo from '../images/stickmanLogo.png';
 import '../css/Login.css'
-
+import ErrorMessage from './ErrorMessage';
 
 const LoginStandard = (props) => {
 
     const [state, setState] = useState({
-        didUserSubmit : false
+        userObj: {
+            email : ""
+        },
+        didUserSubmit : false,
+        hasError: false
     })
 
     function getStateCopy(){
@@ -23,16 +27,31 @@ const LoginStandard = (props) => {
                 <div>
                     <img className='tripperLogo' src={stickmanLogo} alt="clipart of man with baggage standing next to Tripper logo" />
                 </div>
+                {state.hasError && (<ErrorMessage message="Please fill out all fields"/>)}
                 <div className='inputArea'>
                     <h6>UserName</h6>
                     <input className='inputField' type="text" placeholder='Email' onChange={(evt) => {
                         let copy = getStateCopy();
-                        copy.userName = evt.target.value;
+                        copy.userObj.email = evt.target.value;
                         setState(copy);
                     }}/>
                      <div className='inputArea'>
                     <button className='inputField' onClick={() => {
-                        setState({didUserSubmit:true})}}>Send Email</button>
+                        if(isUserFieldBlank(state.userObj)){
+                            setState({
+                                userObj: state.userObj,
+                                didUserSubmit: false,
+                                hasError:true
+                            })
+                        }else{
+                            setState({
+                                userObj: state.userObj,
+                                didUserSubmit: true,
+                                hasError:false
+                            })
+                        }
+                        
+                    }}>Send Email</button>
                 </div>
                 </div>
             </div>
