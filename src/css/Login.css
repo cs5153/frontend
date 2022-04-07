@@ -1,21 +1,20 @@
 .loginPageContainer{
     width: 100vw;
     height: 100vh;
-    background-color: aqua;
     position: relative;
 }
 
 .loginModal {
     width: 30%;
-    height:50%;
-    background-color: green;
+    min-height: 50%;
     padding: 2rem;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 1rem;
-
+    border: solid black;
+    border-width: .75rem;
 }
 .tripperLogo{
     width: 100%
@@ -23,7 +22,6 @@
 
 .inputArea{
     width: 100%;
-    background-color: palegreen;
     margin: 2rem 0 2rem 0;   
 }
 
@@ -31,4 +29,12 @@
 .inputField{
     display: block;
     width: 100%;
+}
+
+.link{
+    display: block;
+    width: 100%;
+    background:none;
+    border:none;
+    color:blue;
 }

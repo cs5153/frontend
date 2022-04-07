@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import mockData from '../helper/mockData';
+import mockData, { getExistingUserMap } from '../helper/mockData';
 import stickmanLogo from '../images/stickmanLogo.png';
 import '../css/Login.css'
 
 
 
-const Login = (props) => {
+const LoginStandard = (props) => {
 
     const [state, setState] = useState({
         userName :"",
@@ -13,13 +13,20 @@ const Login = (props) => {
     })
 
     function handleClick(userName, password){
-        console.log("USER IS : ",userName)
-        console.log("Password IS : ",password)
-        let isUserValid
-        let isPassValid 
-        if(mockData.existingUsers.has){
-            
+        
+        let isUserValid = false
+        let isPassValid = false
+        let existingUsers = getExistingUserMap()
+
+        if(existingUsers.has(userName)){
+            isUserValid = true
+           
+            if(password === existingUsers.get(userName)){
+                isPassValid = true
+            }
         }
+       
+        return isUserValid && isPassValid
     }
 
 	return(
@@ -38,8 +45,10 @@ const Login = (props) => {
                     <input className='inputField' type="password" placeholder='Password' onChange={(evt) => setState({userName: state.userName, password: evt.target.value})}/>
                 </div>
                 <div className='inputArea'>
-                    <button className='inputField' onClick={() => handleClick(state.userName, state.password)}>Login</button>
+                    <button className='inputField' onClick={() => props.handler(handleClick(state.userName, state.password))}>Login</button>
                 </div>
+                <button className="link" onClick={() => props.viewUpdate(1)}>Sign Up</button>
+                <button className="link" onClick={() => props.viewUpdate(2)}>Forgot Password</button>
 
             </div>
 
@@ -48,4 +57,4 @@ const Login = (props) => {
     );
 };
 
-export default Login;
+export default LoginStandard;
