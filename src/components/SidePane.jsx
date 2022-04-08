@@ -24,7 +24,7 @@ const SidePane = () => {
         </div>
         <ul className="tripList">
           {mockData.tripsList.map((listItem) => (
-            <TripItem tripName={listItem}></TripItem>
+            <TripItem key={listItem} tripName={listItem}></TripItem>
           ))}
         </ul>
       </div>
