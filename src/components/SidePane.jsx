@@ -1,6 +1,6 @@
 import React from "react";
 import "../css/SidePane.css";
-import mockData from "../helper/mockData";
+import {mockData}from "../helper/mockData";
 import TripItem from "./TripItem";
 import profileImage from "../images/user.png";
 
