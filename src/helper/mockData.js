@@ -9,21 +9,46 @@ export var mockData = {
 
   existingUsersData: {
     "foo": {
+      "trips":{
+        "Cancun":{
+          tripMates: ["foo","foo2"],
+          
+        },
+        "Russia": {},
+        "Spring Break Bash!":{}
+      },
       "firstName":"foo",
       "lastName": "bar",
       "userName":"ufoo",
       "password": "pbar",
-      "email":"foo@bar.com"
+      "email":"foo@bar.com",
+      "phone":"444-444-4444"
+    },
+    "foo1": {
+      "firstName":"foo",
+      "lastName": "bar",
+      "userName":"ufoo",
+      "password": "pbar",
+      "email":"foo@bar.com",
+      "phone":"444-444-4444"
+    },
+    "foo2": {
+      "firstName":"foo",
+      "lastName": "bar",
+      "userName":"ufoo",
+      "password": "pbar",
+      "email":"foo@bar.com",
+      "phone":"444-444-4444"
     }
 
   }
 };
 
 
-export function getExistingUserMap(){
-  console.log(" USERS OBJECT IS: ", mockData.existingUsers)
+export function getDataMap(map){
+  console.log(" USERS OBJECT IS: ",map)
   var userMap = new Map()
-  for (const [key, value] of Object.entries(mockData.existingUsers)) {
+  for (const [key, value] of Object.entries(map)) {
   //   console.log(`${key}: ${value}`);
     userMap.set(key,value);
   }
