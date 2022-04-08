@@ -1,31 +1,21 @@
 import React, { useState } from 'react';
 import mockData from './helper/mockData';
 import SidePane from './components/SidePane';
-import Main from './components/Main';
 import Login from './components/Login';
+import Header from './components/Header';
+import People from './components/People';
+import './App.css';
 
 const App = () => {
-	const [state, setState] = useState({
-		isLoggedIn: false,
-	});
-
-	function handleLogin(loginResults) {
-		setState({ isLoggedIn: loginResults });
-	}
-
-	let displayedPage;
-	if (state.isLoggedIn) {
-		displayedPage = (
-			<div className='pageContainer'>
-				<SidePane />
-				<Main />
+	return (
+		<div className='pageContainer'>
+			<SidePane />
+			<div className='d-flex flex-column w-100'>
+				<Header />
+				<People />
 			</div>
-		);
-	} else {
-		displayedPage = <Login handler={handleLogin} />;
-	}
-
-	return <>{displayedPage}</>;
+		</div>
+	);
 };
 
 export default App;
