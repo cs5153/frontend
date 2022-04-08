@@ -1,0 +1,12 @@
+.tripItem {
+  height: 5rem;
+  width: 100%;
+  background-color: rgb(248, 241, 241);
+  border-bottom: 2px solid gray;
+  margin: 0;
+  line-height: 5rem;
+}
+
+p {
+  margin: 0 0 0 1rem;
+}
