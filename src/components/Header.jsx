@@ -1,7 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
 import stickmanLogo from '../images/stickmanLogo.png';
 
 const Header = () => {
+	const navigate = useNavigate();
+
 	return (
 		<>
 			<div className='d-flex-column'>
@@ -15,11 +18,21 @@ const Header = () => {
 
 				<div className='flex-grow-0'>
 					<div className='d-flex'>
-						<button className='flex-fill'>People</button>
-						<button className='flex-fill'>Chat</button>
-						<button className='flex-fill'>List</button>
-						<button className='flex-fill'>Photo</button>
-						<button className='flex-fill'>Contact</button>
+						<button className='flex-fill' onClick={() => navigate('people')}>
+							People
+						</button>
+						<button className='flex-fill' onClick={() => navigate('chat')}>
+							Chat
+						</button>
+						<button className='flex-fill' onClick={() => navigate('list')}>
+							List
+						</button>
+						<button className='flex-fill' onClick={() => navigate('photo')}>
+							Photo
+						</button>
+						<button className='flex-fill' onClick={() => navigate('contact')}>
+							Contact
+						</button>
 					</div>
 				</div>
 			</div>
