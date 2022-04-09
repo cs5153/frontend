@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import '../css/FeatureSpace.css'
-import { mockData,getDataMap } from '../helper/mockData';
+import { mockedData,getDataMap } from '../helper/mockData';
 import PersonCard from './PersonCard';
 import plusImg from '../images/plus.png'
 import AddTripMate from './AddTripMate';
@@ -11,22 +11,22 @@ const People = () => {
 	const { trip } = useParams();
 	const [state, setState]= useState({
 		showAddBox: false,
-		userData: mockData.existingUsersData[jsCookie.get("username").toLocaleLowerCase()].trips[trip]
+		userData: mockedData.existingUsersData[jsCookie.get("username").toLocaleLowerCase()].trips[trip]
 	})
 	var i =0;
-	console.log("existing data for user: ", mockData.existingUsersData[jsCookie.get("username").toLocaleLowerCase()].trips[trip.toString()])
+	console.log("existing data for user: ", mockedData.existingUsersData[jsCookie.get("username").toLocaleLowerCase()].trips[trip.toString()])
 	console.log("USER DATA IS", state.userData)
 
 	const pullTripMateData  = (tripMates) => {
 		let tripMatesData = []
 		console.log("pullTripMateData :: tripMates is :", tripMates)
-		let userMap = getDataMap(mockData.existingUsersData)
+		let userMap = getDataMap(mockedData.existingUsersData)
 		tripMates.forEach(element => {
 			console.log("LOOKING FOR USER: ", element)
-			console.log("getDataMap(mockData.existingUsersData): ",getDataMap(mockData.existingUsersData))
+			console.log("getDataMap(mockedData.existingUsersData): ",getDataMap(mockedData.existingUsersData))
 			console.log("USER MAP HAS : ", userMap.has(element))
 			if(userMap.has(element.toLocaleLowerCase())){
-				let data = (({firstName, lastName, userName, password, email, phone}) => ({firstName, lastName, userName, password, email, phone}))(mockData.existingUsersData[element.toLocaleLowerCase()])
+				let data = (({firstName, lastName, userName, password, email, phone}) => ({firstName, lastName, userName, password, email, phone}))(mockedData.existingUsersData[element.toLocaleLowerCase()])
 				console.log("DATA IS: ",data)
 				tripMatesData.push(data)
 			}

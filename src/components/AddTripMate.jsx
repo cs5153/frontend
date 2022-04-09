@@ -3,7 +3,7 @@ import exitIcon from "../images/x-mark.png";
 import '../css/FeatureSpace.css'
 import '../css/PersonCard.css'
 import '../css/Login.css'
-import { mockData, addNewUser,getDataMap,updateTripMemberList } from '../helper/mockData';
+import { mockedData, addNewUser,getDataMap,updateTripMemberList } from '../helper/mockData';
 import ErrorMessage from './ErrorMessage';
 import jsCookie from 'js-cookie';
 import { useParams } from 'react-router-dom';
@@ -28,13 +28,13 @@ const AddTripMate = (props) => {
 
     const addToTrips = ( newMember,trip) => {
         //get trip info
-        let updatedTrip = mockData.existingUsersData[jsCookie.get("username").toLocaleLowerCase()].trips[trip].tripMates.push(newMember)
-        let newUserTripMap = mockData.existingUsersData[newMember.toLocaleLowerCase()].trips[trip] = updatedTrip
+        let updatedTrip = mockedData.existingUsersData[jsCookie.get("username").toLocaleLowerCase()].trips[trip].tripMates.push(newMember)
+        let newUserTripMap = mockedData.existingUsersData[newMember.toLocaleLowerCase()].trips[trip] = updatedTrip
         // updateTripMemberList(tripInfo)
-        console.log("UPDATED TRIP LIST IS :", mockData.existingUsersData)
+        console.log("UPDATED TRIP LIST IS :", mockedData.existingUsersData)
     }
 
-    let existingUserMap = getDataMap(mockData.existingUsers)
+    let existingUserMap = getDataMap(mockedData.existingUsers)
 
 	let user = props.user
 	console.log("PERSON CARD USER IS: ",props.user)
