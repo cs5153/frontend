@@ -7,7 +7,8 @@ import '../css/PersonCard.css'
 const PersonCard = (props) => {
 
 	let user = props.user
-	console.log("PERSON CARD USER IS: ",props.user)
+	console.log("PERSON CARD USER IS: ",typeof(props.user))
+	console.log("PROPERTIES Phone: ", user.phone)
 	return (
 	<>
 		<div className='personCard'>
