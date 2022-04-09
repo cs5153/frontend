@@ -5,6 +5,8 @@ import Login from './Login';
 import Forgot from './Forgot';
 import Signup from './Signup';
 
+import { mockData } from '../helper/mockData';
+
 const alwaysAllowedPaths = ['/login', '/signup', '/forgot'];
 
 const UserProvider = ({ children }) => {
@@ -41,7 +43,7 @@ function validateCookieUser() {
 	const renewToken = Cookies.get('renewToken');
 
 	// TODO: backend request
-	return !!user;
+	return !!mockData.existingUsers[user];
 }
 
 export default UserProvider;

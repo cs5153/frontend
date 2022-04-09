@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import UserProvider from './components/UserProvider';
+import RedirectTrip from './components/RedirectTrip';
 import SidePane from './components/SidePane';
 import Header from './components/Header';
 import People from './components/People';
-import RedirectTrip from './components/RedirectTrip';
+import Chat from './components/Chat';
+import List from './components/List';
+import Photo from './components/Photo';
+import Contact from './components/Contact';
 import './App.css';
-import UserProvider from './components/UserProvider';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 const NoTrip = () => (
 	<div className='flex-fill d-flex justify-content-center align-items-center'>
@@ -23,6 +27,10 @@ const App = () => {
 						<Header />
 						<Routes>
 							<Route exact path='/:trip/people' element={<People />} />
+							<Route exact path='/:trip/chat' element={<Chat />} />
+							<Route exact path='/:trip/list' element={<List />} />
+							<Route exact path='/:trip/photo' element={<Photo />} />
+							<Route exact path='/:trip/contact' element={<Contact />} />
 							<Route path='/:trip/*' element={<RedirectTrip />} />
 							<Route path='/' element={<NoTrip />} />
 						</Routes>
