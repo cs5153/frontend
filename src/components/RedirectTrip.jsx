@@ -26,7 +26,7 @@ function retrieveAllTrips() {
 	const hash = Cookies.get('hashword');
     // TODO: backend get all trips for user
 	console.log('USER NAME IS :', user)
-	let tripList = getDataMap(mockData.existingUsersData['Tony'].trips)
+	let tripList = getDataMap(mockData.existingUsersData[Cookies.get("username").toLocaleLowerCase()].trips)
 	return Array.from(tripList.values()).map((trip) => trip.name.toLocaleLowerCase());
 	// return mockData.tripsList.map((trip) => trip.toLocaleLowerCase());
 }

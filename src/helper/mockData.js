@@ -9,9 +9,9 @@ export var mockData = {
   } ,
 
   existingUsersData: {
-    "Tony": {
+    "tony": {
       "trips":{
-        "001": {
+        "cancun": {
           "name": "Cancun",
           "tripMates":["Steve", 'Bruce'],
           "lists": {
@@ -42,9 +42,9 @@ export var mockData = {
       "email":"foo@Ironman.com",
       "phone":"210-444-4444"
     },//end of user Tony
-    "Steve": {
+    "steve": {
       "trips":{
-        "001": {
+        "cancun": {
           "name": "Cancun",
           "tripMates":["Tony", 'Bruce'],
           "lists": {
@@ -75,9 +75,9 @@ export var mockData = {
       "email":"foo@CapnAmerica.com",
       "phone":"210-555-5555"
     },//end of user Steve
-    "Bruce": {
+    "bruce": {
       "trips":{
-        "001": {
+        "cancun": {
           "name": "Cancun",
           "tripMates":["Tony", 'Steve'],
           "lists": {

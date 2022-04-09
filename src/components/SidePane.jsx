@@ -3,11 +3,12 @@ import "../css/SidePane.css";
 import {mockData, getDataMap}from "../helper/mockData";
 import TripItem from "./TripItem";
 import profileImage from "../images/user.png";
+import jsCookie from "js-cookie";
 
 const SidePane = () => {
-  console.log("TRIPS LIST IS: ",getDataMap(mockData.existingUsersData["Tony"].trips));
+  console.log("TRIPS LIST IS: ",getDataMap(mockData.existingUsersData[jsCookie.get("username").toLocaleLowerCase()].trips));
 
-  let tripList = getDataMap(mockData.existingUsersData["Tony"].trips)
+  let tripList = getDataMap(mockData.existingUsersData[jsCookie.get("username").toLocaleLowerCase()].trips)
   let itemIndex = 0
   return (
     <>
