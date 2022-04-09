@@ -55,6 +55,11 @@
   height: 100%;
 }
 
+.nav-links:hover {
+  background-color: #fff;
+  color: #242424;
+  border-radius: 0;
+}
 
 
 .fa-bars {

@@ -1,0 +1,207 @@
+
+/* Left Side of the Group Page */
+.leftSide{
+
+    position:sticky;
+    left:0;
+    /* background-color: red; */
+    height:700px;
+    width: 700px !important;
+    max-width: 20%;
+    margin: 0% !important;
+    display: inline-block;
+    position: relative;
+    margin-bottom: 100%;
+}
+
+.groupLink{
+    position:sticky;
+
+    width: 110px;
+    height: auto;
+    min-height: 15%;
+    margin-top:15%;
+    margin-left: 55%;
+    background-color: rgb(167, 211, 176);
+    border-radius: 10%;
+    display: inline-block;
+    font-size: large;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+}
+
+.link{
+    font-size: medium;
+    position:relative;
+    left: 15%;
+    top:50px;
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    font-family: arial, sans-serif;
+    color: white;
+    text-decoration: solid;
+    cursor: pointer;
+}
+.rightSide{
+    position :sticky;
+    background-color: transparent;
+    float: right;
+    width: 70%;
+    height: 100vh !important;
+    margin: 5%;
+    margin-right: 0%;
+    margin-top: 3%;
+}
+
+/* Start of Group Settings */
+.groupSettings{
+    position :static;
+    background-color: transparent;
+    float: left;
+    width: 65%;
+    height: 70vh !important;
+    margin: 5%;
+    margin-top: 0%;
+    border-width: 1px;
+    border-color: rgb(167, 211, 176);
+    
+}
+ .groupName{
+    background-color: transparent;
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    margin: 2% 0 0% 0;
+    max-height: 5%;
+    font-size: xx-large;
+}
+
+.data{
+    position: static;
+    height: 100% !important;
+    width: 100%;
+    display: inline-block;
+    background-color: transparent;
+}
+
+.tripSettings{
+    float: left;
+    background-color: rgb(167, 211, 176);
+    width: 45%;
+    margin: 5% 0% !important;
+    height:90%;
+    border-width: 2px;
+    border-color: black;
+    border-style: solid;
+    position: static;
+    color: white;
+
+}
+.inviteUsers{
+    float: right;
+    background-color:rgb(167, 211, 176);
+    width: 45%;
+    margin: 5% 0%;
+    height:90%;
+    border-width: 2px;
+    border-color: black;
+    border-style: solid;
+    position: static;
+    color: white;
+}
+.tripSettingLabel{
+    display: inline-block;
+    text-align: center;
+    width: 90%;
+    vertical-align: top;
+    margin: 5%;
+}
+.picture{
+    height: 35%;
+}
+.pic{
+    height: 50%;
+    background-color: lightgray;
+    width:30%;
+    margin: auto;
+}
+.upload{
+    width: 35%;
+    margin-left: 35%;
+}
+.inputName{
+
+}
+
+.updateName{
+    width: 35%;
+    margin-left: 35%;
+}
+.location{
+    height: 20%;
+
+}
+.deleteTrip{
+    height: 10%;
+}
+.inviteUsersTitle{
+  
+    display: inline-block;
+    text-align: center;
+    width: 90%;
+    vertical-align: top;
+    margin: 5%;
+    height: 20%;
+} 
+.tripMembers{
+    display: inline-block;
+    text-align: center;
+    width: 90%;
+    vertical-align: top;
+    margin: 5%;
+    height:50%
+}
+
+
+/* Start of Group List */
+.groupList{
+    position :static;
+    float: left;
+    width: 65%;
+    height: 70vh !important;
+    margin: 5%;
+    margin-top: 3%;
+    
+}
+.allLists{
+    min-height:100% !important;
+    min-width: 100% !important;
+    position: relative;
+}
+
+.oneList{
+    height: auto;
+    width: auto;
+    position: static;
+}
+.oneList{
+    float: left;
+    background-color:rgb(167, 211, 176);
+    margin: 7% !important;
+    min-height:10vh;
+    min-width:10vh;
+    text-align: center;
+    border-width: 2px;
+    border-color: black;
+    border-style: solid;
+    position: static;
+
+}
+p{
+    position: relative;
+    top:10vh;
+}
+/* Start of Photos */
