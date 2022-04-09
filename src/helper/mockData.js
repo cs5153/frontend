@@ -1,3 +1,6 @@
+import jsCookie from "js-cookie";
+import { useParams } from "react-router";
+
 export var mockData = {
  
   existingUsers: {
@@ -13,7 +16,7 @@ export var mockData = {
       "trips":{
         "cancun": {
           "name": "Cancun",
-          "tripMates":["Steve", 'Bruce'],
+          "tripMates":["Tony","Steve", "Bruce"],
           "lists": {
             "001": {
               "name": "packing list",
@@ -46,7 +49,7 @@ export var mockData = {
       "trips":{
         "cancun": {
           "name": "Cancun",
-          "tripMates":["Tony", 'Bruce'],
+          "tripMates":["Tony","Steve", "Bruce"],
           "lists": {
             "001": {
               "name": "packing list",
@@ -79,7 +82,7 @@ export var mockData = {
       "trips":{
         "cancun": {
           "name": "Cancun",
-          "tripMates":["Tony", 'Steve'],
+          "tripMates":["Tony","Steve", "Bruce"],
           "lists": {
             "001": {
               "name": "packing list",
@@ -107,7 +110,18 @@ export var mockData = {
       "password": "banner",
       "email":"foo@Hulk.com",
       "phone":"210-666-6666"
-    }//end of user Bruce
+    },//end of user Bruce
+    "natasha": {
+      "trips":{
+        
+      },
+      "firstName":"Natasha",
+      "lastName": "Romanov",
+      "userName":"Natasha",
+      "password": "romanov",
+      "email":"foo@BlackWidow.com",
+      "phone":"210-777-7777"
+    }//end of user Natasha
   }//end of existing user data array  
 };
 
@@ -145,3 +159,10 @@ export function isUserFieldBlank(obj){
   console.log("Has blank is : ", hasBlank)
   return hasBlank
 }
+
+// export function updateTripMemberList(tripObj){
+//   let {trip} = useParams();
+//   let x = mockData.existingUsersData[jsCookie.get("username")].trips[trip] = tripObj
+
+//   console.log("NEW TRIP OBJ IS: ",x)
+// }
