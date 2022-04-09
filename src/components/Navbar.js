@@ -29,40 +29,20 @@ function Navbar() {
             <nav className='navbar'>
                 <div className='navbar-container'>
                     <Link to="/" className="navbar-logo">
-                        WebsiteName
+                        TRIPPER
                     </Link>
                     <div className="menu-icon" onClick={handleClick}>
                         <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
                     </div>
                     <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                         <li className='navItem'>
-                            <Link to='/' className='nav-links' onClick={closeMobileMenu}>
-                                Home
+                            <Link to='/settings' className='nav-links' onClick={closeMobileMenu}>
+                                Account Settings
                             </Link>
                         </li>
                         <li className='navItem'>
-                            <Link to='/groups' className='nav-links' onClick={closeMobileMenu}>
-                                Groups
-                            </Link>
-                        </li>
-                        <li className='navItem'>
-                            <Link to='/messages' className='nav-links' onClick={closeMobileMenu}>
-                                Message
-                            </Link>
-                        </li>
-                        <li className='navItem'>
-                            <Link to='/photos' className='nav-links' onClick={closeMobileMenu}>
-                                Photos
-                            </Link>
-                        </li>
-                        <li className='navItem'>
-                            <Link to='/contact' className='nav-links' onClick={closeMobileMenu}>
-                                Contact
-                            </Link>
-                        </li>
-                        <li className='navItem'>
-                            <Link to='/login' className='nav-links' onClick={closeMobileMenu}>
-                                Login
+                            <Link to='/help' className='nav-links' onClick={closeMobileMenu}>
+                                Help
                             </Link>
                         </li>
                     </ul>

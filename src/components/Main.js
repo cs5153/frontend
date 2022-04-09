@@ -4,7 +4,7 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 //Local imports
 import mockData from "../helper/mockData"
 import TripsPage from "./trips/TripsPage"
-
+import "../App.css"
 import Navbar from "./Navbar"
 
 
@@ -14,11 +14,12 @@ function Main() {
 return (
   <>
     <Router>
-    <Navbar> 
-      <Routes>
-        <Route exact path="/" element={<TripsPage/>} />
-      </Routes>
-    </Navbar>
+    <div classname="home">
+    <Navbar/> 
+    <Routes>
+      <Route path="/" element={<TripsPage/>} />
+    </Routes>
+    </div>
     </Router>
   </>
 )

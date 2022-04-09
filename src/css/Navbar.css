@@ -1,6 +1,6 @@
 .navbar {
-  background: black;
-  height: 100px;
+  background:rgb(204,240,192);
+  height: 70px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,19 +13,23 @@
 .navbar-container {
   display: flex;
   justify-content: center;
-  width: 100%;
+  width: 100vw;
   align-items: center;
-  height: 100px;
+  height: 70px;
+  border: 2px solid rgb(49,69,44);
+  
 }
 
 .navbar-logo {
-  color: #fff;
+  color:rgb(69, 102, 58);
   justify-self: start;
   margin-left: 25px;
   text-decoration: none;
   font-size: 2.5rem;
   display: flex;
   align-items: center;
+  font-weight: bold;
+  font-family: "Helvetica", sans-serif;
 }
 
 .nav-menu {
@@ -43,8 +47,8 @@
 }
 
 .nav-links {
-  color: #fff;
   display: flex;
+  color:rgb(69, 102, 58);
   align-items: center;
   text-decoration: none;
   padding: 0.5rem 1rem;
