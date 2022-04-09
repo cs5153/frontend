@@ -4,6 +4,7 @@ import mockData, { isUserFieldBlank } from '../helper/mockData';
 import stickmanLogo from '../images/stickmanLogo.png';
 import '../css/Login.css';
 import ErrorMessage from './ErrorMessage';
+import { Link } from 'react-router-dom';
 
 const Forgot = (props) => {
 	const navigate = useNavigate();
@@ -26,11 +27,13 @@ const Forgot = (props) => {
 			<div className='loginPageContainer'>
 				<div className='loginModal'>
 					<div>
-						<img
-							className='tripperLogo'
-							src={stickmanLogo}
-							alt='clipart of man with baggage standing next to Tripper logo'
-						/>
+						<Link to='/'>
+							<img
+								className='tripperLogo'
+								src={stickmanLogo}
+								alt='clipart of man with baggage standing next to Tripper logo'
+							/>
+						</Link>
 					</div>
 					{state.hasError && (
 						<ErrorMessage message='Please fill out all fields' />
@@ -38,6 +41,7 @@ const Forgot = (props) => {
 					<div className='inputArea'>
 						<h6>UserName</h6>
 						<input
+							autoFocus={true}
 							className='inputField'
 							type='text'
 							placeholder='Email'
