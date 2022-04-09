@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
-import mockData, { isUserFieldBlank } from '../helper/mockData';
+import { isUserFieldBlank } from '../helper/mockData';
 import stickmanLogo from '../images/stickmanLogo.png';
 import '../css/Login.css';
 import ErrorMessage from './ErrorMessage';

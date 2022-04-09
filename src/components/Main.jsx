@@ -16,7 +16,7 @@ import List from './List';
 import Photo from './Photo';
 import Contact from './Contact';
 
-import { mockData, getDataMap } from '../helper/mockData';
+import { mockedData, getDataMap } from '../helper/mockData';
 
 const Main = () => {
 	const navigate = useNavigate();
@@ -74,7 +74,7 @@ function retrieveAllTrips() {
 	const hash = Cookies.get('hashword');
 	// TODO: backend get all trips for user
 	let tripList = getDataMap(
-		mockData.existingUsersData[Cookies.get('username').toLocaleLowerCase()]
+		mockedData.existingUsersData[Cookies.get('username').toLocaleLowerCase()]
 			.trips
 	);
 	return Array.from(tripList.values()).map((trip) =>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import Cookies from 'js-cookie';
-import { mockData, isUserFieldBlank, getDataMap } from '../helper/mockData';
+import { mockedData, isUserFieldBlank, getDataMap } from '../helper/mockData';
 import stickmanLogo from '../images/stickmanLogo.png';
 import '../css/Login.css';
 import ErrorMessage from './ErrorMessage';
@@ -21,7 +21,7 @@ const Login = () => {
 	function isValidUser(userName, password) {
 		let isUserValid = false;
 		let isPassValid = false;
-		let existingUsers = getDataMap(mockData.existingUsers);
+		let existingUsers = getDataMap(mockedData.existingUsers);
 
 		if (existingUsers.has(userName)) {
 			isUserValid = true;
