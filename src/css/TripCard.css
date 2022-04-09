@@ -1,0 +1,24 @@
+.trip-card {
+    height: 100%;
+    width: 100%;
+    background-color:rgb(167, 211, 176);
+    border: 2px solid rgb(49,69,44);
+    border-radius: 12px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0,0.2);
+    transition: 0.3s;
+    padding: 2px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.trip-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.trip-card p {
+    margin:0;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: "Helvetica", sans-serif;
+}

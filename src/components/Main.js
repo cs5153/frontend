@@ -1,14 +1,26 @@
 import React, { useState } from 'react'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+
+//Local imports
+import mockData from "../helper/mockData"
+import TripsPage from "./trips/TripsPage"
+
+import Navbar from "./Navbar"
+
 
 
 function Main() {
 
 return (
-    <>
-    <div>
-        <h1>Welcome to our Home page</h1>
-    </div>
-    </>
+  <>
+    <Router>
+    <Navbar> 
+      <Routes>
+        <Route exact path="/" element={<TripsPage/>} />
+      </Routes>
+    </Navbar>
+    </Router>
+  </>
 )
 }
 
