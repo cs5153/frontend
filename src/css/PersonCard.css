@@ -1,0 +1,20 @@
+.personCard{
+    width: 100%;
+    max-height: 100%;
+    border-radius: 15px;
+    background-color: azure;
+    margin-top:.5rem;
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    border: solid black 3px;
+}
+
+.cardPropicContainer{
+   margin-right: 1rem;
+}
+
+.cardPropic{
+    height: 4rem;
+    width: 4rem;
+}

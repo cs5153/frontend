@@ -1,12 +1,15 @@
 import React from "react";
 import "../css/SidePane.css";
-import {mockData}from "../helper/mockData";
+import {mockData, getDataMap}from "../helper/mockData";
 import TripItem from "./TripItem";
 import profileImage from "../images/user.png";
+import jsCookie from "js-cookie";
 
 const SidePane = () => {
-  console.log(mockData.tripsList);
+  console.log("TRIPS LIST IS: ",getDataMap(mockData.existingUsersData[jsCookie.get("username").toLocaleLowerCase()].trips));
 
+  let tripList = getDataMap(mockData.existingUsersData[jsCookie.get("username").toLocaleLowerCase()].trips)
+  let itemIndex = 0
   return (
     <>
       <div className="sidePaneContainer">
@@ -23,8 +26,8 @@ const SidePane = () => {
           </a>
         </div>
         <ul className="tripList">
-          {mockData.tripsList.map((listItem) => (
-            <TripItem key={listItem} tripName={listItem}></TripItem>
+          {Array.from(tripList.values()).map((listItem) => (
+            <TripItem key={itemIndex++} tripName={listItem.name}></TripItem>
           ))}
         </ul>
       </div>

@@ -1,34 +1,126 @@
 export var mockData = {
-  paragraph: "Hello World",
-  tripsList: ["Cancun", "Russia", "Spring Break Bash!"],
+ 
   existingUsers: {
-    "hello": "world",
-    "ufoo":"pbar",
-    "sponge": "bob"
+    "Tony": "stark",
+    "Steve":"rogers",
+    "Bruce": "banner",
+    "Natasha":"romanov",
+    "Clint": "barton"
   } ,
 
   existingUsersData: {
-    "foo": {
-      "firstName":"foo",
-      "lastName": "bar",
-      "userName":"ufoo",
-      "password": "pbar",
-      "email":"foo@bar.com"
-    }
+    "tony": {
+      "trips":{
+        "cancun": {
+          "name": "Cancun",
+          "tripMates":["Steve", 'Bruce'],
+          "lists": {
+            "001": {
+              "name": "packing list",
+              "items": ["socks", "shoes", "shirt"]
+            }
+          },
+          "albums":{
+            "001":{
+              "photos": ['../images/stickmanLogo.png','../images/user.png']
+            }
+          },
+          "chat":{
+            "msgList": [{
+              "sender": "foo",
+              "content": "This trip is going to be a blast!",
+              "timestamp": "Fri, 08 Apr 2022 22:27:56 GMT"
+            }]
+          }
 
-  }
+        }
+      },
+      "firstName":"Tony",
+      "lastName": "Stark",
+      "userName":"Tony",
+      "password": "stark",
+      "email":"foo@Ironman.com",
+      "phone":"210-444-4444"
+    },//end of user Tony
+    "steve": {
+      "trips":{
+        "cancun": {
+          "name": "Cancun",
+          "tripMates":["Tony", 'Bruce'],
+          "lists": {
+            "001": {
+              "name": "packing list",
+              "items": ["socks", "shoes", "shirt"]
+            }
+          },
+          "albums":{
+            "001":{
+              "photos": ['../images/stickmanLogo.png','../images/user.png']
+            }
+          },
+          "chat":{
+            "msgList": [{
+              "sender": "foo",
+              "content": "This trip is going to be a blast!",
+              "timestamp": "Fri, 08 Apr 2022 22:27:56 GMT"
+            }]
+          }
+
+        }
+      },
+      "firstName":"Steve",
+      "lastName": "Rogers",
+      "userName":"Steve",
+      "password": "Rogers",
+      "email":"foo@CapnAmerica.com",
+      "phone":"210-555-5555"
+    },//end of user Steve
+    "bruce": {
+      "trips":{
+        "cancun": {
+          "name": "Cancun",
+          "tripMates":["Tony", 'Steve'],
+          "lists": {
+            "001": {
+              "name": "packing list",
+              "items": ["socks", "shoes", "shirt"]
+            }
+          },
+          "albums":{
+            "001":{
+              "photos": ['../images/stickmanLogo.png','../images/user.png']
+            }
+          },
+          "chat":{
+            "msgList": [{
+              "sender": "foo",
+              "content": "This trip is going to be a blast!",
+              "timestamp": "Fri, 08 Apr 2022 22:27:56 GMT"
+            }]
+          }
+
+        }
+      },
+      "firstName":"Bruce",
+      "lastName": "banner",
+      "userName":"Bruce",
+      "password": "banner",
+      "email":"foo@Hulk.com",
+      "phone":"210-666-6666"
+    }//end of user Bruce
+  }//end of existing user data array  
 };
 
 
-export function getExistingUserMap(){
-  console.log(" USERS OBJECT IS: ", mockData.existingUsers)
+export function getDataMap(map){
+  console.log(" MOCKDATA:: USERS OBJECT IS: ",map)
   var userMap = new Map()
-  for (const [key, value] of Object.entries(mockData.existingUsers)) {
+  for (const [key, value] of Object.entries(map)) {
   //   console.log(`${key}: ${value}`);
     userMap.set(key,value);
   }
   // let userMap = new Map(JSON.parse(mockData.existingUsers))
-  console.log("USER MAP IS: ", userMap)
+  console.log(" MOCKDATA:: USER MAP IS: ", userMap)
   return userMap;
 }
 

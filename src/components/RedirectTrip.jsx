@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Cookies from 'js-cookie';
-import { mockData } from '../helper/mockData';
+import { mockData,getDataMap } from '../helper/mockData';
 
 const DefaultTrip = () => {
     const {trip} = useParams();
@@ -25,8 +25,10 @@ function retrieveAllTrips() {
 	const user = Cookies.get('username');
 	const hash = Cookies.get('hashword');
     // TODO: backend get all trips for user
-
-	return mockData.tripsList.map((trip) => trip.toLocaleLowerCase());
+	console.log('USER NAME IS :', user)
+	let tripList = getDataMap(mockData.existingUsersData[Cookies.get("username").toLocaleLowerCase()].trips)
+	return Array.from(tripList.values()).map((trip) => trip.name.toLocaleLowerCase());
+	// return mockData.tripsList.map((trip) => trip.toLocaleLowerCase());
 }
 
 export default DefaultTrip;
