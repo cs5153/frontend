@@ -27,7 +27,7 @@ const Main = () => {
 
 	useEffect(() => {
 		// Prevent unknown trips from showing feature links (e.g., /people).
-		if (!isValidTrip && pathname !== trip) {
+		if (!isValidTrip && trip && pathname !== trip) {
 			navigate(`/${trip}`);
 		}
 	}, [isValidTrip, pathname, trip]);
