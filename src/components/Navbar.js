@@ -1,5 +1,12 @@
 import React, { useState } from 'react'
+import Cookies from 'js-cookie'
 import { Link } from 'react-router-dom'
+import ManageAccounts from '@mui/icons-material/ManageAccounts'
+import Help from '@mui/icons-material/Help'
+
+import {grey} from '@mui/material/colors'
+
+
 import '../css/Navbar.css';
 
 
@@ -35,20 +42,17 @@ function Navbar() {
                         <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
                     </div>
                     <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-                        <li className='navItem'>
-                            <Link to='/settings' className='nav-links' onClick={closeMobileMenu}>
-                                First Last
-                            </Link>
+                        <li className='nav-name'>
+                            {Cookies.get("username")} 
                         </li>
-                        
                         <li className='navItem'>
                             <Link to='/settings' className='nav-links' onClick={closeMobileMenu}>
-                                Account Settings
+                                <ManageAccounts sx={{color: grey[800], fontSize: 36}}/>
                             </Link>
                         </li>
                         <li className='navItem'>
                             <Link to='/help' className='nav-links' onClick={closeMobileMenu}>
-                                Help
+                                <Help sx={{color: grey[800], fontSize: 36}}/>
                             </Link>
                         </li>
                     </ul>

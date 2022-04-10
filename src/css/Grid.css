@@ -1,8 +1,8 @@
 .grid-container {
     position: relative; 
     display: grid;
-    width: 80vw;
-    height: 100vh;
+    float: left;
+    width: 80%;
     padding-top:50px;
     grid-template-columns: repeat(6, minmax(100px, 200px));
     grid-template-rows: repeat(3, minmax(100px, 200px));

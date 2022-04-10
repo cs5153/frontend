@@ -1,0 +1,22 @@
+
+.exitButton {
+  position: relative;
+  border-radius: 0.25rem;
+  background-color:rgb(219,108,86);
+  border: 2px solid rgb(49,69,44);
+  transition: 0.3s;
+  height: 25px;
+  width: 25px;
+  z-index: 998;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.trip-fab-icon {
+  margin: auto auto;
+  font-size: 36px;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  font-family: "Helvetica", sans-serif;
+}

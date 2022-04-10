@@ -1,7 +1,46 @@
+.container{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+
 h1 {
   color:rgb(69, 102, 58);
   font-size: 3rem;
   font-weight: bold;
   text-align: center;
+  font-family: "Helvetica", sans-serif;
+}
+
+
+.trip-fab-container {
+  position: fixed;
+  border-radius: 50%;
+  background-color:rgb(204,240,192);
+  border: 2px solid rgb(49,69,44);
+  box-shadow: 0 0 16px 0 rgba(0,0,0,0,0.2);
+  transition: 0.3s;
+  height: 100px;
+  width: 100px;
+  margin: 0px;
+  top: auto;
+  right: 75px;
+  bottom: 75px;
+  left: auto;
+  z-index: 998;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.trip-fab-container:hover {
+    box-shadow: 0 0 32px 0 rgba(0,0,0,0.2);
+}
+
+.trip-fab-icon {
+  margin: auto auto;
+  font-size: 36px;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
   font-family: "Helvetica", sans-serif;
 }

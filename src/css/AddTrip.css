@@ -1,0 +1,52 @@
+.addTripPageContainer{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+.addTripExit {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.addTripModal {
+    width: 30%;
+    min-height: 25%;
+    padding: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background:rgb(204,240,192);
+    border-radius: 0.5rem;
+    border: 2px solid rgb(49,69,44);
+}
+
+.inputArea{
+    width: 25%;
+    align-items: center;
+    margin: 2rem auto 2rem auto;   
+}
+
+
+.inputField{
+    display: block;
+    width: 25%;
+}
+
+.title{
+  color:rgb(69, 102, 58);
+  text-align: center;
+  font-size: 2.0rem;
+  font-weight: bold;
+  font-family: "Helvetica", sans-serif;
+}
+
+.link{
+    display: block;
+    width: 100%;
+    background:none;
+    border:none;
+    color:blue;
+}
