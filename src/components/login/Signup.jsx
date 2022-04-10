@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import Cookies from 'js-cookie';
-import { isUserFieldBlank, addNewUser, mockData } from '../../helper/mockData';
+import { isUserFieldBlank, addNewUser, readData, writeData } from '../../helper/helper';
 import stickmanLogo from '../../images/stickmanLogo.png';
 import '../../css/Login.css';
 import ErrorMessage from '../ErrorMessage';
@@ -20,6 +20,9 @@ const Signup = () => {
 		},
 		hasError: false,
 	});
+
+	//Read the fake database
+	var mockData = readData();
 
 	return (
 		<>
@@ -139,6 +142,8 @@ const Signup = () => {
 										'username',
 										state.userObj.userName.toLocaleLowerCase()
 									);
+									//Write out to file to save the user
+									writeData(mockData);
 
 									navigate('/', { replace: true });
 								}
