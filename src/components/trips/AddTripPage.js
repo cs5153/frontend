@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import Cookies from 'js-cookie';
-import {addNewTrip, mockData } from '../../helper/mockData';
+import {addNewTrip, readData, writeData} from '../../helper/helper';
 import '../../css/AddTrip.css';
 import ErrorMessage from '../ErrorMessage';
 import ExitButton from '../ExitButton';
@@ -27,6 +27,8 @@ const AddTripPage = () => {
 		},
 		hasError: false,
 	});
+
+	var mockData = readData();
 
 	return (
 		<>
@@ -83,7 +85,9 @@ const AddTripPage = () => {
 										albums: {},
 										chat: [],
 									};
-									addNewTrip(trip, Cookies.get('username').toLocaleLowerCase());
+									addNewTrip(mockData, trip, Cookies.get('username').toLocaleLowerCase());
+									//Write out
+									writeData(mockData);
 									//Navigate back to the main trips page
 									navigate('/', { replace: true });
 								}
