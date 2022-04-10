@@ -102,7 +102,7 @@ export function addNewUser(userObj) {
 export function isUserFieldBlank(obj) {
 	let hasBlank = false;
 	for (const [key, value] of Object.entries(obj)) {
-		hasBlank = value === '' && value.trim() === '';
+		hasBlank = value === '' || value.trim() === '';
 	}
 	return hasBlank;
 }
