@@ -1,4 +1,11 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
+import Add from '@mui/icons-material/Add'
+import {green} from '@mui/material/colors'
+
+//Local Imports
+import TripCard from "./TripCard"
+import "../../css/TripsPage.css"
 
 class AddTripButton extends React.Component {
   //User can pass link to image as well as Trip name
@@ -8,11 +15,13 @@ class AddTripButton extends React.Component {
 
   render(){
     return (
-      <div className="trip-card">
-        <p>{this.props.name}</p>
+      <div className="trip-fab-container">
+        <Link style={{textDecoration:'none', color:'inherit'}} to="/create_trip">
+        <Add fontSize="large" sx={{color: green[0]}}/>
+        </Link>
       </div>
     )
   }
 }
 
-export default TripCard
+export default AddTripButton

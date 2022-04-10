@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Cookies from 'js-cookie'
 import { Link } from 'react-router-dom'
 import '../css/Navbar.css';
 
@@ -35,12 +36,9 @@ function Navbar() {
                         <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
                     </div>
                     <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-                        <li className='navItem'>
-                            <Link to='/settings' className='nav-links' onClick={closeMobileMenu}>
-                                First Last
-                            </Link>
+                        <li className='nav-name'>
+                            {Cookies.get("username")} 
                         </li>
-                        
                         <li className='navItem'>
                             <Link to='/settings' className='nav-links' onClick={closeMobileMenu}>
                                 Account Settings

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../css/ErrorMessage.css";
+import "../css/ErrorMessage.css";
 
 const ErrorMessage = (props) => {
 
