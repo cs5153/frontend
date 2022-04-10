@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import Cookies from 'js-cookie';
-import {
-	isUserFieldBlank,
-	addNewUser,
-} from '../helper/mockData';
+import { isUserFieldBlank, addNewUser, mockData } from '../helper/mockData';
 import stickmanLogo from '../images/stickmanLogo.png';
 import '../css/Login.css';
 import ErrorMessage from './ErrorMessage';
@@ -19,6 +16,7 @@ const Signup = () => {
 			firstName: '',
 			lastName: '',
 			email: '',
+			phone: '',
 		},
 		hasError: false,
 	});
@@ -106,6 +104,19 @@ const Signup = () => {
 						/>
 					</div>
 					<div className='inputArea'>
+						<h6>Phone Number</h6>
+						<input
+							className='inputField'
+							type='text'
+							placeholder='Phone Number'
+							onChange={(evt) => {
+								let copy = state;
+								copy.userObj.phone = evt.target.value;
+								setState(copy);
+							}}
+						/>
+					</div>
+					<div className='inputArea'>
 						<button
 							className='inputField'
 							onClick={() => {
@@ -115,8 +126,19 @@ const Signup = () => {
 										hasError: true,
 									});
 								} else {
-									addNewUser(state.userObj);
-									Cookies.set('username', state.userObj.userName);
+									mockData.users[state.userObj.userName.toLocaleLowerCase()] = {
+										username: state.userObj.userName,
+										password: state.userObj.password,
+										firstname: state.userObj.firstName,
+										lastname: state.userObj.lastName,
+										email: state.userObj.email,
+										phone: state.userObj.phone,
+										trips: [],
+									};
+									Cookies.set(
+										'username',
+										state.userObj.userName.toLocaleLowerCase()
+									);
 
 									navigate('/', { replace: true });
 								}
