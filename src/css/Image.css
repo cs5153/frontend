@@ -1,0 +1,25 @@
+img{
+    float: left;
+    width:  100px;
+    height: 100px;
+    object-fit: cover;
+    margin: 3%;
+}
+img:hover{
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+    
+}
+.bigPictureDiv{
+    min-height: 50vh;
+    min-width: 50vh;
+    max-height: 80vh;
+    max-width: 80vh;
+    position: absolute ;
+    margin: 10%;
+    z-index: 500;
+}
+.bigPicture{
+    height: 100%;
+    width: 100%;
+
+}
