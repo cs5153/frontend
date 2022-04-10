@@ -71,12 +71,12 @@ export var mockData = {
 				{
 					sender: 'tony',
 					content: 'This trip is going to be a blast!',
-					timestamp: 'Fri, 08 Apr 2022 22:27:56 GMT',
+					timestamp: 'Sat Apr 09 2022 22:28:43 GMT-0500 (Central Daylight Time)',
 				},
 				{
 					sender: 'steve',
 					content: "Can't wait to get on the plane!",
-					timestamp: 'Fri, 08 Apr 2022 22:31:00 GMT',
+					timestamp: 'Sat Apr 09 2022 22:28:43 GMT-0500 (Central Daylight Time)',
 				},
 			],
 		},
@@ -102,7 +102,33 @@ export function addNewUser(userObj) {
 export function isUserFieldBlank(obj) {
 	let hasBlank = false;
 	for (const [key, value] of Object.entries(obj)) {
-		hasBlank = value === '' || value.trim() === '';
+		hasBlank = value === '' && value.trim() === '';
 	}
 	return hasBlank;
 }
+
+export function getFakeResponse(username,trip){
+  
+  const randomMessage = fakeResponses[Math.floor(Math.random() * fakeResponses.length)];
+  let ppl =  mockData.trips[trip].people
+  let randomSender = username
+  while(randomSender === username){
+    randomSender = ppl[Math.floor(Math.random() * ppl.length)];
+  }
+  
+  let newMessage = {
+    sender: randomSender,
+    content: randomMessage,
+    timestamp: Date(Date.now())
+  }
+  return newMessage
+
+}
+
+let fakeResponses = [
+  "When do we meet for Lunch?",
+  "Cant wait to see you guys!",
+  "You think we'll see anyone famous while we're there?",
+  "Hope we're not too tourist-y",
+  "Lets gooooooo!"
+]
