@@ -16,14 +16,14 @@ import List from './List';
 import Photo from './Photo';
 import Contact from './Contact';
 
-import { mockedData, getDataMap } from '../helper/mockData';
+import { mockData } from '../helper/mockData';
 
 const Main = () => {
 	const navigate = useNavigate();
 	const { pathname } = useLocation();
 	const { trip } = useParams();
-	const knownTrips = retrieveAllTrips();
-	const isValidTrip = knownTrips.includes(trip);
+	const knownTripNames = retrieveAllTripNames();
+	const isValidTrip = knownTripNames.includes(trip);
 
 	useEffect(() => {
 		// Prevent unknown trips from showing feature links (e.g., /people).
@@ -69,16 +69,13 @@ const Container = ({ children }) => {
 	);
 };
 
-function retrieveAllTrips() {
+function retrieveAllTripNames() {
 	const user = Cookies.get('username');
 	const hash = Cookies.get('hashword');
 	// TODO: backend get all trips for user
-	let tripList = getDataMap(
-		mockedData.existingUsersData[Cookies.get('username').toLocaleLowerCase()]
-			.trips
-	);
-	return Array.from(tripList.values()).map((trip) =>
-		trip.name.toLocaleLowerCase()
+
+	return mockData.users[user].trips.map((trip) =>
+		mockData.trips[trip].name.toLocaleLowerCase()
 	);
 }
 

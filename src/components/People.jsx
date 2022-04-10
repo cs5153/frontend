@@ -1,64 +1,56 @@
-import React,{useState} from 'react';
-import '../css/FeatureSpace.css'
-import { mockedData,getDataMap } from '../helper/mockData';
+import React, { useState } from 'react';
+import '../css/FeatureSpace.css';
 import PersonCard from './PersonCard';
-import plusImg from '../images/plus.png'
+import plusImg from '../images/plus.png';
 import AddTripMate from './AddTripMate';
 import jsCookie from 'js-cookie';
 import { useParams } from 'react-router-dom';
 
+import { mockData } from '../helper/mockData';
+
 const People = () => {
 	const { trip } = useParams();
-	const [state, setState]= useState({
+	const tripId = jsCookie.get('trip_id');
+
+	const [state, setState] = useState({
 		showAddBox: false,
-		userData: mockedData.existingUsersData[jsCookie.get("username").toLocaleLowerCase()].trips[trip]
-	})
-	var i =0;
-	console.log("existing data for user: ", mockedData.existingUsersData[jsCookie.get("username").toLocaleLowerCase()].trips[trip.toString()])
-	console.log("USER DATA IS", state.userData)
+		userData: mockData.trips[tripId],
+	});
+	var i = 0;
 
-	const pullTripMateData  = (tripMates) => {
-		let tripMatesData = []
-		console.log("pullTripMateData :: tripMates is :", tripMates)
-		let userMap = getDataMap(mockedData.existingUsersData)
-		tripMates.forEach(element => {
-			console.log("LOOKING FOR USER: ", element)
-			console.log("getDataMap(mockedData.existingUsersData): ",getDataMap(mockedData.existingUsersData))
-			console.log("USER MAP HAS : ", userMap.has(element))
-			if(userMap.has(element.toLocaleLowerCase())){
-				let data = (({firstName, lastName, userName, password, email, phone}) => ({firstName, lastName, userName, password, email, phone}))(mockedData.existingUsersData[element.toLocaleLowerCase()])
-				console.log("DATA IS: ",data)
-				tripMatesData.push(data)
-			}
-		});
-		console.log("FINAL TRIPMATES DATA IS: ", tripMatesData)
-		return tripMatesData
-	}
+	const pullTripMateData = (people) => {
+		return people.map((person) => ({
+			firstName: mockData.users[person].firstname,
+			lastName: mockData.users[person].lastname,
+			userName: mockData.users[person].username,
+			email: mockData.users[person].email,
+			phone: mockData.users[person].phone,
+		}));
+	};
 
-	const showBox = (bool) =>{
+	const showBox = (bool) => {
 		setState({
 			showAddBox: bool,
-			userData: state.userData
-		})
-	}
+			userData: state.userData,
+		});
+	};
 
-	let blah = pullTripMateData(state.userData.tripMates)
-	console.log("Type of tripmate data is :", typeof(blah[0]))
+	let tripMembers = pullTripMateData(state.userData.people);
 	return (
-	<div className='featureContainer'>
-		{state.showAddBox && <AddTripMate handler={showBox}/>}
-		<div className='listContainer'>
-			<ul>
-			{blah.map((listItem) => (
-				
-            	<PersonCard key={i++} user={listItem}></PersonCard>
-         	))}
-			</ul>
+		<div className='featureContainer'>
+			{state.showAddBox && <AddTripMate handler={showBox} />}
+			<div className='listContainer'>
+				<ul>
+					{tripMembers.map((listItem) => (
+						<PersonCard key={i++} user={listItem}></PersonCard>
+					))}
+				</ul>
+			</div>
+			<button className='addButton' onClick={() => showBox(true)}>
+				<img className='iconImg' src={plusImg} />
+			</button>
 		</div>
-		<button className='addButton' onClick={() => showBox(true)}>
-			<img className='iconImg' src={plusImg}/>
-		</button>
-	</div>);
+	);
 };
 
 export default People;
