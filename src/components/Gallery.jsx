@@ -10,7 +10,17 @@ const Gallery = ({ album }) => {
 			let lightbox = new PhotoSwipeLightbox({
 				gallery: '#albumGallery--responsive-images',
 				children: 'a',
+				indexIndicatorSep: ' of ',
 				pswpModule: () => import('photoswipe'),
+			});
+			
+			lightbox.on('change', () => {
+				const altText = lightbox.pswp.currSlide.content.element.getAttribute('alt');
+				lightbox.pswp.currSlide.content.element.setAttribute('aria-live', altText);
+
+				setTimeout(() => {
+					lightbox.pswp.currSlide.content.element.removeAttribute('aria-live')
+				}, 1000);
 			});
 
 			lightbox.init();
