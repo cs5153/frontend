@@ -1,8 +1,9 @@
 import React from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import stickmanLogo from '../images/stickmanLogo.png';
 
 const Header = () => {
+	const { trip } = useParams();
 	const navigate = useNavigate();
 
 	return (
@@ -12,25 +13,47 @@ const Header = () => {
 					<img
 						className='mw-100 img-responsive'
 						src={stickmanLogo}
-						alt='clipart of man with baggage standing next to Tripper logo'
+						alt='tripper logo: clipart of man with baggage standing next to Tripper logo'
+						role='link'
+						onClick={() => navigate('/')}
 					/>
 				</div>
 
-				<div className='flex-grow-0'>
+				<div className='flex-grow-0' id='headerContent' tabIndex={-1}>
 					<div className='d-flex'>
-						<button className='flex-fill' onClick={() => navigate('people')}>
+						<button
+							className='flex-fill'
+							onClick={() => navigate('people')}
+							disabled={!trip}
+						>
 							People
 						</button>
-						<button className='flex-fill' onClick={() => navigate('chat')}>
+						<button
+							className='flex-fill'
+							onClick={() => navigate('chat')}
+							disabled={!trip}
+						>
 							Chat
 						</button>
-						<button className='flex-fill' onClick={() => navigate('list')}>
+						<button
+							className='flex-fill'
+							onClick={() => navigate('list')}
+							disabled={!trip}
+						>
 							List
 						</button>
-						<button className='flex-fill' onClick={() => navigate('photo')}>
+						<button
+							className='flex-fill'
+							onClick={() => navigate('photo')}
+							disabled={!trip}
+						>
 							Photo
 						</button>
-						<button className='flex-fill' onClick={() => navigate('contact')}>
+						<button
+							className='flex-fill'
+							onClick={() => navigate('contact')}
+							disabled={!trip}
+						>
 							Contact
 						</button>
 					</div>

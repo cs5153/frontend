@@ -10,8 +10,8 @@ const ChatMessage = (props) => {
 	return (
 	<>
 		<div className='chatCard'>
-			<p><b>{msg.sender}:</b> {msg.content}</p>
-			<p className='timestamp'>{msg.timestamp}</p>
+			<p tabIndex={0}><b>{msg.sender}:</b> {msg.content}</p>
+			<p className='timestamp' tabIndex={0}>{msg.timestamp}</p>
 		</div>
 	</>);
 };

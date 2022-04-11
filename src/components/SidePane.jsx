@@ -1,9 +1,10 @@
 import React from 'react';
-import '../css/SidePane.css';
-import { mockData } from '../helper/mockData';
+import jsCookie from 'js-cookie';
 import TripItem from './TripItem';
 import profileImage from '../images/user.png';
-import jsCookie from 'js-cookie';
+import '../css/SidePane.css';
+
+import { mockData } from '../helper/mockData';
 
 const SidePane = () => {
 	const user = jsCookie.get('username');
@@ -28,9 +29,13 @@ const SidePane = () => {
 						My profile
 					</a>
 				</div>
-				<ul className='tripList' aria-labelledby='myTrips' aria-label='My Trips' tabIndex={0}>
+				<ul
+					className='tripList'
+					aria-labelledby='myTrips'
+					aria-label='My Trips'
+				>
 					<div className='text-center h4'>
-						<label id='myTrips'>My Trips</label>
+						<label id='myTrips' tabIndex={-1}>My Trips</label>
 					</div>
 					{tripList.map((trip) => (
 						<TripItem key={trip.name} tripName={trip.name} tripId={trip.id} />

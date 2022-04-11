@@ -17,7 +17,7 @@ const UserProvider = ({ children }) => {
 	useEffect(() => {
 		// Set location to login if unknown user or url is restricted.
 		if (alwaysAllowedPaths.includes(pathname) === false && !isValidCookieUser) {
-			navigate('/login', { replace: true });
+			navigate('/login');
 		}
 	}, [pathname, isValidCookieUser]);
 

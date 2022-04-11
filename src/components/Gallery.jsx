@@ -70,14 +70,14 @@ const Gallery = ({ album }) => {
 				>
 					<img
 						alt={`trip image ${index + 1}`}
-						onLoad={(event) => {
+						onLoad={(evt) => {
 							imageRefs.current[index].setAttribute(
 								'data-pswp-width',
-								event.target.naturalWidth
+								evt.target.naturalWidth
 							);
 							imageRefs.current[index].setAttribute(
 								'data-pswp-height',
-								event.target.naturalHeight
+								evt.target.naturalHeight
 							);
 						}}
 						className='p-2'
@@ -108,7 +108,7 @@ const Gallery = ({ album }) => {
 							aria-labelledby='photoUrlTitle'
 							autoFocus={true}
 							type='text'
-							onInput={(event) => setPhotoUrl(event.target.value)}
+							onInput={(evt) => setPhotoUrl(evt.target.value)}
 							value={photoUrl}
 						/>
 						<div>OR</div>
@@ -116,8 +116,8 @@ const Gallery = ({ album }) => {
 						<input
 							aria-labelledby='photoFileTitle'
 							accept='image/*'
-							onInput={(event) => {
-								setPhotoFile(URL.createObjectURL(event.target.files[0]));
+							onInput={(evt) => {
+								setPhotoFile(URL.createObjectURL(evt.target.files[0]));
 							}}
 							type='file'
 						/>
