@@ -11,6 +11,8 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import Cookies from 'js-cookie'
+import { mockData } from "../../helper/helper";
 
 const List = () => (
     <div id="list" className='groupList' >
@@ -27,9 +29,90 @@ const List = () => (
 
 function TripPage() {
 
+    const [showSettings, setshowSettings] = React.useState(true);
+    const [showList, setshowList] = React.useState(false);
+    const [showChat, setshowChat] = React.useState(false);
+    const [showPhotos, setshowPhotos] = React.useState(false);
+    const [peopleList, setPeopleList] = React.useState([]);
+
+    const cur = Cookies.get('current_trip');
+
+    const tripData = mockData.trips[cur];
+    const totalPeople = tripData.people;
+    const [name, setName] = React.useState(tripData.name);
+    const [image, setImage] = React.useState('https://cdn3.vectorstock.com/i/1000x1000/35/52/placeholder-rgb-color-icon-vector-32173552.jpg');
+    let Regex = /(https?:\/\/.*\.(?:png|jpg|jpeg|gif))/i;
+
+    let textInput = React.createRef();
+    let groupImage = React.createRef();
+    function clickSettings() {
+        setshowSettings(true);
+        setshowList(false);
+        setshowChat(false);
+        setshowPhotos(false);
+    }
+    function clickList() {
+        setshowSettings(false);
+        setshowList(true);
+        setshowChat(false);
+        setshowPhotos(false);
+    }
+    function clickChat() {
+        setshowSettings(false);
+        setshowList(false);
+        setshowChat(true);
+        setshowPhotos(false);
+    }
+    function clickPhotos() {
+        setshowSettings(false);
+        setshowList(false);
+        setshowChat(false);
+        setshowPhotos(true);
+    }
+    const handleChange = (event) => {
+        var name = (event.target.value);
+        console.log(name);
+        if (!peopleList.includes(name)) {
+
+            setPeopleList(peopleList => [...peopleList, name])
+        }
+    };
+    function removePerson(name) {
+        if (peopleList.includes(name)) {
+            setPeopleList(prevState => { // pass callback in setState to avoid race condition
+                let newData = prevState.slice() //copy array from prevState
+                let index = peopleList.indexOf(name);
+                newData.splice(index, 1) // remove element
+                return newData; // update state
+            })
+        }
+    };
+    function invite() {
+        setPeopleList([]);
+        alert(`Invitations Sent!`)
+    };
+
+    let onNameChangeClick = (e) => {
+        setName(textInput.current.value);
+    }
+    let uploadImageClick = (e) => {
+        if (Regex.test(groupImage.current.value)) {
+            setImage(groupImage.current.value);
+        }
+        else {
+            alert(`Invalid Image URL: ${groupImage.current.value}`)
+        }
+    }
+
+    function showInvite(){
+        if(peopleList.length>0){
+            return true;
+        }
+        return false;
+    }
     const Settings = () => (
-        <div id="settings" className='groupSettings' >
-            <div className='groupName'>Group Name</div>
+        <div id="settings" className='groupSettings'  >
+            <div className='groupName'>{name}</div>
             <div className='data'>
                 <div className='tripSettings'>
 
@@ -39,21 +122,24 @@ function TripPage() {
                         </div>
 
                         <div className='picture'>
-                            <div className="pic"></div>
+                            <div className="pic">
 
-                            <button className="upload">
+                                <img src={image}></img>
+                            </div>
+                            <input ref={groupImage} type="text" className="inputName" placeholder="Input Image URL"></input>
+                            <button className="upload" onClick={uploadImageClick}>
                                 Upload
                             </button>
                         </div>
 
                         <div className='location'>
-                            <input className="inputName"></input>
-                            <button className="updateName">
-                                UpdateName
+                            <input ref={textInput} type="text" className="inputName" placeholder="Change Group Name"></input>
+                            <button className="updateName" onClick={onNameChangeClick}>
+                                Update Name
                             </button>
                         </div>
                         <div className='location'>
-                            <input className="inputName"></input>
+                            <input className="inputName" placeholder="Change Destination Name"></input>
                             <button className="updateName">
                                 Update Location
                             </button>
@@ -81,106 +167,33 @@ function TripPage() {
                                     label="People"
                                     onChange={handleChange}
                                 >
-                                    <MenuItem value={"Tommy"}>Tommy</MenuItem>
-                                    <MenuItem value={"Jeff"}>Jeff</MenuItem>
-                                    <MenuItem value={"Kim"}>Kim</MenuItem>
+                                    {totalPeople.map(name => (
+                                        <MenuItem key={name} value={name}>{name}</MenuItem>
+                                    ))}
                                 </Select>
                             </FormControl>
                         </Box>
                     </div>
-                    <div className="selectedPeople">
-                        {Tommy ?
-                            <div className="person">
-                                Tommy
-                                <button onClick={() => removePerson("Tommy")} className="removePerson">
-                                    X
+                    <div className="selectedPeople" >
+                        {peopleList.map(name => (
+                            <div key={name} id={name} className="person">
+                                {name}
+                                <button onClick={() => { removePerson(name); }} className="removePerson">
+                                    Delete
                                 </button>
                             </div>
-                            : null}
-
-                        {Jeff ?
-                            <div className="person">
-                                Jeff
-                                <button onClick={() => removePerson("Jeff")} className="removePerson" >
-                                    X
-                                </button>
-                            </div>
-                            : null}
-
-                        {Kim ?
-                            <div className="person">
-                                Kim
-                                <button onClick={() => removePerson("Kim")} className="removePerson">
-                                    X
-                                </button>
-                            </div>
-                            : null}
-
+                        ))}
                     </div>
+                    <div className="location" >
+
+                    {showInvite() ? <button onClick={() => { invite(); }} className="invite">
+                        Send Invite
+                    </button> : null}
+                    </div>
+
                 </div>
             </div>
         </div>)
-
-    let { id } = useParams();
-    const [showSettings, setshowSettings] = React.useState(true);
-    const [showList, setshowList] = React.useState(false);
-    const [showChat, setshowChat] = React.useState(false);
-    const [showPhotos, setshowPhotos] = React.useState(false);
-    const [Tommy, setTommy] = React.useState(false);
-    const [Jeff, setJeff] = React.useState(false);
-    const [Kim, setKim] = React.useState(false);
-
-    function clickSettings() {
-        setshowSettings(true);
-        setshowList(false);
-        setshowChat(false);
-        setshowPhotos(false);
-    }
-    function clickList() {
-        setshowSettings(false);
-        setshowList(true);
-        setshowChat(false);
-        setshowPhotos(false);
-    }
-    function clickChat() {
-        setshowSettings(false);
-        setshowList(false);
-        setshowChat(true);
-        setshowPhotos(false);
-    }
-    function clickPhotos() {
-        setshowSettings(false);
-        setshowList(false);
-        setshowChat(false);
-        setshowPhotos(true);
-    }
-
-    const handleChange = (event) => {
-        var name = (event.target.value);
-        if (name == "Tommy") {
-            setTommy(true)
-        }
-        if (name == "Jeff") {
-            setJeff(true)
-        }
-        if (name == "Kim") {
-            setKim(true)
-        }
-
-    };
-
-    function removePerson(name) {
-        console.log(name);
-        if (name == "Tommy") {
-            setTommy(false)
-        }
-        if (name == "Jeff") {
-            setJeff(false)
-        }
-        if (name == "Kim") {
-            setKim(false)
-        }
-    };
 
     return (
         <>
@@ -214,7 +227,7 @@ function TripPage() {
             <div className="rightSide">
                 {showSettings ? <Settings /> : null}
                 {showList ? <List /> : null}
-                {showPhotos ? <Photo /> : null}
+                {showPhotos ? <Photo propData={tripData.albums} /> : null}
             </div>
             </div>
         </>

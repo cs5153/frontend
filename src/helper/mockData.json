@@ -34,7 +34,7 @@
 			"email": "foo@BlackWidow.com",
 			"phone": "210-777-7777",
 			"trips": ["002"]
-		},
+		}
 	},
 	"trips": {
 		"001": {
@@ -45,31 +45,31 @@
 				"001": {
 					"name": "tony's packing list",
 					"items": ["socks", "shoes", "shirt"]
-				},
+				}
 			},
 			"albums": {
 				"001": {
 					"name": "Tony's Photos",
 					"photos": [
 						"https://a.cdn-hotels.com/gdcs/production81/d305/dd228943-8b28-443d-bfbb-99599e38b471.jpg",
-						"https://a.cdn-hotels.com/gdcs/production81/d305/dd228943-8b28-443d-bfbb-99599e38b471.jpg",
+						"https://a.cdn-hotels.com/gdcs/production81/d305/dd228943-8b28-443d-bfbb-99599e38b471.jpg"
 					]
-				},
+				}
 			},
 			"chat": [
 				{
 					"sender": "tony",
 					"content": "This trip is going to be a blast!",
-					"timestamp": "Fri, 08 Apr 2022 22:27:56 GMT",
+					"timestamp": "Fri, 08 Apr 2022 22:27:56 GMT"
 				},
 				{
 					"sender": "steve",
 					"content": "Can't wait to get on the plane!",
-					"timestamp": "Fri, 08 Apr 2022 22:31:00 GMT",
-				},
-			],
-		},
+					"timestamp": "Fri, 08 Apr 2022 22:31:00 GMT"
+				}
+			]
+		}
 		
-	},
+	}
 }
 
