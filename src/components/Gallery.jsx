@@ -118,6 +118,7 @@ const Gallery = ({ album }) => {
 							accept='image/*'
 							onInput={(evt) => {
 								setPhotoFile(URL.createObjectURL(evt.target.files[0]));
+
 							}}
 							type='file'
 						/>
