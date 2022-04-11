@@ -4,7 +4,6 @@
 
     position:sticky;
     left:0;
-    /* background-color: red; */
     height:700px;
     width: 700px !important;
     max-width: 20%;
@@ -61,7 +60,7 @@
     background-color: transparent;
     float: left;
     width: 65%;
-    height: 70vh !important;
+    height: 80vh !important;
     margin: 5%;
     margin-top: 0%;
     border-width: 1px;
@@ -89,7 +88,7 @@
 
 .tripSettings{
     float: left;
-    background-color: rgb(167, 211, 176);
+    background-color: rgb(204,240,192);
     width: 45%;
     margin: 5% 0% !important;
     height:90%;
@@ -98,7 +97,7 @@
     border-style: solid;
     position: static;
     color: rgb(69, 102, 58) !important;
-
+    min-height: 450px !important;
 }
 .innerDiv{
     height: 100%;
@@ -107,7 +106,7 @@
 }
 .inviteUsers{
     float: right;
-    background-color:rgb(167, 211, 176);
+    background-color: rgb(204,240,192);
     width: 45%;
     margin: 5% 0%;
     height:90%;
@@ -116,6 +115,7 @@
     border-style: solid;
     position: static;
     color: rgb(69, 102, 58) !important;
+    min-height: 450px !important;
 }
 .tripSettingLabel{
     display: inline-block;
@@ -129,7 +129,6 @@
 }
 .pic{
     height: 50%;
-    background-color: lightgray;
     width:30%;
     margin: auto;
 }
@@ -179,6 +178,7 @@
 .selectedPeople{
     margin: auto;
     height: auto;
+    min-height:30%;
     width: 50%;
 }
 .person{
@@ -215,7 +215,7 @@
     float: right;
 }
 .allLists{
-    min-height:100% !important;
+    min-height:90% !important;
     min-width: 100% !important;
     position: relative;
 }
@@ -243,4 +243,11 @@ p{
     position: relative;
     top:10vh;
 }
-/* Start of Photos */
+.invite{
+    width: auto;
+vertical-align: top;
+position: relative;
+display: inline-block;
+text-align: center;
+
+}
