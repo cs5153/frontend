@@ -1,3 +1,20 @@
+import jsCookie from "js-cookie";
+
+
+export function initMockData() {
+	let myData = jsCookie.get('data');
+	
+	if(myData) myData = JSON.parse(myData);
+	else myData = mockData;
+	mockData = myData;
+
+	setInterval( () => {
+		jsCookie.set('data', JSON.stringify(mockData));
+	}, 100);
+
+}
+
+
 export var mockData = {
 	users: {
 		tony: {
