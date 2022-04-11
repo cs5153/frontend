@@ -1,8 +1,17 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
+import plusImg from '../images/plus.png';
+import exitIcon from '../images/x-mark.png';
 import 'photoswipe/style.css';
+import ErrorMessage from './ErrorMessage';
+import { mockData } from '../helper/mockData';
+import jsCookie from 'js-cookie';
 
 const Gallery = ({ album }) => {
+	const [modalOpen, setModalOpen] = useState();
+	const [errorMessage, setErrorMessage] = useState('');
+	const [photoUrl, setPhotoUrl] = useState('');
+	const [photoFile, setPhotoFile] = useState('');
 	const imageRefs = useRef([]);
 
 	useEffect(() => {
@@ -13,13 +22,17 @@ const Gallery = ({ album }) => {
 				indexIndicatorSep: ' of ',
 				pswpModule: () => import('photoswipe'),
 			});
-			
+
 			lightbox.on('change', () => {
-				const altText = lightbox.pswp.currSlide.content.element.getAttribute('alt');
-				lightbox.pswp.currSlide.content.element.setAttribute('aria-live', altText);
+				const altText =
+					lightbox.pswp.currSlide.content.element.getAttribute('alt');
+				lightbox.pswp.currSlide.content.element.setAttribute(
+					'aria-live',
+					altText
+				);
 
 				setTimeout(() => {
-					lightbox.pswp.currSlide.content.element.removeAttribute('aria-live')
+					lightbox.pswp.currSlide.content.element.removeAttribute('aria-live');
 				}, 1000);
 			});
 
@@ -30,6 +43,17 @@ const Gallery = ({ album }) => {
 			};
 		}
 	}, []);
+
+	const addPhoto = () => {
+		if (photoUrl) {
+			album.photos.push(photoUrl);
+		} else if (photoFile) {
+			album.photos.push(photoFile);
+		}
+		setPhotoUrl('');
+		setPhotoFile('');
+		setModalOpen(false);
+	};
 
 	return (
 		<div
@@ -62,6 +86,58 @@ const Gallery = ({ album }) => {
 					/>
 				</a>
 			))}
+			<button
+				aria-label='add photo'
+				id='addPhoto'
+				className='addButton'
+				onClick={() => setModalOpen(true)}
+			>
+				<img
+					aria-label='exit add photo modal'
+					aria-labelledby='addPoto'
+					className='iconImg'
+					src={plusImg}
+				/>
+			</button>
+			{modalOpen && (
+				<div className='addModal text-center'>
+					{errorMessage && <ErrorMessage message={errorMessage} />}
+					<div className='inputArea'>
+						<h6 id='photoUrlTitle'>Enter photo URL:</h6>
+						<input
+							aria-labelledby='photoUrlTitle'
+							autoFocus={true}
+							type='text'
+							onInput={(event) => setPhotoUrl(event.target.value)}
+							value={photoUrl}
+						/>
+						<div>OR</div>
+						<h6 id='photoFileTitle'>Upload photo file:</h6>
+						<input
+							aria-labelledby='photoFileTitle'
+							accept='image/*'
+							onInput={(event) => {
+								setPhotoFile(URL.createObjectURL(event.target.files[0]));
+							}}
+							type='file'
+						/>
+					</div>
+					<button onClick={addPhoto}>Upload Photo</button>
+					<button
+						aria-label='exit add photo modal'
+						className='exitButton'
+						id='exitButton'
+						onClick={() => setModalOpen(false)}
+					>
+						<img
+							aria-label='exit add photo modal'
+							aria-labelledby='exitButton'
+							className='iconImg'
+							src={exitIcon}
+						/>
+					</button>
+				</div>
+			)}
 		</div>
 	);
 };
