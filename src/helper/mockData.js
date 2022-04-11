@@ -41,16 +41,16 @@ export var mockData = {
 		'001': {
 			name: 'Cancun',
 			people: ['tony', 'steve', 'bruce'],
-			lists: {
-				'001': {
+			lists: [
+				{
 					name: "tony's packing list",
 					items: ['socks', 'shoes', 'shirt'],
 				},
-				'002': {
+				{
 					name: 'general packing list',
 					items: ['speaker'],
 				},
-			},
+			],
 			albums: [
 				{
 					name: "Tony's Photos",

@@ -43,8 +43,8 @@
 
 .exitButton{
     position: absolute;
-    top: 15%;
-    left: 90%;
+    top: 2rem;
+    right: -1rem;
     transform: translate(-50%, -50%);
     background-color: azure;
     /* background: none; */
