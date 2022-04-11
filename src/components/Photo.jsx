@@ -11,7 +11,7 @@ const Photo = () => {
 	const tripId = jsCookie.get('trip_id');
 	const albums = retrieveAlbums(tripId);
 
-	const albumName = decodeURIComponent(album);
+	const albumName = album ? decodeURIComponent(album) : null;
 	const currentAlbum = albums.find(
 		(album) => albumName === album.name.toLocaleLowerCase()
 	);
