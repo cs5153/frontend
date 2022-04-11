@@ -43,7 +43,7 @@
 }
 
 .nav-item {
-  height: 80px;
+  height: 70px;
 }
 
 .nav-links {
@@ -52,13 +52,14 @@
   align-items: center;
   text-decoration: none;
   padding: 0.5rem 1rem;
-  height: 80px;
+  height: 70px;
 }
 
 .nav-links:hover {
   background-color: #fff;
   color: #242424;
   border-radius: 0;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 .nav-name {

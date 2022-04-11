@@ -29,19 +29,14 @@ const Signup = () => {
 			<div className='loginPageContainer'>
 				<div className='loginModal'>
 					<div>
-						<Link to='/'>
-							<img
-								className='tripperLogo'
-								src={stickmanLogo}
-								alt='clipart of man with baggage standing next to Tripper logo'
-							/>
+						<Link to='/' style={{textDecoration: 'none'}}>
+							<div className='title'> TRIPPER </div>
 						</Link>
 					</div>
 					{state.hasError && (
 						<ErrorMessage message='Please fill out all fields' />
 					)}
 					<div className='inputArea'>
-						<h6>UserName</h6>
 						<input
 							autoFocus={true}
 							className='inputField'
@@ -55,7 +50,6 @@ const Signup = () => {
 						/>
 					</div>
 					<div className='inputArea'>
-						<h6>Password</h6>
 						<input
 							className='inputField'
 							type='password'
@@ -68,7 +62,6 @@ const Signup = () => {
 						/>
 					</div>
 					<div className='inputArea'>
-						<h6>First Name</h6>
 						<input
 							className='inputField'
 							type='text'
@@ -81,7 +74,6 @@ const Signup = () => {
 						/>
 					</div>
 					<div className='inputArea'>
-						<h6>Last Name</h6>
 						<input
 							className='inputField'
 							type='text'
@@ -94,7 +86,6 @@ const Signup = () => {
 						/>
 					</div>
 					<div className='inputArea'>
-						<h6>Email</h6>
 						<input
 							className='inputField'
 							type='text'
@@ -107,7 +98,6 @@ const Signup = () => {
 						/>
 					</div>
 					<div className='inputArea'>
-						<h6>Phone Number</h6>
 						<input
 							className='inputField'
 							type='text'

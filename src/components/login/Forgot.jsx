@@ -27,19 +27,14 @@ const Forgot = (props) => {
 			<div className='loginPageContainer'>
 				<div className='loginModal'>
 					<div>
-						<Link to='/'>
-							<img
-								className='tripperLogo'
-								src={stickmanLogo}
-								alt='clipart of man with baggage standing next to Tripper logo'
-							/>
+						<Link to='/' style={{textDecoration: 'none'}}>
+							<div className='title'> TRIPPER </div>
 						</Link>
 					</div>
 					{state.hasError && (
 						<ErrorMessage message='Please fill out all fields' />
 					)}
 					<div className='inputArea'>
-						<h6>UserName</h6>
 						<input
 							autoFocus={true}
 							className='inputField'
@@ -51,9 +46,11 @@ const Forgot = (props) => {
 								setState(copy);
 							}}
 						/>
-						<div className='inputArea'>
+					</div>
+					<div>
+						<div className='buttonArea'>
 							<button
-								className='inputField'
+								className='buttonField'
 								onClick={() => {
 									if (isUserFieldBlank(state.userObj)) {
 										setState({
@@ -82,23 +79,22 @@ const Forgot = (props) => {
 			<div className='loginPageContainer'>
 				<div className='loginModal'>
 					<div>
-						<img
-							className='tripperLogo'
-							src={stickmanLogo}
-							alt='clipart of man with baggage standing next to Tripper logo'
-						/>
+						<Link to='/' style={{textDecoration: 'none'}}>
+							<div className='title'> TRIPPER </div>
+						</Link>
 					</div>
-					<h1>Email Sent</h1>
-					<p>
-						If an account is found, we'll send a link to the email adress
-						provided to reset your password
-					</p>
-					<button
-						className='link'
-						onClick={() => navigate('/login', { replace: true })}
-					>
-						Back to Login
-					</button>
+					<div className='response'>
+						<p>
+							If an account is found, we'll send a link to the email adress
+							provided to reset your password.
+						</p>
+						<button
+							className='buttonField'
+							onClick={() => navigate('/login', { replace: true })}
+						>
+							Back to Login
+						</button>
+						</div>
 				</div>
 			</div>
 		);

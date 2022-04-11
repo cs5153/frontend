@@ -17,6 +17,13 @@ function isFieldBlank(obj){
 	return hasBlank;
 }
 
+function isInvalid(obj){
+	let invalid = false;
+	if (obj.tripName.length > 15 || obj.tripLocation > 15){
+		invalid = true;
+	}
+	return invalid;
+}
 
 const AddTripPage = () => {
 	const navigate = useNavigate();
@@ -25,7 +32,8 @@ const AddTripPage = () => {
 			tripName: '',
 			tripLocation: '',
 		},
-		hasError: false,
+		isEmpty: false,
+		invalidString: false,
 	});
 
 	var mockData = readData();
@@ -37,9 +45,12 @@ const AddTripPage = () => {
 					<div className='addTripExit'>
 					<ExitButton/>
 					</div>
-					<div className='title'>Add Trip</div>
-			    {state.hasError && (
-						<ErrorMessage message='Please fill out all fields' />
+					<h1>Add Trip</h1>
+			    {state.isEmpty && (
+						<ErrorMessage message='Please fill out all fields.' />
+					)}
+			    {state.invalidName && (
+						<ErrorMessage message='Names or Locations must be under 16 characters.' />
 					)}
 					<div className='inputArea'>
 						<input
@@ -71,10 +82,15 @@ const AddTripPage = () => {
 							className='inputField'
 							onClick={() => {
 								if (isFieldBlank(state.tripObj)) {
-									setState({
-										tripObj: state.tripObj,
-										hasError: true,
-									});
+										setState({
+											tripObj: state.tripObj,
+											isEmpty: true,
+										});
+								} else if (isInvalid(state.tripObj)) {
+										setState({
+											tripObj: state.tripObj,
+											invalidName: true,
+										});
 								} else {
 									//Create trip with this id
 									var trip =  {

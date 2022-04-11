@@ -29,21 +29,40 @@
     -moz-border-radius: 50px;
     -webkit-border-radius: 50px;
     border-radius: 50px;
+    box-shadow: 0 0 16px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border: 2px solid rgb(49,69,44);
+}
+
+.groupLink:hover {
+    box-shadow: 0 0 32px 0 rgba(0,0,0,0.2);
 }
 
 .link{
     font-size: medium;
     position:relative;
     left: 5%;
-    top:50px;
+    top:40px;
     background: none!important;
     border: none;
     padding: 0!important;
-    font-family: arial, sans-serif;
+    font-family: "Helvetica", sans-serif;
     color: rgb(69, 102, 58) !important;
     text-decoration: solid;
+    justify-content: center;
     cursor: pointer;
 }
+
+.caption {
+    position: relative;
+    left: 5%;
+    top: 30px;
+    padding: 0!important;
+    font-family: "Helvetica", sans-serif;
+    color: rgb(69, 102, 58) !important;
+    text-decoration: solid;
+}
+
 .rightSide{
     position :sticky;
     background-color: transparent;

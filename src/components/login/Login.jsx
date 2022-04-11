@@ -32,17 +32,12 @@ const Login = () => {
 			<div className='loginPageContainer'>
 				<div className='loginModal'>
 					<div>
-						<Link to='/'>
-							<img
-								className='tripperLogo'
-								src={stickmanLogo}
-								alt='clipart of man with baggage standing next to Tripper logo'
-							/>
+						<Link to='/' style={{textDecoration: 'none'}}>
+							<div className='title'> TRIPPER </div>
 						</Link>
 					</div>
 					{state.hasError && <ErrorMessage message={state.errMsg} />}
 					<div className='inputArea'>
-						<h6>UserName</h6>
 						<input
 							autoFocus={true}
 							className='inputField'
@@ -56,7 +51,6 @@ const Login = () => {
 						/>
 					</div>
 					<div className='inputArea'>
-						<h6>Password</h6>
 						<input
 							className='inputField'
 							type='password'
@@ -68,9 +62,18 @@ const Login = () => {
 							}}
 						/>
 					</div>
-					<div className='inputArea'>
+					<div className='buttonRow'>
+					<div className='buttonAreaLeft'>
+					<button
+						className='buttonField'
+						onClick={() => navigate('/signup', { replace: true })}
+					>
+						Sign Up
+					</button>
+					</div>
+					<div className='buttonArea'>
 						<button
-							className='inputField'
+							className='buttonField'
 							onClick={() => {
 								if (isUserFieldBlank(state.userObj)) {
 									setState({
@@ -99,18 +102,15 @@ const Login = () => {
 							Login
 						</button>
 					</div>
+					</div>
+					<div className='buttonArea'>
 					<button
-						className='link'
-						onClick={() => navigate('/signup', { replace: true })}
-					>
-						Sign Up
-					</button>
-					<button
-						className='link'
+						className='buttonField'
 						onClick={() => navigate('/forgot', { replace: true })}
 					>
 						Forgot Password
 					</button>
+					</div>
 				</div>
 			</div>
 		</>

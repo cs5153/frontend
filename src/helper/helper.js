@@ -1,3 +1,4 @@
+import Cookies from 'js-cookie';
 
 export var mockData = {
 	users: {
@@ -84,13 +85,18 @@ export var mockData = {
 	},
 };
 
+//Cookies.set('data', JSON.stringify(mockData));
+
 //Read Data
 export function readData() {
+	//return JSON.parse(Cookies.get('data'));
 	return mockData;
 }
 
 //Write Data
 export function writeData(data) {
+	//Cookies.remove('data');
+	//Cookies.set('data', JSON.stringify(data));
 	mockData = data;
 }
 

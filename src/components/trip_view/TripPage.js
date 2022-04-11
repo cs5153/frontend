@@ -184,6 +184,7 @@ function TripPage() {
 
     return (
         <>
+          <div>
             <div className='leftSide'>
                 <div className='groupLink'>
                     <button className='link' onClick={() => clickSettings()}>
@@ -214,6 +215,7 @@ function TripPage() {
                 {showSettings ? <Settings /> : null}
                 {showList ? <List /> : null}
                 {showPhotos ? <Photo /> : null}
+            </div>
             </div>
         </>
     )
