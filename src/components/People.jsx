@@ -37,7 +37,7 @@ const People = () => {
 
 	let tripMembers = pullTripMateData(state.userData.people);
 	return (
-		<div className='featureContainer'>
+		<div className='featureContainer' id='mainContent' tabIndex={-1}>
 			{state.showAddBox && <AddTripMate handler={showBox} />}
 			<div className='listContainer'>
 				<ul>

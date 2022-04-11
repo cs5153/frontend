@@ -1,23 +1,34 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import jsCookie from "js-cookie";
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import jsCookie from 'js-cookie';
 
-import "../css/TripItem.css";
+import '../css/TripItem.css';
 
-const TripItem = ({tripName, tripId}) => {
-  return (
-		<>
-			{console.log('props tripname is :', tripName)}
-			<div className='tripItem'>
-				<Link to={`/${tripName.toLocaleLowerCase()}`} onClick={
-					jsCookie.set('trip_id', tripId)
-				}>
-					<p className='verticalCenter'>
-						{tripName !== undefined ? tripName : 'hello'}
-					</p>
-				</Link>
-			</div>
-		</>
+const TripItem = ({ tripName, tripId }) => {
+	const { trip } = useParams();
+	const tripUrl = encodeURI(`${tripName.toLocaleLowerCase()}`);
+	const isSelected = trip === tripUrl;
+
+	if (isSelected) {
+		return (
+			<li className='tripItem' tabIndex={0}>
+				<p aria-label={`${tripName} (selected)`} className='verticalCenter'>
+					{tripName}
+				</p>
+			</li>
+		);
+	}
+
+	return (
+		<li className='tripItem'>
+			<a
+				href={`/${tripUrl}/people`}
+				className='verticalCenter d-block w-100 h-100'
+				onClick={() => jsCookie.set('trip_id', tripId)}
+			>
+				{tripName}
+			</a>
+		</li>
 	);
 };
 

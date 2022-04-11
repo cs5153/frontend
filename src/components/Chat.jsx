@@ -33,62 +33,72 @@ const Chat = (props) => {
     let i = 0 
   
 
-    return ( 
-    <> 
-        <div className='featureContainer'> 
-        <div className='chatArea'> 
-            <div className='listContainer'> 
-                <ul> 
-                {chatHistory.map((msg) => (     
-                    <ChatMessage key={i++} message={msg}/> 
-                ))} 
-                <div ref={endOfThread} />
-                </ul> 
-            </div> 
-        </div> 
-        <div className='inputSection'> 
-            <div className='messageInput'> 
-                <input className='inputField' value={state.currMessage} type="text" placeholder='Send a message' onChange={(evt) => { 
-                    setState({
-                        currMessage: evt.target.value,
-                        randMessage: state.randMessage
-                    }) 
-                }}/> 
-            </div> 
-            <div className='sendButton'>      
-                <button className='inputField' onClick={() => {
-                    
-                    if(state.currMessage !== '' && state.currMessage.trim() !== ''){
-                        console.log("TRIMMED VALUE IS: ", state.currMessage.trim()==='')
-                        let newMessage = {
-                            sender: user,
-                            content: state.currMessage,
-                            timestamp: Date(Date.now())
-                        }
-                        console.log("CHAT STATE IS: ",state)
-                        mockData.trips[tripId].chat.push(newMessage)
-                        setTimeout(function(){
-                            mockData.trips[tripId].chat.push(getFakeResponse(jsCookie.get("username"), tripId))
-                            console.log("function finished")
-                            setState({
-                                currMessage:"",
-                                randMessage:  ++state.randMessage
-                            })
-                        }, 2000);
-                        //reset current message to empty since, last one was sent
-                        setState({
-                            currMessage:"",
-                            randMessage: state.randMessage
-                        })
-                    }
-                }}> 
-                Send</button> 
-            </div> 
-        </div>
-
-    </div> 
-
-    </>); 
+    return (
+			<>
+				<div className='featureContainer' id='mainContent' tabIndex={-1}>
+					<div className='chatArea'>
+						<div className='listContainer'>
+							<ul>
+								{chatHistory.map((msg) => (
+									<ChatMessage key={i++} message={msg} />
+								))}
+								<div ref={endOfThread} />
+							</ul>
+						</div>
+					</div>
+					<div className='inputSection'>
+						<div className='messageInput'>
+							<input
+								className='inputField'
+								value={state.currMessage}
+								type='text'
+								placeholder='Send a message'
+								onChange={(evt) => {
+									setState({
+										currMessage: evt.target.value,
+										randMessage: state.randMessage,
+									});
+								}}
+							/>
+						</div>
+						<div className='sendButton'>
+							<button
+								className='inputField'
+								onClick={() => {
+									if (
+										state.currMessage !== '' &&
+										state.currMessage.trim() !== ''
+									) {
+										let newMessage = {
+											sender: user,
+											content: state.currMessage,
+											timestamp: Date(Date.now()),
+										};
+										mockData.trips[tripId].chat.push(newMessage);
+										setTimeout(function () {
+											mockData.trips[tripId].chat.push(
+												getFakeResponse(jsCookie.get('username'), tripId)
+											);
+											setState({
+												currMessage: '',
+												randMessage: ++state.randMessage,
+											});
+										}, 2000);
+										//reset current message to empty since, last one was sent
+										setState({
+											currMessage: '',
+											randMessage: state.randMessage,
+										});
+									}
+								}}
+							>
+								Send
+							</button>
+						</div>
+					</div>
+				</div>
+			</>
+		); 
 
 }; 
 
