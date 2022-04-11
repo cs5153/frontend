@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom"
+import { useParams } from "react-router-dom";
+import { useNavigate} from 'react-router';
 import '../../css/TripPage.css';
 import { FaWrench } from "react-icons/fa"
 import { FaList } from "react-icons/fa"
@@ -12,8 +13,8 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Cookies from 'js-cookie'
-import { mockData } from "../../helper/helper";
-
+import { mockData, readData, writeData} from "../../helper/helper";
+import ErrorMessage from '../ErrorMessage';
 const List = () => (
     <div id="list" className='groupList' >
         <div className='groupName'>Lists</div>
@@ -28,16 +29,19 @@ const List = () => (
 )
 
 function TripPage() {
-
+    const navigate = useNavigate();
     const [showSettings, setshowSettings] = React.useState(true);
     const [showList, setshowList] = React.useState(false);
     const [showChat, setshowChat] = React.useState(false);
     const [showPhotos, setshowPhotos] = React.useState(false);
     const [peopleList, setPeopleList] = React.useState([]);
+    //Tracks trip deleting
+    const [deleteTripCounter, setdeleteTripCounter] = React.useState(0);
+    const [navHome, setnavHome] = React.useState(false);
 
     const cur = Cookies.get('current_trip');
 
-    const tripData = mockData.trips[cur];
+    const tripData = readData().trips[cur];
     const totalPeople = tripData.people;
     const [name, setName] = React.useState(tripData.name);
     const [image, setImage] = React.useState('https://cdn3.vectorstock.com/i/1000x1000/35/52/placeholder-rgb-color-icon-vector-32173552.jpg');
@@ -94,6 +98,27 @@ function TripPage() {
 
     let onNameChangeClick = (e) => {
         setName(textInput.current.value);
+        mockData.trips[cur].name = textInput.current.value;
+        writeData(mockData);
+    }
+    let onTripDeleteClick = (e) => {
+        //Check what the counter state is at
+        setdeleteTripCounter(deleteTripCounter + 1);
+        console.log(deleteTripCounter);
+        if (deleteTripCounter == 1){
+            //Go through all users and remove elements
+            for (const [key, value] of Object.entries(mockData.users)){
+                const idx = mockData.users[key].trips.indexOf(cur);
+                if (idx > -1) {
+                    mockData.users[key].trips.splice(idx, 1);
+                }
+            }
+            //Remove trip from mockData
+            delete mockData.trips[cur];
+            setnavHome(true);
+            writeData(mockData);
+            navigate('/', {replace: true})
+        }
     }
     let uploadImageClick = (e) => {
         if (Regex.test(groupImage.current.value)) {
@@ -123,8 +148,7 @@ function TripPage() {
 
                         <div className='picture'>
                             <div className="pic">
-
-                                <img src={image}></img>
+                                <img src={image} alt="Group Picture"></img>
                             </div>
                             <input ref={groupImage} type="text" className="inputName" placeholder="Input Image URL"></input>
                             <button className="upload" onClick={uploadImageClick}>
@@ -144,8 +168,9 @@ function TripPage() {
                                 Update Location
                             </button>
                         </div>
+                        {deleteTripCounter == 1 && <ErrorMessage message='Click again to delete the trip.'/>} 
                         <div className='deleteTrip'>
-                            <button className="updateName">
+                            <button className="deleteTripButton" onClick={onTripDeleteClick}>
                                 Delete Trip
                             </button>
                         </div>
@@ -155,16 +180,19 @@ function TripPage() {
                     <div className='inviteUsersTitle'>
                         Invite Users
                     </div>
+                    <div className='inviteUsersText'> Please select a user to invite </div>
                     <div className='tripMembers'>
 
-                        <Box sx={{ minWidth: 120 }}>
-                            <FormControl fullWidth>
-                                <InputLabel id="demo-simple-select-label">People</InputLabel>
+                        <Box sx={{ minWidth: 120, bgcolor: "#fff", boxShadow: 1}}>
+                            <FormControl fullWidth variant='filled'>
+                                <InputLabel id="demo-simple-select-label">Users</InputLabel>
                                 <Select
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
-                                    value='People'
-                                    label="People"
+                                    value='Users'
+                                    label="Users"
+                                    variant="filled"
+                                    sx={{bgcolor: '#fff'}}
                                     onChange={handleChange}
                                 >
                                     {totalPeople.map(name => (

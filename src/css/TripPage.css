@@ -82,9 +82,8 @@
     height: 80vh !important;
     margin: 5%;
     margin-top: 0%;
-    border-width: 1px;
-    border-color: rgb(167, 211, 176);
-    
+    border-color: 2px solid rgb(167, 211, 176);
+    border-radius: 0.5rem; 
 }
  .groupName{
     background-color: transparent;
@@ -95,6 +94,9 @@
     margin: 2% 0 0% 0;
     max-height: 5%;
     font-size: xx-large;
+    font-weight: Bold;
+    font-family: "Helvetica", sans-serif;
+    color: rgb(69, 102, 58) !important;
 }
 
 .data{
@@ -116,12 +118,16 @@
     border-style: solid;
     position: static;
     color: rgb(69, 102, 58) !important;
-    min-height: 450px !important;
+    min-height: 700px !important;
+    border-color: 2px solid rgb(167, 211, 176);
+    border-radius: 0.5rem; 
 }
 .innerDiv{
     height: 100%;
     width: 80%;
     margin: auto;
+    display: flex;
+    flex-direction: column;
 }
 .inviteUsers{
     float: right;
@@ -134,7 +140,9 @@
     border-style: solid;
     position: static;
     color: rgb(69, 102, 58) !important;
-    min-height: 450px !important;
+    min-height: 700px !important;
+    border-color: 2px solid rgb(167, 211, 176);
+    border-radius: 0.5rem; 
 }
 .tripSettingLabel{
     display: inline-block;
@@ -142,28 +150,44 @@
     width: 90%;
     vertical-align: top;
     margin: 5%;
+    font-size: 30px;
+    font-weight: Bold;
+    font-family: "Helvetica", sans-serif;
+    color: rgb(69, 102, 58) !important;
 }
 .picture{
-    height: 35%;
+    height: 30%;
 }
 .pic{
-    height: 50%;
-    width:30%;
+    height: 30%;
+    width:  30%;
     margin: auto;
 }
 .upload{
     width: 35%;
     margin-left: 35%;
+    margin-top: 10px;
+    text-align:center;
+    font-weight: Bold;
+    font-family: "Helvetica", sans-serif;
+    color: rgb(69, 102, 58) !important;
 }
 .inputName{
+    text-align: center;
     margin: auto;
     display: block;
+    font-weight: Bold;
+    font-family: "Helvetica", sans-serif;
+    color: rgb(69, 102, 58) !important;
     
 }
 
 .updateName{
+    margin: 10px 0 0 0;
     text-align:center;
-
+    font-weight: Bold;
+    font-family: "Helvetica", sans-serif;
+    color: rgb(69, 102, 58) !important;
 }
 .location{
     position: relative;
@@ -171,21 +195,41 @@
     width: 70%;
     margin: auto;
     text-align:center;
-
+    font-weight: Bold;
+    font-family: "Helvetica", sans-serif;
+    color: rgb(69, 102, 58) !important;
 }
 .deleteTrip{
     height: 10%;
-   text-align:center;
+    text-align:center;
+}
+.deleteTripButton{
+    font-weight: Bold;
+    font-family: "Helvetica", sans-serif;
+    color: rgb(255, 112, 112) !important;
+}
+.deleteTripError{
+    font-weight: Bold;
+    font-family: "Helvetica", sans-serif;
+    color: rgb(255, 112, 112) !important;
 }
 .inviteUsersTitle{
-  
     display: inline-block;
     text-align: center;
     width: 90%;
     vertical-align: top;
     margin: 5%;
     height: 8%;
-} 
+    font-size: 30px;
+    font-weight: Bold;
+    font-family: "Helvetica", sans-serif;
+    color: rgb(69, 102, 58) !important;
+}
+.inviteUsersText{
+    font-size: 16px;
+    text-align: center;
+}
+
 .tripMembers{
     display: inline-block;
     text-align: center;

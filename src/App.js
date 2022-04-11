@@ -10,11 +10,11 @@ import SettingsPage from "./components/SettingsPage"
 import FAQPage from "./components/FAQPage"
 import UserProvider from "./components/login/UserProvider"
 import "./App.css"
-
+import {initMockData} from "./helper/helper";
 
 
 const App = () => {
-
+  initMockData();
   return (
     <>
      <Router>
