@@ -24,6 +24,9 @@ const Main = () => {
 	const { trip } = useParams();
 	const knownTripNames = retrieveAllTripNames();
 	const isValidTrip = knownTripNames.includes(trip);
+	console.log("KNOWN TRIPS: ", knownTripNames)
+	console.log('trip in cookies: ', trip)
+
 
 	useEffect(() => {
 		// Prevent unknown trips from showing feature links (e.g., /people).

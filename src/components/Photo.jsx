@@ -89,7 +89,6 @@ const PhotoMenu = ({ albums, trip, missingAlbum }) => {
 							autoFocus={true}
 							type='text'
 							onInput={(evt) => setNewName(evt.target.value)}
-							value={newName}
 						/>
 					</div>
 					<button onClick={addTrip}>Create Album</button>
