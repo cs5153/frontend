@@ -20,14 +20,14 @@ const Photo = () => {
 
 	if (currentAlbum) {
 		return (
-			<div className='featureContainer'>
+			<div className='featureContainer' id='mainContent' tabIndex={-1}>
 				<Gallery album={currentAlbum} />
 			</div>
 		);
 	}
 
 	return (
-		<div className='featureContainer'>
+		<div className='featureContainer' id='mainContent' tabIndex={-1}>
 			<div className='listContainer'>
 				<PhotoMenu albums={albums} trip={trip} missingAlbum={albumName} />
 			</div>
@@ -88,7 +88,7 @@ const PhotoMenu = ({ albums, trip, missingAlbum }) => {
 							aria-labelledby='newAlbumLabel'
 							autoFocus={true}
 							type='text'
-							onInput={(event) => setNewName(event.target.value)}
+							onInput={(evt) => setNewName(evt.target.value)}
 							value={newName}
 						/>
 					</div>

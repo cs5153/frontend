@@ -1,7 +1,7 @@
 import React from 'react';
 
 const List = () => {
-	return <>TODO List Component</>;
+	return <div id='mainContent' tabIndex={-1}>TODO List Component</div>;
 };
 
 export default List;

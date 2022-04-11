@@ -60,13 +60,24 @@ const Main = () => {
 
 const Container = ({ children }) => {
 	return (
-		<div className='pageContainer'>
-			<SidePane />
-			<div className='d-flex flex-column w-100'>
-				<Header />
-				{children}
+		<>
+			<a className='skip-link visually-hidden-focusable' href='#myTrips'>
+				Skip to trip selection
+			</a>
+			<a className='skip-link visually-hidden-focusable' href='#headerContent'>
+				Skip to navigation
+			</a>
+			<a className='skip-link visually-hidden-focusable' href='#mainContent'>
+				Skip to main content
+			</a>
+			<div className='pageContainer'>
+				<SidePane />
+				<div className='d-flex flex-column w-100'>
+					<Header />
+					{children}
+				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 
