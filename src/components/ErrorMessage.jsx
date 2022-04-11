@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import "../css/ErrorMessage.css";
 
 const ErrorMessage = (props) => {
-
+  let css = "errorMessage "
+  if(props.css){
+    css = "errorMessage "+props.css
+  }
+  
   return (
     <>
-      {console.log("message is : ",props.message)}
-      <h6 className="errorMessage">{props.message}</h6>
+      <h6 className={css}>{props.message}</h6>
     </>
   );
 };

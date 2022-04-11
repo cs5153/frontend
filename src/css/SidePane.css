@@ -4,6 +4,7 @@
   overflow-y: auto;
   scrollbar-width: none /* for Firefox */;
   border-right: 2px gray solid;
+  position: relative;
 }
 
 .sidePaneContainer::-webkit-scrollbar {
@@ -45,4 +46,23 @@
   border: black 5px solid;
   border-radius: 100%;
   object-fit: contain;
+}
+
+.addTripButton{
+  position: absolute;
+  top: 95%;
+  left: 85%;
+  transform: translate(-50%, -50%);
+  background-color: azure;
+  border: none;
+  height: 3rem;
+  width: 3rem;
+  padding: 0;
+  border-radius: 100%;
+}
+
+.profileLink{
+  display: block;
+  flex-basis:100%;
+  text-align: center;
 }
