@@ -51,32 +51,38 @@ export var mockData = {
 					items: ['speaker'],
 				},
 			},
-			albums: {
-				'001': {
+			albums: [
+				{
 					name: "Tony's Photos",
 					photos: [
-						'https://a.cdn-hotels.com/gdcs/production81/d305/dd228943-8b28-443d-bfbb-99599e38b471.jpg',
-						'https://a.cdn-hotels.com/gdcs/production81/d305/dd228943-8b28-443d-bfbb-99599e38b471.jpg',
+						'https://picsum.photos/400/400',
+						'https://picsum.photos/200/300',
+						'https://picsum.photos/300/300',
+						'https://picsum.photos/500/500',
+						'https://picsum.photos/200/100',
+						'https://picsum.photos/250/250',
+						
 					],
 				},
-				'002': {
+				{
 					name: 'Random Photos',
 					photos: [
 						'https://a.cdn-hotels.com/gdcs/production81/d305/dd228943-8b28-443d-bfbb-99599e38b471.jpg',
-						'https://a.cdn-hotels.com/gdcs/production81/d305/dd228943-8b28-443d-bfbb-99599e38b471.jpg',
 					],
 				},
-			},
+			],
 			chat: [
 				{
 					sender: 'tony',
 					content: 'This trip is going to be a blast!',
-					timestamp: 'Sat Apr 09 2022 22:28:43 GMT-0500 (Central Daylight Time)',
+					timestamp:
+						'Sat Apr 09 2022 22:28:43 GMT-0500 (Central Daylight Time)',
 				},
 				{
 					sender: 'steve',
 					content: "Can't wait to get on the plane!",
-					timestamp: 'Sat Apr 09 2022 22:28:43 GMT-0500 (Central Daylight Time)',
+					timestamp:
+						'Sat Apr 09 2022 22:28:43 GMT-0500 (Central Daylight Time)',
 				},
 			],
 		},
@@ -107,28 +113,27 @@ export function isUserFieldBlank(obj) {
 	return hasBlank;
 }
 
-export function getFakeResponse(username,trip){
-  
-  const randomMessage = fakeResponses[Math.floor(Math.random() * fakeResponses.length)];
-  let ppl =  mockData.trips[trip].people
-  let randomSender = username
-  while(randomSender === username){
-    randomSender = ppl[Math.floor(Math.random() * ppl.length)];
-  }
-  
-  let newMessage = {
-    sender: randomSender,
-    content: randomMessage,
-    timestamp: Date(Date.now())
-  }
-  return newMessage
+export function getFakeResponse(username, trip) {
+	const randomMessage =
+		fakeResponses[Math.floor(Math.random() * fakeResponses.length)];
+	let ppl = mockData.trips[trip].people;
+	let randomSender = username;
+	while (randomSender === username) {
+		randomSender = ppl[Math.floor(Math.random() * ppl.length)];
+	}
 
+	let newMessage = {
+		sender: randomSender,
+		content: randomMessage,
+		timestamp: Date(Date.now()),
+	};
+	return newMessage;
 }
 
 let fakeResponses = [
-  "When do we meet for Lunch?",
-  "Cant wait to see you guys!",
-  "You think we'll see anyone famous while we're there?",
-  "Hope we're not too tourist-y",
-  "Lets gooooooo!"
-]
+	'When do we meet for Lunch?',
+	'Cant wait to see you guys!',
+	"You think we'll see anyone famous while we're there?",
+	"Hope we're not too tourist-y",
+	'Lets gooooooo!',
+];

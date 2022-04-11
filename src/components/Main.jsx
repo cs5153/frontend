@@ -39,7 +39,8 @@ const Main = () => {
 					<Route path='/people' element={<People />} />
 					<Route path='/chat' element={<Chat />} />
 					<Route path='/list' element={<List />} />
-					<Route path='/photo' element={<Photo />} />
+					<Route path='/photo/:album' element={<Photo />} />
+					<Route path='/photo/*' element={<Photo />} />
 					<Route path='/contact' element={<Contact />} />
 					<Route path='*' element={<Navigate to='people' />} />
 				</Routes>
