@@ -194,18 +194,18 @@ function TripPage() {
                         <div className="location">{"Location: "+loc}</div>
                         {invalidTripName && <ErrorMessage message='Please ensure trip name or location are under 16 characters'/>} 
                         <div className='location'>
-                            <input ref={textInputName} className="inputName" placeholder="Trip Name"></input>
+                            <input ref={textInputName} className="inputName" placeholder="Trip Name" aria-label="Edit Trip Name"></input>
                             <button className="updateName" onClick={onNameChangeClick}>
                                 Update Trip Name
                             </button>
                         </div>
                         <div className='location'>
-                            <input ref={textInput} className="inputName" placeholder="Location"></input>
+                            <input ref={textInput} className="inputName" placeholder="Location" aria-label="Edit Trip Location"></input>
                             <button className="updateName" onClick={onLocationChangeClick}>
                                 Update Location
                             </button>
                         </div>
-                        {deleteTripCounter == 1 && <ErrorMessage message='Click again to leave the trip.'/>} 
+                        {deleteTripCounter == 1 && <ErrorMessage aria-label="Are you sure you want to leave the trip?" message='Click again to leave the trip.'/>} 
                         <div className='deleteTrip'>
                             <button className="deleteTripButton" onClick={onTripDeleteClick}>
                                 Leave Trip
@@ -217,11 +217,11 @@ function TripPage() {
                     <div className='inviteUsersTitle'>
                         Current Users
                     </div>
-                    <div className="selectedPeople" >
+                    <div aria-label="Current Users" className="selectedPeople" >
                         {peopleList.map(name => (
-                            <div key={name} id={name} className="person">
+                            <div aria-labelkey={name} id={name} className="person">
                                 {name}
-                                <button onClick={() => { removePerson(name); }} className="removePerson">
+                                <button aria-label={`Remove User ${name}`} onClick={() => { removePerson(name); }} className="removePerson">
                                     Delete
                                 </button>
                             </div>
@@ -235,7 +235,7 @@ function TripPage() {
 
                         <Box sx={{ minWidth: 120, bgcolor: "#fff", boxShadow: 1}}>
                             <FormControl fullWidth variant='filled'>
-                                <InputLabel id="demo-simple-select-label">Users</InputLabel>
+                                <InputLabel aria-label="Invite Users Dropdown" id="demo-simple-select-label">Users</InputLabel>
                                 <Select
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"

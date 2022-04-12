@@ -1,0 +1,32 @@
+.groupList {
+    border-radius: 0.5rem; 
+    background-color: rgb(204,240,192);
+    border: 2px solid rgb(49,69,44);
+}
+.back {
+    height: 80%;
+    border-color: 2px solid rgb(167, 211, 176);
+    display: flex;
+    flex-direction: column;
+}
+label {
+    min-height: 0;
+    font-size: 16px;
+    font-weight: Bold;
+    font-family: "Helvetica", sans-serif;
+    color: rgb(69, 102, 58) !important;
+}
+input {
+    min-height: 0;
+    padding: 5px;
+    text-align: center;
+    margin: auto;
+    font-weight: Normal;
+    font-family: "Helvetica", sans-serif;
+    color: rgb(69, 102, 58) !important;
+}
+.closeAlbum{
+    font-weight: Bold;
+    font-family: "Helvetica", sans-serif;
+    color: rgb(255, 112, 112) !important;
+}

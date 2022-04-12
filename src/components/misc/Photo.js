@@ -1,19 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from "./Image";
 import { Component } from 'react';
 import Cookies from 'js-cookie'
 import { mockData, readData, writeData } from "../../helper/helper";
 import { DataArray } from '@mui/icons-material';
 import jsCookie from "js-cookie";
+import '../../css/Photo.css';
+
 
 function Photo({ propData }) {
 
     let log=jsCookie.get("data");
     const cur = Cookies.get('current_trip');
     const [photoList, setphotoList] = React.useState([]);
-    let totalAlbums = readData().trips[cur].albums;
-     let totalAlbums1= JSON.parse(log);
-     totalAlbums=totalAlbums1.trips[cur].albums;
+    let totalAlbums = JSON.parse(JSON.stringify(mockData)).trips[cur].albums;
+    let totalAlbums1= JSON.parse(log);
+    totalAlbums=totalAlbums1.trips[cur].albums;
 
     const [showPhoto, setshowPhoto] = React.useState(false);
     const [currentPhoto, setCurrentPhoto] = React.useState("");
@@ -23,6 +25,21 @@ function Photo({ propData }) {
     const [albumArrayCount, setalbumArrayCount] = React.useState(totalAlbums);
     const [key, setKey] = React.useState("");
 
+    const [time, setTime] = useState(Date.now());
+
+    //Helps ensure re-rendering happens
+    useEffect(() => {
+        let requestId;
+        const update = () => {
+            setTime(Date.now());
+            requestId = window.requestAnimationFrame(update);
+        }
+        update();
+        return () => {
+            window.cancelAnimationFrame(requestId);
+        };
+    }, []);
+    
     let Regex = /(https?:\/\/.*\.(?:png|jpg|jpeg|gif))/i;
     function enlarge(photo) {
         setCurrentPhoto(photo);
@@ -37,9 +54,6 @@ function Photo({ propData }) {
         if (Regex.test(url)) {
             mockData.trips[cur].albums[key].photos.push(url);
             console.log(mockData);
-            //  writeData(mockData);
-            //  jsCookie.set("data", mockData);
-
             setphotoList(mockData.trips[cur].albums[key].photos)
             // setphotoList(photoList => [...photoList, url])
 
@@ -111,7 +125,11 @@ function Photo({ propData }) {
                     <div className='back'>
                         <div className='allLists' >
                             {Object.keys(albumArrayCount).map(key => (
-                                <div className='albumsBox' onClick={() => goToAlbum(key)} >
+                                <div tabindex="0" 
+                                     aria-label={albumArrayCount[key].name} 
+                                     className='albumsBox' 
+                                     onClick={() => goToAlbum(key)} 
+                                     onKeyPress={() => goToAlbum(key)}>
                                     <div>
                                         <img src='https://media.istockphoto.com/photos/blank-polaroid-photo-picture-id179407447?b=1&k=20&m=179407447&s=170667a&w=0&h=SHfdRkWV3irB4dstUDuH5FCzn-HMrMz61qOBxwONBtY=' />
                                     </div>
@@ -123,7 +141,7 @@ function Photo({ propData }) {
                         </div>
                         <div className='uploadPicture'>
                             <form className='addAlbum' onSubmit={handleNewAlbum}>
-                                <label>Add New Photo Album Name:
+                                <label>Create New Album:  
                                     <input
                                         type="text"
                                         value={newAlbum}
@@ -140,7 +158,7 @@ function Photo({ propData }) {
                     <div className='back'>
                         <div className='allLists1' >
                             {photoList.map(photo => (
-                                <div onClick={() => enlarge(photo)}>
+                                <div tabindex="0" aria-label="Photo" onClick={() => enlarge(photo)}>
                                     <Image className={"photo"} id={photo} source={photo} key={photo} />
                                 </div>
                             ))}
@@ -159,12 +177,11 @@ function Photo({ propData }) {
 
                                 <input type="submit" />
                             </form>
+                        <button className='closeAlbum' onClick={() => closeAlbum()}>Close Album</button>
 
                         </div>
-                        <button className='closeAlbum' onClick={() => closeAlbum()}>Close Album</button>
                     </div>
                     : null}
-
             </div>
             {/* <div className='uploadPicture'>
 
