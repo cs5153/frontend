@@ -148,6 +148,42 @@ export function getFakeResponse(username, trip) {
 	return newMessage;
 }
 
+
+export function removePersonFromTrip(userName, tripID){
+	console.log("INSIDE REMOVE PERSON FROM TRIP")
+
+	//remove person from trip
+	let tripPpl = mockData.trips[tripID].people
+	tripPpl.forEach((person, index) => {
+		if(person === userName){
+			console.log("about to splice person. found match")
+			mockData.trips[tripID].people.splice(index, 1)
+		}
+	})
+	//remove tripId from person's tripList
+	let personTrips = mockData.users[userName].trips
+	personTrips.forEach((trip, index) => {
+		if(trip === tripID){
+			console.log("about to splice TRIP. found match")
+			mockData.users[userName].trips.splice(index, 1)
+		}
+	})
+
+	if(mockData.trips[tripID].people.length === 0){
+		mockData.trips.delete(tripID)
+		return {}
+	}
+
+	return mockData.trips[tripID]
+}
+
+export function removeTrip(tripID){
+	let tripPpl = mockData.trips[tripID].people
+	tripPpl.forEach((person, index) => {
+		removePersonFromTrip(person,tripID)
+	})
+}
+
 let fakeResponses = [
 	'When do we meet for Lunch?',
 	'Cant wait to see you guys!',
