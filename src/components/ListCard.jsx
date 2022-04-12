@@ -9,23 +9,32 @@ const ListCard = (props) => {
 	const [state, setState] = useState(
 		{
 			currentList : props.listItem,
+			currIndex: props.listIndex
 		}
 	)
 	
+		console.log("CREATING CARD WITH NAME VALUE: ",props.listItem)
+		console.log("CREATING CARD WITH NAME VALUE: ",props.listIndex)
+
 	return (
 	<>
-		<div className='listCard' >
-			{/* <h6>{state.currentList.name}</h6> * */}
-			<button
-				className='link'
-				onClick={() => props.handler(true,state.currentList)}
-			>
-				{state.currentList.name}
-			</button>
-			{/* <Link to={`/${trip}/list/${state.currentList.name}`}>
-				{state.currentList.name}
-			</Link> */}
-		</div>
+			<div className='listCard' >
+				{/* <h6>{state.currentList.name}</h6> * */}
+				<button
+					className='link'
+					onClick={() => {
+						// let copy = state
+						// copy.currIndex = props.listIndex
+						// copy.currentList = props.listItem
+						// setState({...copy})
+						props.handler(true,props.listItem, props.listIndex)}}
+				>
+					{props.listItem.name}
+				</button>
+				{/* <Link to={`/${trip}/list/${state.currentList.name}`}>
+					{state.currentList.name}
+				</Link> */}
+			</div>
 	</>
 	);
 };

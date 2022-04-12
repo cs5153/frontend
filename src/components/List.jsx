@@ -17,18 +17,22 @@ const List = () => {
 			listsInTrip : mockData.trips[tripId].lists,
 			showFullList: false,
 			showAddList: false,
-			selectedListItem: {}
+			selectedListItem: {},
+			currIndex: 0
 		}
 	)
 
-	const selectedListHandler = (bool , currList) =>{
+	const selectedListHandler = (bool , currList, index) =>{
 		console.log("List item selected was: ",currList)
+		let copy = state
+		copy.showFullList = bool
+		copy.currIndex = index 
+		copy.selectedListItem = currList
+		copy.showAddList = false
 		setState({
-			listsInTrip: state.listsInTrip,
-			showFullList: bool,
-			showAddList: false,
-			selectedListItem: currList
+			...copy
 		})
+		console.log("SELECT HANDLER FINAL: ", state)
 	}
 
 	const addListHandler = (bool) =>{
@@ -37,19 +41,38 @@ const List = () => {
 		setState({...copy})
 	}
 
+	const handleListDelete = (index) => {
+		let copy = state
+		console.log("TYPE OF MAIN LIST IS: ",copy.listsInTrip)
+		copy.listsInTrip.splice(index, 1)
+		console.log("AFTER SPLICE LIST IN TRIP IS: ", copy.listsInTrip )
+		copy.currIndex = 0
+		copy.selectedListItem = {}
+		console.log("wanting to MAIN update index: ", index)
+		console.log("MAIN NEW LIST IS: ", copy)
+		setState({
+			...copy
+		})
+		// mockData.trips[tripId].lists.splice(index,1)
+		console.log("MAIN state list after update: ", state)
+		console.log("PULLING FROM MOCK DATA:",mockData.trips[tripId].lists)
+	}
+
 	console.log("listsInTrip: ", state.listsInTrip)
 	let i = 0
 
 	return (
 	<>
-		{state.showFullList && <ListPopup handler={selectedListHandler} list={state.selectedListItem}/>}
+		{state.showFullList && <ListPopup handler={selectedListHandler} list={state.selectedListItem} delHandler={handleListDelete} listIndex={state.currIndex}/>}
 		{state.showAddList && <AddList handler={addListHandler}/>}
 
 		<div className='featureContainer'>
 			<div className='listBox'>
 				<ul>
-					{state.listsInTrip.map((currList) => 
-					(<ListCard key={i++} handler={selectedListHandler} listItem={currList}/>))}
+					{state.listsInTrip.map((currList,index) => {
+					console.log("LOOP INDEX IS: ",index)
+					console.log("LOOP INDEX LIST NAME IS: ", currList)
+					return (<ListCard key={i++} handler={selectedListHandler} listItem={{...currList}} listIndex={index}/>)})}
 				</ul>
 			</div>
 			<button className='addButton' onClick={() => {
