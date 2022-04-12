@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect} from 'react'
 import Cookies from 'js-cookie'
 import { Link } from 'react-router-dom'
 import ManageAccounts from '@mui/icons-material/ManageAccounts'
 import Help from '@mui/icons-material/Help'
 
 import {grey} from '@mui/material/colors'
-
+import {mockData} from '../helper/helper.js'
 
 import '../css/Navbar.css';
 
@@ -13,6 +13,20 @@ import '../css/Navbar.css';
 function Navbar() {
     const [click, setClick] = useState(false);
     const [button,setButton] = useState(true);
+    const [time, setTime] = useState(Date.now());
+
+    useEffect(() => {
+        let requestId;
+        const update = () => {
+            setTime(Date.now());
+            requestId = window.requestAnimationFrame(update);
+        }
+        update();
+        return () => {
+            window.cancelAnimationFrame(requestId);
+        };
+    }, []);
+
 
     const handleClick = () => {
         setClick(!click);
@@ -43,7 +57,7 @@ function Navbar() {
                     </div>
                     <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                         <li className='nav-name'>
-                            {Cookies.get("username")} 
+                            {mockData.users[Cookies.get("username")].username} 
                         </li>
                         <li className='navItem'>
                             <Link to='/settings' className='nav-links' onClick={closeMobileMenu}>

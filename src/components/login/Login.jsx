@@ -21,10 +21,22 @@ const Login = () => {
 	var mockData = readData();
 
 	function isValidUser(userName, password) {
-		if (mockData.users[userName] && mockData.users[userName].password === password) {
-			return true;
+		//Check if any of the users have this username
+		for (const [key, val] of Object.entries(mockData.users)){
+			console.log(val)
+			console.log(userName);
+			console.log(password);
+			console.log(val.username);
+			console.log(!val.username.localeCompare(userName))
+			console.log(!val.password.localeCompare(password))
+			if(!val.username.localeCompare(userName) && !val.password.localeCompare(password)){
+				return key;
+			}
 		}
-		return false;
+		//if (mockData.users[userName] && mockData.users[userName].password === password) {
+		//	return true;
+		//}
+		return;
 	}
 
 	return (
@@ -82,11 +94,10 @@ const Login = () => {
 										errMsg: 'Please fill out all fields',
 									});
 								} else {
-									if (
-										isValidUser(state.userObj.userName, state.userObj.password)
-									) {
-										Cookies.set('username', state.userObj.userName);
-
+									
+										var key = isValidUser(state.userObj.userName, state.userObj.password)
+									if (key) {
+										Cookies.set('username', key);
 										navigate('/', { replace: true });
 									} else {
 										setState({

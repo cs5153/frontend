@@ -15,6 +15,9 @@ import {initMockData} from "./helper/helper";
 
 const App = () => {
   initMockData();
+  const [, updateState] = React.useState();
+  const forceUpdate = React.useCallback(() => updateState({}), []);
+
   return (
     <>
      <Router>

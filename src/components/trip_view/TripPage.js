@@ -145,6 +145,7 @@ function TripPage() {
         console.log(textInput.current.value);
         console.log(loc);
         mockData.trips[cur].location = textInput.current.value;
+        
     }
     let onTripDeleteClick = (e) => {
         //Check what the counter state is at
