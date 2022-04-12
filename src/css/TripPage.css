@@ -128,6 +128,7 @@
     margin: auto;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
 }
 .inviteUsers{
     float: right;
@@ -157,10 +158,12 @@
 }
 .picture{
     height: 30%;
+    justify-content: center;
 }
 .pic{
     height: 30%;
     width:  30%;
+    justify-content: center;
     margin: auto;
 }
 .upload{
@@ -183,7 +186,7 @@
 }
 
 .updateName{
-    margin: 10px 0 0 0;
+    margin: 5px 0 0 0;
     text-align:center;
     font-weight: Bold;
     font-family: "Helvetica", sans-serif;
@@ -209,6 +212,7 @@
     color: rgb(255, 112, 112) !important;
 }
 .deleteTripError{
+    font-size: 12px;
     font-weight: Bold;
     font-family: "Helvetica", sans-serif;
     color: rgb(255, 112, 112) !important;
@@ -243,16 +247,23 @@
     height: auto;
     min-height:30%;
     width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 10px;
 }
 .person{
     width: 100%;
     margin: auto;
-    vertical-align: top;
-    position: relative;
-    display: inline-block;
+    margin-right: 20px;
     text-align: center;
+    font-weight: Bold;
+    font-family: "Helvetica", sans-serif;
+    color: rgb(69, 102, 58) !important;
 }
-
+.removePerson{
+   margin: 0 0 0 20px; 
+}
 
 /* Start of Group List */
 .groupList{

@@ -14,7 +14,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Cookies from 'js-cookie'
 import { mockData, readData, writeData} from "../../helper/helper";
-import ErrorMessage from '../ErrorMessage';
+import ErrorMessage from './ErrorMessage';
 const List = () => (
     <div id="list" className='groupList' >
         <div className='groupName'>Lists</div>
@@ -30,20 +30,35 @@ const List = () => (
 
 function TripPage() {
     const navigate = useNavigate();
+    const cur = Cookies.get('current_trip');
+    const cur_user = Cookies.get('username');
+
     const [showSettings, setshowSettings] = React.useState(true);
     const [showList, setshowList] = React.useState(false);
     const [showChat, setshowChat] = React.useState(false);
     const [showPhotos, setshowPhotos] = React.useState(false);
-    const [peopleList, setPeopleList] = React.useState([]);
+    const [invalidTripName, setInvalidTripName] = React.useState(false);
+    //Initialize people list based on current trip data
+    console.log(mockData);
+    var initialPeople = mockData.trips[cur].people;
+    console.log("Reloaded");
+    console.log(initialPeople);
+    //Remove current user
+    initialPeople.splice(initialPeople.indexOf(cur_user), 1);
+    const [peopleList, setPeopleList] = React.useState(initialPeople);
     //Tracks trip deleting
     const [deleteTripCounter, setdeleteTripCounter] = React.useState(0);
     const [navHome, setnavHome] = React.useState(false);
 
-    const cur = Cookies.get('current_trip');
 
-    const tripData = readData().trips[cur];
-    const totalPeople = tripData.people;
+    const tripData = mockData.trips[cur];
+    var totalPeople = Object.keys(mockData.users);
+    totalPeople.splice(totalPeople.indexOf(cur_user), 1);
+    //Initialize people list with current users
+    //setPeopleList(peopleList.concat(readData().trips[cur].people));    
+
     const [name, setName] = React.useState(tripData.name);
+    const [loc, setLocation] = React.useState(tripData.location);
     const [image, setImage] = React.useState('https://cdn3.vectorstock.com/i/1000x1000/35/52/placeholder-rgb-color-icon-vector-32173552.jpg');
     let Regex = /(https?:\/\/.*\.(?:png|jpg|jpeg|gif))/i;
 
@@ -76,13 +91,29 @@ function TripPage() {
     const handleChange = (event) => {
         var name = (event.target.value);
         console.log(name);
+        console.log(peopleList);
         if (!peopleList.includes(name)) {
-
+            //Update the trip information
+            mockData.trips[cur].people = [...mockData.trips[cur].people, name];
+            //Update user's trip information
+            if(!mockData.users[name].trips.includes(cur)){
+                mockData.users[name].trips.push(cur);
+            }
             setPeopleList(peopleList => [...peopleList, name])
+            console.log(peopleList);
         }
     };
     function removePerson(name) {
+        console.log(peopleList);
         if (peopleList.includes(name)) {
+            //Remove from Trip list
+            var idx = mockData.trips[cur].people.indexOf(name);
+            if(idx > -1){
+                mockData.trips[cur].people.splice(idx, 1);
+            }
+            //Remove from user trips
+            idx = mockData.users[name].trips.indexOf(cur);
+            mockData.users[name].trips.splice(idx, 1);
             setPeopleList(prevState => { // pass callback in setState to avoid race condition
                 let newData = prevState.slice() //copy array from prevState
                 let index = peopleList.indexOf(name);
@@ -91,15 +122,26 @@ function TripPage() {
             })
         }
     };
-    function invite() {
-        setPeopleList([]);
-        alert(`Invitations Sent!`)
-    };
 
     let onNameChangeClick = (e) => {
+        if (textInput.current.value.length > 16){
+            setInvalidTripName(true);
+            return;
+        } else {
+            setInvalidTripName(false);
+        }
         setName(textInput.current.value);
         mockData.trips[cur].name = textInput.current.value;
-        writeData(mockData);
+    }
+    let onLocationChangeClick = (e) => {
+        if (textInput.current.value.length > 16){
+            setInvalidTripName(true);
+            return;
+        } else {
+            setInvalidTripName(false);
+        }
+        setLocation(textInput.current.value);
+        mockData.trips[cur].location = textInput.current.value;
     }
     let onTripDeleteClick = (e) => {
         //Check what the counter state is at
@@ -116,7 +158,6 @@ function TripPage() {
             //Remove trip from mockData
             delete mockData.trips[cur];
             setnavHome(true);
-            writeData(mockData);
             navigate('/', {replace: true})
         }
     }
@@ -125,6 +166,7 @@ function TripPage() {
             setImage(groupImage.current.value);
         }
         else {
+        
             alert(`Invalid Image URL: ${groupImage.current.value}`)
         }
     }
@@ -155,28 +197,42 @@ function TripPage() {
                                 Upload
                             </button>
                         </div>
-
                         <div className='location'>
+                            {invalidTripName && <ErrorMessage message='Please ensure trip name is under 16 characters'/>} 
                             <input ref={textInput} type="text" className="inputName" placeholder="Change Group Name"></input>
                             <button className="updateName" onClick={onNameChangeClick}>
                                 Update Name
                             </button>
                         </div>
                         <div className='location'>
+                            <div className="descriptor">{mockData.trips[cur].location}</div>
                             <input className="inputName" placeholder="Change Destination Name"></input>
-                            <button className="updateName">
+                            <button className="updateName" onClick={onLocationChangeClick}>
                                 Update Location
                             </button>
                         </div>
-                        {deleteTripCounter == 1 && <ErrorMessage message='Click again to delete the trip.'/>} 
+                        {deleteTripCounter == 1 && <ErrorMessage message='Click again to leave the trip.'/>} 
                         <div className='deleteTrip'>
                             <button className="deleteTripButton" onClick={onTripDeleteClick}>
-                                Delete Trip
+                                Leave Trip
                             </button>
                         </div>
                     </div>
                 </div>
                 <div className='inviteUsers'>
+                    <div className='inviteUsersTitle'>
+                        Current Users
+                    </div>
+                    <div className="selectedPeople" >
+                        {mockData.trips[cur].people.map(name => (
+                            <div key={name} id={name} className="person">
+                                {name}
+                                <button onClick={() => { removePerson(name); }} className="removePerson">
+                                    Delete
+                                </button>
+                            </div>
+                        ))}
+                    </div>
                     <div className='inviteUsersTitle'>
                         Invite Users
                     </div>
@@ -202,23 +258,6 @@ function TripPage() {
                             </FormControl>
                         </Box>
                     </div>
-                    <div className="selectedPeople" >
-                        {peopleList.map(name => (
-                            <div key={name} id={name} className="person">
-                                {name}
-                                <button onClick={() => { removePerson(name); }} className="removePerson">
-                                    Delete
-                                </button>
-                            </div>
-                        ))}
-                    </div>
-                    <div className="location" >
-
-                    {showInvite() ? <button onClick={() => { invite(); }} className="invite">
-                        Send Invite
-                    </button> : null}
-                    </div>
-
                 </div>
             </div>
         </div>)

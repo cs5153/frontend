@@ -56,8 +56,9 @@ export var mockData = {
 	},
 	trips: {
 		'001': {
-			name: 'Cancun',
-			people: ['tony', 'steve', 'bruce'],
+			name: 'Cancun Trip',
+			location: "Cancun",
+			speople: ['tony', 'steve', 'bruce'],
 			lists: {
 				'001': {
 					name: "tony's packing list",
