@@ -5,6 +5,8 @@ import '../css/FeatureSpace.css'
 import { mockData } from '../helper/mockData';
 import ListCard from './ListCard';
 import ListPopup from './ListPopup';
+import plusImg from '../images/plus.png'
+import AddList from './AddList';
 
 const List = () => {
 	const {trip} = useParams()
@@ -14,6 +16,7 @@ const List = () => {
 		{
 			listsInTrip : mockData.trips[tripId].lists,
 			showFullList: false,
+			showAddList: false,
 			selectedListItem: {}
 		}
 	)
@@ -23,8 +26,15 @@ const List = () => {
 		setState({
 			listsInTrip: state.listsInTrip,
 			showFullList: bool,
+			showAddList: false,
 			selectedListItem: currList
 		})
+	}
+
+	const addListHandler = (bool) =>{
+		let copy = state
+		copy.showAddList = bool
+		setState({...copy})
 	}
 
 	console.log("listsInTrip: ", state.listsInTrip)
@@ -33,6 +43,8 @@ const List = () => {
 	return (
 	<>
 		{state.showFullList && <ListPopup handler={selectedListHandler} list={state.selectedListItem}/>}
+		{state.showAddList && <AddList handler={addListHandler}/>}
+
 		<div className='featureContainer'>
 			<div className='listBox'>
 				<ul>
@@ -40,6 +52,16 @@ const List = () => {
 					(<ListCard key={i++} handler={selectedListHandler} listItem={currList}/>))}
 				</ul>
 			</div>
+			<button className='addButton' onClick={() => {
+				let copy = state
+				copy.showAddList = true;
+				copy.showFullList = false;
+				console.log("STATE BEFORE CLICKING ADD LIST: ", state)
+				setState({...copy})
+				console.log("STATE AFTER CLICKING ADD LIST: ", state)
+			}}>
+				<img className='iconImg' src={plusImg} />
+			</button>
 		</div>
 	</>
 	);

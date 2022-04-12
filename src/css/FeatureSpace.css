@@ -73,3 +73,9 @@
     padding: 1rem;
     border-radius: 15px;
 }
+
+.errorbox{
+    width: 90%;
+    display: inline-block;
+    /* background-color: blue; */
+}
