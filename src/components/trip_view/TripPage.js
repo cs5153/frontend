@@ -64,6 +64,7 @@ function TripPage() {
     let Regex = /(https?:\/\/.*\.(?:png|jpg|jpeg|gif))/i;
 
     let textInput = React.createRef();
+    let textInputName = React.createRef();
     let groupImage = React.createRef();
     function clickSettings() {
         setshowSettings(true);
@@ -125,14 +126,17 @@ function TripPage() {
     };
 
     let onNameChangeClick = (e) => {
-        if (textInput.current.value.length > 16){
+        if (textInputName.current.value.length > 16){
             setInvalidTripName(true);
             return;
         } else {
             setInvalidTripName(false);
         }
-        setName(textInput.current.value);
-        mockData.trips[cur].name = textInput.current.value;
+        setName(textInputName.current.value);
+        console.log(textInputName.current.value);
+        console.log(name);
+        mockData.trips[cur].name = textInputName.current.value;
+        console.log(mockData);
     }
     let onLocationChangeClick = (e) => {
         if (textInput.current.value.length > 16){
@@ -194,7 +198,7 @@ function TripPage() {
                         <div className="location">{"Location: "+loc}</div>
                         {invalidTripName && <ErrorMessage message='Please ensure trip name or location are under 16 characters'/>} 
                         <div className='location'>
-                            <input ref={textInput} type="text" className="inputName" placeholder="Trip Name"></input>
+                            <input ref={textInputName} className="inputName" placeholder="Trip Name"></input>
                             <button className="updateName" onClick={onNameChangeClick}>
                                 Update Trip Name
                             </button>
