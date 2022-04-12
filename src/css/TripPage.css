@@ -270,9 +270,9 @@
 }
 .uploadPicture{
     height: 30px;
-    width: 50%;
+    width: 80%;
     float: left;
-    margin-left: 5%;
+    margin: 3%;
 }
 .uploadButton{
     float: right;
@@ -280,9 +280,20 @@
 .allLists{
     min-height:90% !important;
     min-width: 100% !important;
+    max-height:90% !important;
+    max-width: 100% !important;
     position: relative;
-}
+    overflow: auto;
 
+}
+.allLists1{
+    min-height:90% !important;
+    min-width: 100% !important;
+    max-height:90% !important;
+    max-width: 100% !important;
+    position: relative;
+    overflow: auto;
+}
 
 .oneList{
     height: auto;
@@ -313,4 +324,44 @@ position: relative;
 display: inline-block;
 text-align: center;
 
+}
+.albums{
+
+    width: auto;
+    /* width:40px; */
+    /* height:40px; */
+}
+.albumsBox:hover{
+    box-shadow: 1px 3px 2px 3px rgb(204,240,192);
+    
+}
+.albumsBox{
+    text-align: center;
+    float: left;
+    max-width:120px;
+    max-height: 100px;
+    object-fit: cover;
+    margin: 3%;
+}
+.addAlbum{
+    float:left;
+    position: relative;
+    bottom: 0;
+}
+
+
+.uploadPicture1{
+    float:left;
+    position: relative;
+    bottom: 0;
+    margin:2%;
+}
+.closeAlbum{
+    float:left;
+    position: relative;
+    bottom: 0;
+    margin:2%;
+}
+.back{
+    height: 80%;
 }
