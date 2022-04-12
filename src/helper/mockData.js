@@ -135,6 +135,7 @@ export function getFakeResponse(username, trip) {
 		fakeResponses[Math.floor(Math.random() * fakeResponses.length)];
 	let ppl = mockData.trips[trip].people;
 	let randomSender = username;
+
 	while (randomSender === username) {
 		randomSender = ppl[Math.floor(Math.random() * ppl.length)];
 	}

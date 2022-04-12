@@ -75,15 +75,18 @@ const Chat = (props) => {
 											timestamp: Date(Date.now()),
 										};
 										mockData.trips[tripId].chat.push(newMessage);
-										setTimeout(function () {
-											mockData.trips[tripId].chat.push(
-												getFakeResponse(jsCookie.get('username'), tripId)
-											);
-											setState({
-												currMessage: '',
-												randMessage: ++state.randMessage,
-											});
-										}, 2000);
+                                        //if you have more than just yourself on the trip, get a fake response
+                                        if(mockData.trips[tripId].people.length > 1){
+                                            setTimeout(function () {
+                                                mockData.trips[tripId].chat.push(
+                                                    getFakeResponse(jsCookie.get('username'), tripId)
+                                                );
+                                                setState({
+                                                    currMessage: '',
+                                                    randMessage: ++state.randMessage,
+                                                });
+                                            }, 2000);
+                                        }
 										//reset current message to empty since, last one was sent
 										setState({
 											currMessage: '',

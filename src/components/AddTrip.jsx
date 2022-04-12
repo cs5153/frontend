@@ -90,17 +90,20 @@ const AddTrip = (props) => {
 									albums:[],
 									chat:[]
 								}
-								//add desired tripMate to list of people on trip
-								if(!!mockData.users[state.newTripMate]){
-									// addToTrips(state.newTripMate, trip);
-									console.log("FOUND USER: ",state.newTripMate)
-									newTrip.people.push(state.newTripMate)
-								}else{
-									changeErrorValue(
-										true,
-										'Cannot add user because they are not a Tripper app user'
-									);
-									return
+								//add desired tripMate to list of people on trip If not blank
+								if(state.newTripMate){
+									if(!!mockData.users[state.newTripMate]){
+										// addToTrips(state.newTripMate, trip);
+										console.log("FOUND USER: ",state.newTripMate)
+										newTrip.people.push(state.newTripMate)
+									}else{
+										console.log("COULDN'T FIND USER NAMED ("+state.newTripMate+")")
+										changeErrorValue(
+											true,
+											'Cannot add user because they are not a Tripper app user'
+										);
+										return
+									}
 								}
 								//add new tripID to current user's trip list
 								mockData.users[userName].trips.push(newTripId)
