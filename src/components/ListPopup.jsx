@@ -84,7 +84,16 @@ const ListPopup = (props) => {
 						}}>
 							<img className='iconImgXS' src={plusIcon} />
 						</button>
-						<button className='editListDone'>Done Editing List</button>
+						<button className='editListDone'
+						onClick={() =>{
+							// let updatedList = props.list
+							// updatedList.items.push(newListItem)
+							setState({
+								currentList: editedList
+							})
+							props.handler(false,{})
+						}}
+						>Done Editing List</button>
 					</div>
 
 			

@@ -127,6 +127,6 @@
     z-index: 7;
   }
   
-  .buttonContainerButtons:hover .tooltiptext {
+.buttonContainerButtons:hover .tooltiptext {
     visibility: visible;
-  }
+}
