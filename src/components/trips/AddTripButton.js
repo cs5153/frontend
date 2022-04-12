@@ -16,7 +16,7 @@ class AddTripButton extends React.Component {
   render(){
     return (
       <div className="trip-fab-container">
-        <Link style={{textDecoration:'none', color:'inherit'}} to="/create_trip">
+        <Link aria-label="Add Trip" style={{textDecoration:'none', color:'inherit'}} to="/create_trip">
           <Add sx={{color: green[0], fontSize: 40}}/>
         </Link>
       </div>

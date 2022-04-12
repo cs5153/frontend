@@ -32,18 +32,13 @@ function TripPage() {
     const navigate = useNavigate();
     const cur = Cookies.get('current_trip');
     const cur_user = Cookies.get('username');
-    console.log(cur);
-    console.log(cur_user);
     const [showSettings, setshowSettings] = React.useState(true);
     const [showList, setshowList] = React.useState(false);
     const [showChat, setshowChat] = React.useState(false);
     const [showPhotos, setshowPhotos] = React.useState(false);
     const [invalidTripName, setInvalidTripName] = React.useState(false);
     //Initialize people list based on current trip data
-    console.log(mockData);
-    var initialPeople = mockData.trips[cur].people;
-    console.log("Reloaded");
-    console.log(initialPeople);
+    var initialPeople = JSON.parse(JSON.stringify(mockData)).trips[cur].people;
     //Remove current user
     initialPeople.splice(initialPeople.indexOf(cur_user), 1);
     const [peopleList, setPeopleList] = React.useState(initialPeople);
@@ -52,8 +47,8 @@ function TripPage() {
     const [navHome, setnavHome] = React.useState(false);
 
 
-    const tripData = mockData.trips[cur];
-    var totalPeople = Object.keys(mockData.users);
+    const tripData = JSON.parse(JSON.stringify(mockData)).trips[cur];
+    var totalPeople = Object.keys(JSON.parse(JSON.stringify(mockData)).users);
     totalPeople.splice(totalPeople.indexOf(cur_user), 1);
     //Initialize people list with current users
     //setPeopleList(peopleList.concat(readData().trips[cur].people));    
@@ -96,7 +91,8 @@ function TripPage() {
         console.log(peopleList);
         if (!peopleList.includes(name)) {
             //Update the trip information
-            mockData.trips[cur].people = [...mockData.trips[cur].people, name];
+            mockData.trips[cur].people.push(name);
+            console.log(mockData);
             //Update user's trip information
             if(!mockData.users[name].trips.includes(cur)){
                 mockData.users[name].trips.push(cur);

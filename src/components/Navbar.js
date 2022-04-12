@@ -56,16 +56,16 @@ function Navbar() {
                         <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
                     </div>
                     <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-                        <li className='nav-name'>
+                        <li aria-hidden="true" className='nav-name'>
                             {mockData.users[Cookies.get("username")].username} 
                         </li>
                         <li className='navItem'>
-                            <Link to='/settings' className='nav-links' onClick={closeMobileMenu}>
+                            <Link to='/settings' aria-label="Account settings" className='nav-links' onClick={closeMobileMenu}>
                                 <ManageAccounts sx={{color: grey[800], fontSize: 36}}/>
                             </Link>
                         </li>
                         <li className='navItem'>
-                            <Link to='/help' className='nav-links' onClick={closeMobileMenu}>
+                            <Link to='/help' aria-label="Help Page" className='nav-links' onClick={closeMobileMenu}>
                                 <Help sx={{color: grey[800], fontSize: 36}}/>
                             </Link>
                         </li>
