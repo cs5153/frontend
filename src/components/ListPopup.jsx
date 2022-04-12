@@ -8,17 +8,19 @@ import exitIcon from '../images/x-mark.png';
 import ListItem from './ListItem';
 import '../css/Chat.css'
 import plusIcon from '../images/plus.png'
-
+import delIcon from '../images/garbage.png'
 
 const ListPopup = (props) => {
 	const {trip} = useParams()
 
 	const [state, setState] = useState(
 		{
-			currentList : props.list,
+			currentList : props.list
 		}
 	)
 	const [newListItem, setNewListItem] = useState("")
+
+
 	let editedList = props.list.items
 	console.log("item text is: ",newListItem)
 	const handleListChange = (index ,changedItem) => {
@@ -40,6 +42,7 @@ const ListPopup = (props) => {
 		setState({
 			currentList: updatedList
 		})
+
 		console.log("state list after update: ", state.currentList)
 	}
 
@@ -49,11 +52,12 @@ const ListPopup = (props) => {
 	<>
 		<div className='addModal'>
 					<h5>{state.currentList.name}</h5>
-					{/* {<h6>hello</h6> */}
-					<button className='exitButton' onClick={() => props.handler(false,{})}>
-							<img className='iconImg' src={exitIcon} />
+					<button className='delButton' onClick={() =>{
+						props.delHandler(props.listIndex)
+						props.handler(false,{},props.listIndex)}}>
+							<p>Delete this list</p>
+							<img className='iconImg' src={delIcon} />
 					</button>
-					{state.hasError && <ErrorMessage message={state.errMessage} />}
 					{/* <div className='listArea'>  */}
 						<div className='userList'> 
 							<ul className='custList'> 
@@ -88,12 +92,16 @@ const ListPopup = (props) => {
 						onClick={() =>{
 							// let updatedList = props.list
 							// updatedList.items.push(newListItem)
+							if(newListItem){
+								editedList.push(newListItem)
+							}
 							setState({
 								currentList: editedList
 							})
+							
 							props.handler(false,{})
 						}}
-						>Done Editing List</button>
+						>Save and Exit</button>
 					</div>
 
 			
