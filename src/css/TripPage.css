@@ -111,7 +111,7 @@
     float: left;
     background-color: rgb(204,240,192);
     width: 45%;
-    margin: 5% 0% !important;
+    margin: 5% 0%;
     height:90%;
     border-width: 2px;
     border-color: black;
@@ -121,14 +121,18 @@
     min-height: 700px !important;
     border-color: 2px solid rgb(167, 211, 176);
     border-radius: 0.5rem; 
+    padding: auto;
+    display: flex;
+    justify-content: center;
 }
 .innerDiv{
+    position: relative;
     height: 100%;
     width: 80%;
     margin: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    display: inline-block;
+    justify-content: top;
+    text-align: center;
 }
 .inviteUsers{
     float: right;
@@ -178,11 +182,9 @@
 .inputName{
     text-align: center;
     margin: auto;
-    display: block;
-    font-weight: Bold;
+    font-weight: Normal;
     font-family: "Helvetica", sans-serif;
     color: rgb(69, 102, 58) !important;
-    
 }
 
 .updateName{
@@ -194,14 +196,20 @@
 }
 .location{
     position: relative;
-    height: 20%;
+    height: 10%;
     width: 70%;
-    margin: auto;
+    margin: auto auto auto auto;
     text-align:center;
-    font-weight: Bold;
+    justify-content: center;
+    font-weight: normal;
     font-family: "Helvetica", sans-serif;
     color: rgb(69, 102, 58) !important;
 }
+.descriptor{
+    height: 10%;
+    margin: 10 auto 10 auto;
+}
+
 .deleteTrip{
     height: 10%;
     text-align:center;

@@ -2,6 +2,7 @@ import jsCookie from "js-cookie";
 
 
 export function initMockData() {
+	jsCookie.set('data', JSON.stringify(mockData));
 	let myData = jsCookie.get('data');
 	
 	if(myData) myData = JSON.parse(myData);
@@ -57,8 +58,8 @@ export var mockData = {
 	trips: {
 		'001': {
 			name: 'Cancun Trip',
-			location: "Cancun",
-			speople: ['tony', 'steve', 'bruce'],
+			location: 'Cancun',
+			people: ['tony', 'steve', 'bruce'],
 			lists: {
 				'001': {
 					name: "tony's packing list",

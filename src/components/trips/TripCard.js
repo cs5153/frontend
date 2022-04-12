@@ -17,9 +17,7 @@ class TripCard extends React.Component {
             to="/trip" 
             onClick={()=>Cookies.set("current_trip", this.props.id) }>
       <div className="trip-card">
-        <div>
         <p>{this.props.name}</p>
-        </div>
       </div>
       </Link>
     )

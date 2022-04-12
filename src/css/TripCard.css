@@ -1,8 +1,8 @@
 .trip-card {
     height: 100%;
     width: 100%;
-    min-height: 200px;
-    min-width: 200px;
+    min-height: 1.0rem;
+    min-width: 100px;
     background-color:rgb(204,240,192);
     border: 2px solid rgb(49,69,44);
     border-radius: 12px;
@@ -20,6 +20,9 @@
 
 .trip-card p {
     margin:0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     color:rgb(69, 102, 58);
     font-size: 24px;
     font-weight: bold;

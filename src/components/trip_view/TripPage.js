@@ -32,7 +32,8 @@ function TripPage() {
     const navigate = useNavigate();
     const cur = Cookies.get('current_trip');
     const cur_user = Cookies.get('username');
-
+    console.log(cur);
+    console.log(cur_user);
     const [showSettings, setshowSettings] = React.useState(true);
     const [showList, setshowList] = React.useState(false);
     const [showChat, setshowChat] = React.useState(false);
@@ -141,6 +142,8 @@ function TripPage() {
             setInvalidTripName(false);
         }
         setLocation(textInput.current.value);
+        console.log(textInput.current.value);
+        console.log(loc);
         mockData.trips[cur].location = textInput.current.value;
     }
     let onTripDeleteClick = (e) => {
@@ -187,26 +190,16 @@ function TripPage() {
                         <div className='tripSettingLabel'>
                             Trip Settings
                         </div>
-
-                        <div className='picture'>
-                            <div className="pic">
-                                <img src={image} alt="Group Picture"></img>
-                            </div>
-                            <input ref={groupImage} type="text" className="inputName" placeholder="Input Image URL"></input>
-                            <button className="upload" onClick={uploadImageClick}>
-                                Upload
-                            </button>
-                        </div>
+                        <div className="location">{"Location: "+loc}</div>
+                        {invalidTripName && <ErrorMessage message='Please ensure trip name or location are under 16 characters'/>} 
                         <div className='location'>
-                            {invalidTripName && <ErrorMessage message='Please ensure trip name is under 16 characters'/>} 
-                            <input ref={textInput} type="text" className="inputName" placeholder="Change Group Name"></input>
+                            <input ref={textInput} type="text" className="inputName" placeholder="Trip Name"></input>
                             <button className="updateName" onClick={onNameChangeClick}>
-                                Update Name
+                                Update Trip Name
                             </button>
                         </div>
                         <div className='location'>
-                            <div className="descriptor">{mockData.trips[cur].location}</div>
-                            <input className="inputName" placeholder="Change Destination Name"></input>
+                            <input ref={textInput} className="inputName" placeholder="Location"></input>
                             <button className="updateName" onClick={onLocationChangeClick}>
                                 Update Location
                             </button>
@@ -224,7 +217,7 @@ function TripPage() {
                         Current Users
                     </div>
                     <div className="selectedPeople" >
-                        {mockData.trips[cur].people.map(name => (
+                        {peopleList.map(name => (
                             <div key={name} id={name} className="person">
                                 {name}
                                 <button onClick={() => { removePerson(name); }} className="removePerson">
