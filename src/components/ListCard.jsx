@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router';
+import { Link, useParams } from 'react-router-dom';
 import '../css/FeatureSpace.css' 
 import '../css/List.css' 
 import { mockData } from '../helper/mockData';
@@ -15,13 +15,16 @@ const ListCard = (props) => {
 	return (
 	<>
 		<div className='listCard' >
-			{/* <h6>{state.currentList.name}</h6> */}
+			{/* <h6>{state.currentList.name}</h6> * */}
 			<button
 				className='link'
 				onClick={() => props.handler(true,state.currentList)}
 			>
 				{state.currentList.name}
 			</button>
+			{/* <Link to={`/${trip}/list/${state.currentList.name}`}>
+				{state.currentList.name}
+			</Link> */}
 		</div>
 	</>
 	);
