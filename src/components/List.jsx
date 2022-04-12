@@ -62,31 +62,49 @@ const List = () => {
 	let i = 0
 
 	return (
-	<>
-		{state.showFullList && <ListPopup handler={selectedListHandler} list={state.selectedListItem} delHandler={handleListDelete} listIndex={state.currIndex}/>}
-		{state.showAddList && <AddList handler={addListHandler}/>}
+		<>
+			{state.showFullList && (
+				<ListPopup
+					handler={selectedListHandler}
+					list={state.selectedListItem}
+					delHandler={handleListDelete}
+					listIndex={state.currIndex}
+				/>
+			)}
+			{state.showAddList && <AddList handler={addListHandler} />}
 
-		<div className='featureContainer'>
-			<div className='listBox'>
-				<ul>
-					{state.listsInTrip.map((currList,index) => {
-					console.log("LOOP INDEX IS: ",index)
-					console.log("LOOP INDEX LIST NAME IS: ", currList)
-					return (<ListCard key={i++} handler={selectedListHandler} listItem={{...currList}} listIndex={index}/>)})}
-				</ul>
+			<div className='featureContainer' id='mainContent' tabIndex={-1}>
+				<div className='listBox'>
+					<ul>
+						{state.listsInTrip.map((currList, index) => {
+							console.log('LOOP INDEX IS: ', index);
+							console.log('LOOP INDEX LIST NAME IS: ', currList);
+							return (
+								<ListCard
+									key={i++}
+									handler={selectedListHandler}
+									listItem={{ ...currList }}
+									listIndex={index}
+								/>
+							);
+						})}
+					</ul>
+				</div>
+				<button
+					className='addButton'
+					onClick={() => {
+						let copy = state;
+						copy.showAddList = true;
+						copy.showFullList = false;
+						console.log('STATE BEFORE CLICKING ADD LIST: ', state);
+						setState({ ...copy });
+						console.log('STATE AFTER CLICKING ADD LIST: ', state);
+					}}
+				>
+					<img className='iconImg' src={plusImg} />
+				</button>
 			</div>
-			<button className='addButton' onClick={() => {
-				let copy = state
-				copy.showAddList = true;
-				copy.showFullList = false;
-				console.log("STATE BEFORE CLICKING ADD LIST: ", state)
-				setState({...copy})
-				console.log("STATE AFTER CLICKING ADD LIST: ", state)
-			}}>
-				<img className='iconImg' src={plusImg} />
-			</button>
-		</div>
-	</>
+		</>
 	);
 };
 
