@@ -63,8 +63,8 @@ const AddTripMate = (props) => {
 									true,
 									'Please enter new trip mate name before submitting'
 								);
-							} else if (!!mockData.users[state.newTripMate]) {
-								addToTrips(state.newTripMate, trip);
+							} else if (!!mockData.users[state.newTripMate.toLocaleLowerCase()]) {
+								addToTrips(state.newTripMate.toLocaleLowerCase(), trip);
 								props.handler(false);
 							} else {
 								changeErrorValue(
