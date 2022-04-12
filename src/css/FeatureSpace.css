@@ -127,6 +127,28 @@
     z-index: 7;
   }
   
-  .buttonContainerButtons:hover .tooltiptext {
+.buttonContainerButtons:hover .tooltiptext {
     visibility: visible;
-  }
+}
+
+.delButton {
+    position: absolute;
+    top: 2rem;
+    right: -5rem;
+    transform: translate(-50%, -50%);
+    background-color: azure;
+    /* background: none; */
+    border: none;
+    height: 3rem;
+    /* width: 3rem; */
+    padding: 0;
+    border-radius: 100%;
+}
+
+.delButton p {
+    display: inline-block;
+}
+
+.delButton img {
+    display: inline-block;
+}
