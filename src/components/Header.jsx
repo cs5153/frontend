@@ -49,13 +49,6 @@ const Header = () => {
 						>
 							Photo
 						</button>
-						<button
-							className='flex-fill'
-							onClick={() => navigate('contact')}
-							disabled={!trip}
-						>
-							Contact
-						</button>
 					</div>
 				</div>
 			</div>
