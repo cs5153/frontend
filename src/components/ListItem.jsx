@@ -3,14 +3,21 @@ import { useParams } from 'react-router';
 import '../css/FeatureSpace.css' 
 import '../css/List.css' 
 import { mockData } from '../helper/mockData';
+import deleteIcon from '../images/garbage.png'
 
 const ListItem = (props) => {
-	
 	return (
         <>
-            <div className='listItem'>
-                <p>{props.item}</p>
-            </div>
+            <li className='listItem'>
+                {/* <p>{props.item}</p> */}
+                <input className='listInput' defaultValue={props.item} type="text" onChange={(evt) =>{
+                    props.inputHandler(props.listIndex, evt.target.value)
+                }}/> 
+                <button className='delItemButton' onClick={() => props.deleteHandler(props.listIndex)}>
+					<img className='iconImgXS' src={deleteIcon} />
+				</button>
+
+            </li>
         </>
     );
 };
