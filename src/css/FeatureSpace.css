@@ -82,7 +82,6 @@
 
 .buttonContainer{
     display: flex;
-    flex-direction: row-reverse;
     position:absolute;
     bottom: 0rem;
     right: -4rem;
