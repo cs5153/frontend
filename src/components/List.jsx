@@ -91,17 +91,16 @@ const List = () => {
 					</ul>
 				</div>
 				<button
+					aria-label='New List'
 					className='addButton'
 					onClick={() => {
 						let copy = state;
 						copy.showAddList = true;
 						copy.showFullList = false;
-						console.log('STATE BEFORE CLICKING ADD LIST: ', state);
 						setState({ ...copy });
-						console.log('STATE AFTER CLICKING ADD LIST: ', state);
 					}}
 				>
-					<img className='iconImg' src={plusImg} />
+					<img aria-disabled={true} className='iconImg' src={plusImg} />
 				</button>
 			</div>
 		</>
