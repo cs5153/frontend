@@ -7,19 +7,27 @@ import plusImg from '../images/plus.png';
 import '../css/FeatureSpace.css';
 import "../css/SidePane.css";
 import AddTrip from './AddTrip';
-
-
+import '../css/Help.css';
+import HelpPage from './HelpPage';
 
 const SidePane = () => {
 
   const [state, setState] = useState({
-		showAddBox: false
+		showAddBox: false,
+    showFAQ: false,
 	});
 
   const showBox = (bool) => {
 		setState({
 			showAddBox: bool,
-			userData: state.userData,
+      showFAQ: state.showFAQ
+		});
+	};
+
+  const showFAQBox = (bool) => {
+		setState({
+			showAddBox: state.showAddBox,
+      showFAQ: bool
 		});
 	};
 
@@ -28,6 +36,8 @@ const SidePane = () => {
   return (
     <>
       {state.showAddBox && <AddTrip handler={showBox} />}
+      {state.showFAQ && <HelpPage handler={showFAQBox} />}
+
       <div className="sidePaneContainer">
         <div className="profileSection">
           <div className="proPicContainer">
@@ -46,6 +56,12 @@ const SidePane = () => {
             }}>
             logout
           </a>
+          <button
+						className='clicklink'
+						onClick={() => showFAQBox(true)}
+					>
+						<p>Need Help?</p>
+					</button>
         </div>
         <ul 
           className="tripList"
