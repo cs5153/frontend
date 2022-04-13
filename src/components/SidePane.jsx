@@ -1,39 +1,41 @@
 import React, { useState } from 'react';
-import {mockData, getDataMap}from "../helper/mockData";
-import TripItem from "./TripItem";
-import profileImage from "../images/user.png";
-import jsCookie from "js-cookie";
+import { mockData, getDataMap } from '../helper/mockData';
+import TripItem from './TripItem';
+import profileImage from '../images/user.png';
+import jsCookie from 'js-cookie';
 import plusImg from '../images/plus.png';
 import '../css/FeatureSpace.css';
-import "../css/SidePane.css";
+import '../css/SidePane.css';
 import AddTrip from './AddTrip';
 import '../css/Help.css';
 import HelpPage from './HelpPage';
 
 const SidePane = () => {
-
-  const [state, setState] = useState({
+	const [state, setState] = useState({
 		showAddBox: false,
-    showFAQ: false,
+		showFAQ: false,
 	});
 
-  const showBox = (bool) => {
+	const showBox = (bool) => {
 		setState({
 			showAddBox: bool,
-      showFAQ: state.showFAQ
+			showFAQ: state.showFAQ,
 		});
 	};
 
-  const showFAQBox = (bool) => {
+	const showFAQBox = (bool) => {
 		setState({
 			showAddBox: state.showAddBox,
-      showFAQ: bool
+			showFAQ: bool,
 		});
 	};
 
-  const user = jsCookie.get('username');
-  let tripList = mockData.users[user].trips.map(tripId => ({id: tripId, ...mockData.trips[tripId]}));
-  return (
+	const user = jsCookie.get('username');
+	let tripList = mockData.users[user].trips.map((tripId) => ({
+		id: tripId,
+		...mockData.trips[tripId],
+	}));
+	return (
 		<>
 			{state.showAddBox && <AddTrip handler={showBox} />}
 
@@ -46,21 +48,22 @@ const SidePane = () => {
 							alt={'my profile picture'}
 						/>
 					</div>
-					<a role='link' href='' className='profileLink'>
+					<a role='link' href='/profile' className='profileLink'>
 						My profile
 					</a>
 					<a
 						role='link'
 						href=''
 						className='profileLink'
-						onClick={() => {
-							console.log('removing username cookie');
-							jsCookie.remove('username');
-						}}
+						onClick={() => jsCookie.remove('username')}
 					>
-						logout
+						Logout
 					</a>
-					<button className='clicklink' onClick={() => showFAQBox(true)}>
+					<button
+						className='clicklink'
+						role='dialog'
+						onClick={() => showFAQBox(true)}
+					>
 						<p>Need Help?</p>
 					</button>
 				</div>

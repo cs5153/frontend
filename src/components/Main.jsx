@@ -8,6 +8,7 @@ import {
 	useParams,
 } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import Profile from './Profile';
 import SidePane from './SidePane';
 import Header from './Header';
 import People from './People';
@@ -24,7 +25,7 @@ const Main = () => {
 	const { trip } = useParams();
 	const knownTripNames = retrieveAllTripNames();
 	const isValidTrip = knownTripNames.includes(trip);
-	console.log("KNOWN TRIPS: ", knownTripNames)
+	console.log("KNOWN TRIPS: ", knownTripNames);
 	console.log('trip in cookies: ', trip)
 
 

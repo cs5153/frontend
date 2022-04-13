@@ -6,6 +6,7 @@ import Forgot from './Forgot';
 import Signup from './Signup';
 
 import { mockData } from '../helper/mockData';
+import Profile from './Profile';
 
 const alwaysAllowedPaths = ['/login', '/signup', '/forgot'];
 
@@ -21,6 +22,10 @@ const UserProvider = ({ children }) => {
 		}
 	}, [pathname, isValidCookieUser]);
 
+	if (pathname === '/profile') {
+		return <Profile />;
+	}
+	
 	if (isValidCookieUser) {
 		return <>{children}</>;
 	}
