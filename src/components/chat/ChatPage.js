@@ -15,7 +15,12 @@ class ChatPage extends React.Component {
         const currentTrip = Cookies.get('current_trip')
         var data = JSON.parse(JSON.stringify(mockData));
         console.log(data.trips[currentTrip].chat)
-        this.setState({ messages: data.trips[currentTrip].chat.msgList })
+        if(data.trips[currentTrip].chat.msgList==undefined){
+            this.setState({ messages: [] })
+        }
+        else{
+            this.setState({ messages: data.trips[currentTrip].chat.msgList })
+        }
     }
 
     onMessageSubmit = (msg) => {

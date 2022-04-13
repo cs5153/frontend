@@ -97,9 +97,9 @@ const AddTripPage = () => {
 										name: state.tripObj.tripName,
 										location: state.tripObj.tripLocation,
 										people: [Cookies.get('username')],
-										lists: {},
-										albums: {},
-										chat: [],
+										lists: [],
+										albums: [],
+										chat: {},
 									};
 									addNewTrip(mockData, trip, Cookies.get('username').toLocaleLowerCase());
 									//Write out
