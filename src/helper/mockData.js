@@ -2,7 +2,6 @@ import jsCookie from "js-cookie";
 
 
 export function initMockData() {
-	// jsCookie.set('data', JSON.stringify(mockData));
 	let myData = jsCookie.get('data');
 	
 	if(myData) myData = JSON.parse(myData);
@@ -152,6 +151,8 @@ export function getFakeResponse(username, trip) {
 
 export function removePersonFromTrip(userName, tripID){
 	console.log("INSIDE REMOVE PERSON FROM TRIP")
+	console.log("UserName is :",userName)
+	console.log("TRIP ID: ",tripID)
 
 	//remove person from trip
 	let tripPpl = mockData.trips[tripID].people
@@ -171,7 +172,10 @@ export function removePersonFromTrip(userName, tripID){
 	})
 
 	if(mockData.trips[tripID].people.length === 0){
-		mockData.trips.delete(tripID)
+		console.log("MockData.trips: ", mockData.trips)
+		let tripsMap = getDataMap(mockData.trips)
+		tripsMap.delete(tripID)
+		
 		return {}
 	}
 
