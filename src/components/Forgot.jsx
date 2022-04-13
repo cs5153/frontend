@@ -39,7 +39,7 @@ const Forgot = (props) => {
 						<ErrorMessage message='Please fill out all fields' />
 					)}
 					<div className='inputArea'>
-						<h6>UserName</h6>
+						<h6>Email</h6>
 						<input
 							autoFocus={true}
 							className='inputField'
@@ -70,7 +70,7 @@ const Forgot = (props) => {
 									}
 								}}
 							>
-								Send Email
+								Send Password Recovery Email
 							</button>
 						</div>
 					</div>
