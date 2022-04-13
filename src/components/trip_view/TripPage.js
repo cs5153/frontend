@@ -188,7 +188,7 @@ function TripPage() {
                 <div className='tripSettings'>
 
                     <div className="innerDiv">
-                        <div className='tripSettingLabel'>
+                        <div tabIndex="0" aria-label="Trip Settings" className='tripSettingLabel'>
                             Trip Settings
                         </div>
                         <div className="location">{"Location: "+loc}</div>
@@ -214,7 +214,7 @@ function TripPage() {
                     </div>
                 </div>
                 <div className='inviteUsers'>
-                    <div className='inviteUsersTitle'>
+                    <div tabIndex="0" aria-label="Current Users" className='inviteUsersTitle'>
                         Current Users
                     </div>
                     <div aria-label="Current Users" className="selectedPeople" >
@@ -227,7 +227,7 @@ function TripPage() {
                             </div>
                         ))}
                     </div>
-                    <div className='inviteUsersTitle'>
+                    <div tabIndex="0" aria-label="Invite Users" className='inviteUsersTitle'>
                         Invite Users
                     </div>
                     <div className='inviteUsersText'> Please select a user to invite </div>

@@ -15,7 +15,7 @@ class ExitButton extends React.Component {
   render(){
     return (
       <div className="exitButton">
-        <Link style={{textDecoration:'none', color:'inherit'}} to="/">
+        <Link aria-label="Close Window" style={{textDecoration:'none', color:'inherit'}} to="/">
         <Close fontSize="small" sx={{color: green[0]}}/>
         </Link>
       </div>

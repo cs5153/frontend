@@ -6,7 +6,7 @@ const ErrorMessage = (props) => {
   return (
     <>
       {console.log("message is : ",props.message)}
-      <h6 className="errorMessage">{props.message}</h6>
+      <h6 tabIndex="0" className="errorMessage">{props.message}</h6>
     </>
   );
 };

@@ -45,7 +45,7 @@ const Login = () => {
 				<div className='loginModal'>
 					<div>
 						<Link to='/' style={{textDecoration: 'none'}}>
-							<div className='title'> TRIPPER </div>
+							<div tabIndex="0" className='title'> TRIPPER </div>
 						</Link>
 					</div>
 					{state.hasError && <ErrorMessage message={state.errMsg} />}

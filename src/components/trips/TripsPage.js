@@ -31,7 +31,7 @@ class TripsPage extends React.Component {
       <>
       <AddTripButton/>
       <div classname="container">
-        <h1> My Trips </h1>
+        <h1 tabIndex="0"> My Trips </h1>
         <Grid elements={trips}/>
       </div>
       </>

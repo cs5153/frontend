@@ -12,6 +12,15 @@ const HelpPage = (props) => {
 
                 <div className='helpContainer'>
                     <div className='faqSection'>
+                        <h4 tabIndex={0} className=''>How do I access my account settings? </h4>
+                        <ul className='answers'>
+                            <li tabIndex={0} >On the navigation bar at the top of the screen, select the settings icon, which is besides the FAQ icon.</li>
+                            <li  tabIndex={0} >Once there, you will have access to all of your account information such as your username, password, email, and phone number.</li>
+                            <li  tabIndex={0} >Using the provided fields, you can update your username or password by filling in the appropriate field and pressing the associated button.</li>
+                            <li  tabIndex={0} >Additionally, you may log out of your account by pressing the logout button twice to confirm.</li>
+                        </ul>
+                        </div>
+                    <div className='faqSection'>
                         <h4 tabIndex={0} className=''>How do I pick a Trip? </h4>
                         <ul className='answers'>
                             <li tabIndex={0} >Select an existing trip by clicking on it's box on the main home page</li>

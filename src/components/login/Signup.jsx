@@ -33,6 +33,7 @@ const Signup = () => {
 							<div className='title'> TRIPPER </div>
 						</Link>
 					</div>
+					<h2 tabIndex="0"> Create Account </h2>
 					{state.hasError && (
 						<ErrorMessage message='Please fill out all fields' />
 					)}

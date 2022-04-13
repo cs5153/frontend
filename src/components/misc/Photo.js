@@ -119,7 +119,7 @@ function Photo({ propData }) {
                     <img className='bigPicture' src={currentPhoto} />
                 </div> : null}
             <div id="list" className='groupList' >
-                <div className='groupName'>Photos</div>
+                <div tabIndex="0" aria-label="Photos Page" className='groupName'>Photos</div>
 
                 {showAlbums ?
                     <div className='back'>
@@ -148,7 +148,7 @@ function Photo({ propData }) {
                                         onChange={(e) => setNewAlbum(e.target.value)}
                                     />
                                 </label>
-                                <input type="submit" />
+                                <input type="submit" value="Create Album"/>
                             </form>
                         </div>
                     </div>
@@ -175,7 +175,7 @@ function Photo({ propData }) {
                                     />
                                 </label>
 
-                                <input type="submit" />
+                                <input type="submit" value="Upload"/>
                             </form>
                         <button className='closeAlbum' onClick={() => closeAlbum()}>Close Album</button>
 

@@ -85,26 +85,26 @@ const SettingsPage = () => {
 					<div className='settingsExit'>
 					<ExitButton/>
 					</div>
-					<h2>Account Settings</h2>
+					<h2 tabIndex="0">Account Settings</h2>
 					<div className='user-info-container'>
-						<div className='user-field'> Name: </div>
-						<div className='user-info'> {mockData.users[cur_user].firstname+" "}{mockData.users[cur_user].lastname} </div>
+						<div tabIndex="0" className='user-field'> Name: </div>
+						<div tabIndex="0" className='user-info'> {mockData.users[cur_user].firstname+" "}{mockData.users[cur_user].lastname} </div>
 					</div>
 					<div className='user-info-container'>
-						<div className='user-field'> Email: </div>
-						<div className='user-info'> {mockData.users[cur_user].email} </div>
+						<div tabIndex="0" className='user-field'> Email: </div>
+						<div tabIndex="0" className='user-info'> {mockData.users[cur_user].email} </div>
 					</div>
 					<div className='user-info-container'>
-						<div className='user-field'> Phone Number: </div>
-						<div className='user-info'> {mockData.users[cur_user].phone} </div>
+						<div tabIndex="0" className='user-field'> Phone Number: </div>
+						<div tabIndex="0" className='user-info'> {mockData.users[cur_user].phone} </div>
 					</div>
 					<div className='user-info-container'>
-						<div className='user-field'> Username: </div>
-						<div className='user-info'> {mockData.users[cur_user].username} </div>
+						<div tabIndex="0" className='user-field'> Username: </div>
+						<div tabIndex="0" className='user-info'> {mockData.users[cur_user].username} </div>
 					</div>
 					<div className='user-info-container'>
-						<div className='user-field'> Password: </div>
-						<div className='user-info'> {convPassword(mockData.users[cur_user].password)} </div>
+						<div tabIndex="0" className='user-field'> Password: </div>
+						<div tabIndex="0" className='user-info'> {convPassword(mockData.users[cur_user].password)} </div>
 					</div>
 					{emptyUsername && (
 						<ErrorMessage message='Please fill user field.' />

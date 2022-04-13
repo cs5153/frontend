@@ -42,10 +42,10 @@ const AddTripPage = () => {
 		<>
 			<div className='addTripPageContainer'>
 				<div className='addTripModal'>
+					<h1 tabIndex="0" >Add Trip</h1>
 					<div className='addTripExit'>
 					<ExitButton/>
 					</div>
-					<h1>Add Trip</h1>
 			    {state.isEmpty && (
 						<ErrorMessage message='Please fill out all fields.' />
 					)}
