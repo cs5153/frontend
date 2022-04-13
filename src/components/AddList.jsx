@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import '../css/FeatureSpace.css' 
 import '../css/List.css' 
 import { mockData } from '../helper/mockData';
@@ -12,6 +12,9 @@ import jsCookie from 'js-cookie';
 
 
 const AddList = (props) => {
+	const {trip} = useParams();
+	const navigate = useNavigate();
+
     const tripId = jsCookie.get("trip_id")
     const [state, setState] = useState({
         errMessage : "",
@@ -52,6 +55,7 @@ const AddList = (props) => {
                                } 
 
                                mockData.trips[tripId].lists.push(listObj)
+							   navigate(`/${trip}/list`);
                                console.log("trips is now: ", mockData.trips[tripId])
                             }else{
                                 let copy = state
