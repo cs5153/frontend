@@ -1,19 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import exitIcon from '../images/x-mark.png';
 import '../css/FeatureSpace.css';
 import '../css/PersonCard.css';
 import '../css/Help.css';
 
 const HelpPage = (props) => {
+    const myRef = useRef();
 
+    useEffect(() => {
+        myRef.current.focus()
+    }, []);
 
     return (
         <>
-			<div tabIndex={0} className='addModal'>
-                <button className='exitButton' onClick={() => props.handler(false)}>
-                    <img className='iconImg' src={exitIcon} />
-                </button>
-                <h3 tabIndex={0} className='heading'>Frequently Asked Questions</h3>
+			<div className='addModal'>
+                <h3 tabIndex={0} ref={myRef} className='heading'>Frequently Asked Questions</h3>
 
                 <div className='helpContainer'>
                     <div className='faqSection'>
@@ -66,6 +67,9 @@ const HelpPage = (props) => {
                         </ul>
                     </div>
                 </div>
+                <button aria-label='Close Popup' className='exitButton' onClick={() => props.handler(false)}>
+                    <img aria-aria-labelledby='helpExitButton' className='iconImg' src={exitIcon} />
+                </button>
 			</div>
 		</>
     );
