@@ -14,8 +14,6 @@ const Header = () => {
 						className='mw-100 img-responsive'
 						src={stickmanLogo}
 						alt='tripper logo: clipart of man with baggage standing next to Tripper logo'
-						role='link'
-						onClick={() => navigate('/')}
 					/>
 				</div>
 
@@ -48,13 +46,6 @@ const Header = () => {
 							disabled={!trip}
 						>
 							Photo
-						</button>
-						<button
-							className='flex-fill'
-							onClick={() => navigate('contact')}
-							disabled={!trip}
-						>
-							Contact
 						</button>
 					</div>
 				</div>

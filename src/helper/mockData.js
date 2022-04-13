@@ -2,6 +2,7 @@ import jsCookie from "js-cookie";
 
 
 export function initMockData() {
+	// jsCookie.set('data', JSON.stringify(mockData));
 	let myData = jsCookie.get('data');
 	
 	if(myData) myData = JSON.parse(myData);
