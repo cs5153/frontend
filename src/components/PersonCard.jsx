@@ -2,12 +2,19 @@ import React from 'react';
 import profileImage from "../images/user.png";
 import '../css/FeatureSpace.css'
 import '../css/PersonCard.css'
+import delIcon from '../images/garbage.png'
+import jsCookie from 'js-cookie';
 
+const PersonCard = ({user, delHandler}) => {
+	const tripId = jsCookie.get('trip_id');
+	const loggedInUser = jsCookie.get('username')
 
-const PersonCard = ({user}) => {
+	console.log("USER IS:", user)
 	return (
 		<>
+			
 			<div className='personCard'>
+				
 				<div className='cardPropicContainer'>
 					<img
 						className='cardPropic'
@@ -23,6 +30,13 @@ const PersonCard = ({user}) => {
 					<h6 tabIndex={0}>{user.email}</h6>
 					<h6 tabIndex={0}>{user.phone}</h6>
 				</div>
+				{user.userName !== loggedInUser &&
+					<button className='delPerson' onClick={() => {
+						delHandler(user.userName,tripId)
+					}}>
+						<img className='iconImg' src={delIcon} />
+					</button>
+				}
 			</div>
 		</>
 	);

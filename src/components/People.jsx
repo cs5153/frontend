@@ -26,7 +26,7 @@ const People = () => {
 	var i = 0;
 
 	const pullTripMateData = (people) => {
-		return people.map((person) => ({
+		return people?.map((person) => ({
 			firstName: mockData.users[person].firstname,
 			lastName: mockData.users[person].lastname,
 			userName: mockData.users[person].username,
@@ -42,14 +42,21 @@ const People = () => {
 		});
 	};
 
+	const delPersonHandler = (name, idForTrip) => {
+		let newTripInfo = removePersonFromTrip(name,idForTrip)
+					let copy = state
+					copy.userData = newTripInfo
+					setState({...copy})
+	}
+
 	let tripMembers = pullTripMateData(state.userData.people);
 	return (
 		<div className='featureContainer' id='mainContent' tabIndex={-1}>
 			{state.showAddBox && <AddTripMate handler={showBox} />}
 			<div className='listContainer'>
 				<ul>
-					{tripMembers.map((listItem) => (
-						<PersonCard key={i++} user={listItem}></PersonCard>
+					{tripMembers?.map((listItem) => (
+						<PersonCard key={i++} user={listItem} delHandler={delPersonHandler}></PersonCard>
 					))}
 				</ul>
 			</div>

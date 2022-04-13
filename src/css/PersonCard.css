@@ -12,9 +12,29 @@
 
 .cardPropicContainer{
    margin-right: 1rem;
+   flex-basis: 20%;
 }
 
 .cardPropic{
     height: 4rem;
     width: 4rem;
+}
+
+.personInfo{
+    flex-basis: 70%;
+}
+
+.delPerson{
+    background-color: azure;
+    border:none;
+    height: 2rem;
+    width: 2rem;
+    padding: 0;
+    border-radius: 100%;
+    flex-basis: 10%;
+}
+
+.delPerson .iconImg{
+    height: 2rem;
+    width: 2rem;
 }
