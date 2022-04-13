@@ -14,8 +14,6 @@ const Header = () => {
 						className='mw-100 img-responsive'
 						src={stickmanLogo}
 						alt='tripper logo: clipart of man with baggage standing next to Tripper logo'
-						role='link'
-						onClick={() => navigate('/')}
 					/>
 				</div>
 
