@@ -7,6 +7,8 @@ import { FaList } from "react-icons/fa"
 import { FaCamera } from "react-icons/fa"
 import { FaComment } from "react-icons/fa"
 import Photo from "../misc/Photo.js"
+import ChatPage from '../chat/ChatPage';
+import ListPage from '../list/ListPage';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -15,18 +17,7 @@ import Select from '@mui/material/Select';
 import Cookies from 'js-cookie'
 import { mockData, readData, writeData} from "../../helper/helper";
 import ErrorMessage from './ErrorMessage';
-const List = () => (
-    <div id="list" className='groupList' >
-        <div className='groupName'>Lists</div>
-        <div className='allLists'>
 
-            <div className='oneList'>Stuff</div>
-            <div className='oneList'>food</div>
-            <div className='oneList'>Something</div>
-            <div className='oneList'>idk</div>
-        </div>
-    </div>
-)
 
 function TripPage() {
     const navigate = useNavigate();
@@ -287,8 +278,9 @@ function TripPage() {
             </div>
             <div className="rightSide">
                 {showSettings ? <Settings /> : null}
-                {showList ? <List /> : null}
+                {showList ? <ListPage /> : null}
                 {showPhotos ? <Photo propData={tripData.albums} /> : null}
+                {showChat ? <ChatPage /> : null}
             </div>
             </div>
         </>

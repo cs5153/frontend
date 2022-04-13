@@ -1,0 +1,9 @@
+.grid-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 200px));
+    column-gap: 10px;
+    grid-gap: 15px;
+    row-gap: 15px;
+    width: 100%;
+    padding: 10px
+}
