@@ -19,12 +19,11 @@ const Profile = () => {
 	}, [user]);
 
 	const userData = mockData.users[user];
-	const [username, setUsername] = useState(userData.username);
-	const [password, setPassword] = useState(userData.password);
-	const [firstname, setFirstname] = useState(userData.firstname);
-	const [lastname, setLastname] = useState(userData.lastname);
-	const [email, setEmail] = useState(userData.email);
-	const [phone, setPhone] = useState(userData.phone);
+	const [password, setPassword] = useState('');
+	const [firstname, setFirstname] = useState();
+	const [lastname, setLastname] = useState();
+	const [email, setEmail] = useState();
+	const [phone, setPhone] = useState();
 
 	return (
 		<div className='loginPageContainer'>
@@ -38,19 +37,9 @@ const Profile = () => {
 						/>
 					</Link>
 				</div>
-				{/* {state.hasError && (
-					<ErrorMessage message='Please fill out all fields' />
-				)} */}
 				<div className='inputArea'>
-					<h6>UserName</h6>
-					<input
-						autoFocus={true}
-						className='inputField'
-						type='text'
-						placeholder='UserName'
-						onChange={(evt) => setUsername(evt.target.value)}
-						value={username}
-					/>
+					<h6>Username</h6>
+					<p tabIndex={0} aria-label={`username ${userData.username}`}>{userData.username}</p>
 				</div>
 				<div className='inputArea'>
 					<h6>Password</h6>
@@ -58,7 +47,7 @@ const Profile = () => {
 						className='inputField'
 						type='password'
 						placeholder='Password'
-						onChange={(evt) => setPassword(evt.taget.value)}
+						onChange={(evt) => setPassword(evt.target.value)}
 						value={password}
 					/>
 				</div>
@@ -68,7 +57,8 @@ const Profile = () => {
 						className='inputField'
 						type='text'
 						placeholder='First Name'
-						onChange={(evt) => setFirstname(evt.taget.value)}
+						defaultValue={userData.firstname}
+						onChange={(evt) => setFirstname(evt.target.value)}
 						value={firstname}
 					/>
 				</div>
@@ -78,7 +68,8 @@ const Profile = () => {
 						className='inputField'
 						type='text'
 						placeholder='Last Name'
-						onChange={(evt) => setLastname(evt.taget.value)}
+						defaultValue={userData.lastname}
+						onChange={(evt) => setLastname(evt.target.value)}
 						value={lastname}
 					/>
 				</div>
@@ -88,7 +79,8 @@ const Profile = () => {
 						className='inputField'
 						type='text'
 						placeholder='Email'
-						onChange={(evt) => setEmail(evt.taget.value)}
+						defaultValue={userData.email}
+						onChange={(evt) => setEmail(evt.target.value)}
 						value={email}
 					/>
 				</div>
@@ -98,6 +90,7 @@ const Profile = () => {
 						className='inputField'
 						type='text'
 						placeholder='Phone Number'
+						defaultValue={userData.phone}
 						onChange={(evt) => setPhone(evt.target.value)}
 						value={phone}
 					/>
@@ -107,14 +100,15 @@ const Profile = () => {
 						className='inputField'
 						onClick={() => {
 							mockData.users[user] = {
-								username: state.userObj.userName,
-								password: state.userObj.password,
-								firstname: state.userObj.firstName,
-								lastname: state.userObj.lastName,
-								email: state.userObj.email,
-								phone: state.userObj.phone,
-								trips: [],
+								username: userData.username,
+								password: !!password ? password : userData.password,
+								firstname: !!firstname ? firstname : userData.firstname,
+								lastname: !!lastname ? lastname : userData.lastname,
+								email: !!email ? email : userData.email,
+								phone: !!phone ? phone : userData.phone,
+								trips: userData.trips,
 							};
+							navigate('/');
 						}}
 					>
 						Update Profile
