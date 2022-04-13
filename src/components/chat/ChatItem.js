@@ -5,7 +5,7 @@ const ChatItem = ({ message }) => {
         <div className="ui raised segment">
             <div className="ui comments">
                 <div className="comment">
-                    <div className="content">
+                    <div className="content" tabIndex={0}>
                     <a className="author">{message.sender}</a>
                     <div className="metadata">
                         <div className="date">{message.timestamp}</div>

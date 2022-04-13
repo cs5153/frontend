@@ -26,7 +26,7 @@ class ChatBar extends React.Component {
         return (
             <div className="chat-bar ui segment">
                 <form onSubmit={this.onMessageSubmit} className="ui form">
-                    <div className="field">
+                    <div className="field" tabIndex={0}>
                         <label>Chat Message</label>
                         <input 
                             type="text" 

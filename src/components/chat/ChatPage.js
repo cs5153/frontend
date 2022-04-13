@@ -2,6 +2,7 @@ import React from 'react';
 import ChatBar from './ChatBar'
 import MessageBox from './MessageBox';
 import '../../css/ChatPage.css';
+
 import { mockData, readData, writeData} from "../../helper/helper";
 import Cookies from 'js-cookie';
 
@@ -25,12 +26,21 @@ class ChatPage extends React.Component {
 
     render() {
         return (
-            <div className="ui container chat-container">
-                <div className="ui segment chat-segment">
-                    <MessageBox messages={this.state.messages}/>
+            <>
+            <div id="list" className='groupList' >
+                <div tabIndex="0" aria-label="Chat Page" className='groupName'>Chat</div>
+            <div className="back">
+                <div className="allLists">
+                    <div className="ui container chat-container">
+                        <div className="ui segment chat-segment" tabIndex={0}>
+                            <MessageBox messages={this.state.messages}/>
+                        </div>
+                        <ChatBar onMessageSubmit={this.onMessageSubmit} username={this.state.username}/>
+                    </div>
                 </div>
-                <ChatBar onMessageSubmit={this.onMessageSubmit} username={this.state.username}/>
             </div>
+            </div>
+            </>
         )
     }
 };

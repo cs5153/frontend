@@ -13,7 +13,7 @@ const GridList = ({ lists, onListSelect, onCreateList }) => {
             <div className="grid-list">
                 {renderedList}
             </div>
-            <div>
+            <div className="create-list">
                 <AddListButton onCreateList={onCreateList}/>
             </div>
         </div>

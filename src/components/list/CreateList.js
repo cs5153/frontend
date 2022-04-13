@@ -1,4 +1,5 @@
 import React from 'react';
+import "../../css/Photo.css";
 
 class CreateList extends React.Component {
     state = { name: '' }
@@ -9,6 +10,7 @@ class CreateList extends React.Component {
 
     render () {
         return (
+            <div>
             <div className="ui container ui raised segment">
                 <form className="ui form">
                     <div className="field">
@@ -27,6 +29,7 @@ class CreateList extends React.Component {
                             onClick={() => this.props.onSubmitClick(this.state.name)}
                         >Submit</button>
                 </form>
+            </div>
             </div>
         )
     }

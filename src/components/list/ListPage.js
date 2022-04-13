@@ -2,6 +2,7 @@ import React from 'react';
 import GridList from './GridList';
 import ListDisplay from './ListDisplay';
 import CreateList from './CreateList';
+import "../../css/Photo.css"
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { mockData, readData, writeData} from "../../helper/helper";
 import Cookies from 'js-cookie';
@@ -46,11 +47,11 @@ class ListPage extends React.Component {
 
     render () {
         return (
-            <div>
-                <div>
-                    { this.state.showCreateList ?
-                        <CreateList onSubmitClick={this.onSubmitClick}/>
-                    : null}
+            <>
+            <div id="list" className='groupList' >
+                <div tabIndex="0" aria-label="Lists Page" className='groupName'>Lists</div>
+            <div className="back">
+                <div className="allLists">
                     { this.state.showGridList ?
                         <GridList lists={this.state.lists} onListSelect={this.onListSelect} onCreateList={this.onCreateList}/>
                     : null}
@@ -59,6 +60,11 @@ class ListPage extends React.Component {
                     : null}
                 </div>
             </div>
+            { this.state.showCreateList ?
+                    <CreateList onSubmitClick={this.onSubmitClick}/>
+                : null}
+            </div> 
+            </>
         )
     }
 };
