@@ -61,7 +61,7 @@ const SidePane = () => {
 					</a>
 					<button
 						className='clicklink'
-						role='dialog'
+						role='link'
 						onClick={() => showFAQBox(true)}
 					>
 						<p>Need Help?</p>

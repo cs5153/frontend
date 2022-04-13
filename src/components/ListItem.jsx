@@ -13,8 +13,8 @@ const ListItem = (props) => {
                 <input className='listInput' defaultValue={props.item} type="text" onChange={(evt) =>{
                     props.inputHandler(props.listIndex, evt.target.value)
                 }}/> 
-                <button className='delItemButton' onClick={() => props.deleteHandler(props.listIndex)}>
-					<img className='iconImgXS' src={deleteIcon} />
+                <button aria-aria-label='Delete item' className='delItemButton' onClick={() => props.deleteHandler(props.listIndex)}>
+					<img aria-disabled={true} className='iconImgXS' src={deleteIcon} />
 				</button>
 
             </li>
