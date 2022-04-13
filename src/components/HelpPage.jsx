@@ -15,7 +15,7 @@ const HelpPage = (props) => {
                 </button>
                 <h3 tabIndex={0} className='heading'>Frequently Asked Questions</h3>
 
-                <div tabIndex={0} className='helpContainer'>
+                <div className='helpContainer'>
                     <div className='faqSection'>
                         <h4 tabIndex={0} className=''>How do I Pick a Trip? </h4>
                         <ul className='answers'>
