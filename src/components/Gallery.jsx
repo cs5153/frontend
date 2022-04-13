@@ -67,8 +67,8 @@ const Gallery = ({ album }) => {
 			className='listContainer pswp-gallery p-2 galleryDiv'
 			id='albumGallery--responsive-images'
 		>
-			<button className='backButton' onClick={() => {navigate(-1)}}>
-					<img className='iconImg' src={backArrow} />
+			<button aria-label='back to albums' className='backButton' onClick={() => {navigate(-1)}}>
+					<img aria-disabled className='iconImg' src={backArrow} />
 			</button>
 			{album.photos.map((image, index) => (
 				<a

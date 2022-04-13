@@ -31,10 +31,10 @@ const PersonCard = ({user, delHandler}) => {
 					<h6 tabIndex={0}>{user.phone}</h6>
 				</div>
 				{user.userName !== loggedInUser &&
-					<button className='delPerson' onClick={() => {
+					<button aria-label='delete person' className='delPerson' onClick={() => {
 						delHandler(user.userName,tripId)
 					}}>
-						<img className='iconImg' src={delIcon} />
+						<img aria-disabled className='iconImg' src={delIcon} />
 					</button>
 				}
 			</div>

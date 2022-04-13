@@ -52,9 +52,6 @@ const AddTripMate = (props) => {
 					/>
 				</div>
 				<div className='inputArea'>
-					<button className='exitButton' onClick={() => props.handler(false)}>
-						<img className='iconImg' src={exitIcon} />
-					</button>
 					<button
 						className='inputField'
 						onClick={() => {
@@ -63,7 +60,9 @@ const AddTripMate = (props) => {
 									true,
 									'Please enter new trip mate name before submitting'
 								);
-							} else if (!!mockData.users[state.newTripMate.toLocaleLowerCase()]) {
+							} else if (
+								!!mockData.users[state.newTripMate.toLocaleLowerCase()]
+							) {
 								addToTrips(state.newTripMate.toLocaleLowerCase(), trip);
 								props.handler(false);
 							} else {
@@ -75,6 +74,9 @@ const AddTripMate = (props) => {
 						}}
 					>
 						Add Trip Mate
+					</button>
+					<button aria-label='exit popup' className='exitButton' onClick={() => props.handler(false)}>
+						<img aria-disabled className='iconImg' src={exitIcon} />
 					</button>
 				</div>
 			</div>

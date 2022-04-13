@@ -77,7 +77,7 @@ const PhotoMenu = ({ albums, trip, missingAlbum }) => {
 				className='addButton'
 				onClick={() => setModalOpen(true)}
 			>
-				<img className='iconImg' src={plusImg} />
+				<img aria-disabled className='iconImg' src={plusImg} />
 			</button>
 			{modalOpen && (
 				<div className='addModal text-center'>

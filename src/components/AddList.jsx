@@ -23,52 +23,58 @@ const AddList = (props) => {
     })
 	
 	return (
-        <>
+		<>
 			<div className='addModal'>
-				{state.hasError && <ErrorMessage css={"errorbox"} message={state.errMessage} />}
+				{state.hasError && (
+					<ErrorMessage css={'errorbox'} message={state.errMessage} />
+				)}
 				<div className='inputArea'>
 					<h6>Name of New List</h6>
 					<input
 						className='inputField'
-                        type='text'
+						type='text'
 						placeholder='Name of New List'
 						onChange={(evt) => {
 							let copy = state;
 							copy.newListName = evt.target.value;
-							setState({...copy});
+							setState({ ...copy });
 						}}
 					/>
 				</div>
 				<div className='inputArea'>
-					<button className='exitButton' onClick={() => props.handler(false)}>
-						<img className='iconImg' src={exitIcon} />
-					</button>
 					<button
 						className='inputField'
 						onClick={() => {
-                            //add new list to mockData if user entered name
-                            console.log("New naem is: ", state.newListName)
-							if(state.newListName){
-                               let listObj = {
-                                    name: state.newListName,
-                                    items: []
-                               } 
+							//add new list to mockData if user entered name
+							console.log('New naem is: ', state.newListName);
+							if (state.newListName) {
+								let listObj = {
+									name: state.newListName,
+									items: [],
+								};
 
-                               mockData.trips[tripId].lists.push(listObj)
-							   navigate(`/${trip}/list`);
-                               console.log("trips is now: ", mockData.trips[tripId])
-                            }else{
-                                let copy = state
-                                copy.hasError = true
-                                copy.errMessage = "Please enter a name for your new list"
-                                setState({...copy})
-                                return
-                            }
-                            //close window
-                            props.handler(false)
+								mockData.trips[tripId].lists.push(listObj);
+								navigate(`/${trip}/list`);
+								console.log('trips is now: ', mockData.trips[tripId]);
+							} else {
+								let copy = state;
+								copy.hasError = true;
+								copy.errMessage = 'Please enter a name for your new list';
+								setState({ ...copy });
+								return;
+							}
+							//close window
+							props.handler(false);
 						}}
 					>
 						Add List
+					</button>
+					<button
+						aria-label='exit popup'
+						className='exitButton'
+						onClick={() => props.handler(false)}
+					>
+						<img aria-disabled className='iconImg' src={exitIcon} />
 					</button>
 				</div>
 			</div>

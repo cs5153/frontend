@@ -81,8 +81,8 @@ const SidePane = () => {
 						<TripItem key={trip.name} tripName={trip.name} tripId={trip.id} />
 					))}
 				</ul>
-				<button className='addTripButton' onClick={() => showBox(true)}>
-					<img className='iconImg' src={plusImg} />
+				<button aria-label='Add Trip' className='addTripButton' onClick={() => showBox(true)}>
+					<img aria-disabled className='iconImg' src={plusImg} />
 				</button>
 			</div>
 			{state.showFAQ && <HelpPage handler={showFAQBox} />}

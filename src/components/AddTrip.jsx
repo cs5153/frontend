@@ -3,22 +3,17 @@ import exitIcon from '../images/x-mark.png';
 import '../css/FeatureSpace.css';
 import '../css/PersonCard.css';
 import '../css/Login.css';
-import {
-	getDataMap,
-    mockData,
-} from '../helper/mockData';
+import { mockData } from '../helper/mockData';
 import ErrorMessage from './ErrorMessage';
 import jsCookie from 'js-cookie';
-import { useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
-
 const AddTrip = (props) => {
-    const tripId = jsCookie.get('trip_id');
-	const userName = jsCookie.get('username')
+	const tripId = jsCookie.get('trip_id');
+	const userName = jsCookie.get('username');
 
 	const [state, setState] = useState({
-		newTripName:'',
+		newTripName: '',
 		newTripMate: '',
 		hasError: false,
 		errMessage: '',
@@ -35,16 +30,19 @@ const AddTrip = (props) => {
 
 	const addToTrips = (newMember, trip) => {
 		//get trip info
-        mockData.trips[tripId].people.push(newMember);
+		mockData.trips[tripId].people.push(newMember);
 	};
 
 	return (
 		<>
 			<div className='addModal'>
-				{state.hasError && <ErrorMessage css={"errorbox"} message={state.errMessage} />}
+				{state.hasError && (
+					<ErrorMessage css={'errorbox'} message={state.errMessage} />
+				)}
 				<div className='inputArea'>
 					<h6>Name of your Trip</h6>
 					<input
+						autoFocus
 						className='inputField'
 						placeholder='Name of your Trip'
 						onChange={(evt) => {
@@ -67,9 +65,6 @@ const AddTrip = (props) => {
 					/>
 				</div>
 				<div className='inputArea'>
-					<button className='exitButton' onClick={() => props.handler(false)}>
-						<img className='iconImg' src={exitIcon} />
-					</button>
 					<button
 						className='inputField'
 						onClick={() => {
@@ -80,37 +75,39 @@ const AddTrip = (props) => {
 								);
 							} else if (state.newTripName) {
 								//new tripID
-								let newTripId = uuidv4()
+								let newTripId = uuidv4();
 								//create new trip object
-								console.log("TRIP NAME IS: ", state.newTripName)
+								console.log('TRIP NAME IS: ', state.newTripName);
 								let newTrip = {
 									name: state.newTripName,
 									people: [userName],
-									lists: {},
-									albums:[],
-									chat:[]
-								}
+									lists: [],
+									albums: [],
+									chat: [],
+								};
 								//add desired tripMate to list of people on trip If not blank
-								if(state.newTripMate){
-									if(!!mockData.users[state.newTripMate]){
+								if (state.newTripMate) {
+									if (!!mockData.users[state.newTripMate]) {
 										// addToTrips(state.newTripMate, trip);
-										console.log("FOUND USER: ",state.newTripMate)
-										newTrip.people.push(state.newTripMate)
-									}else{
-										console.log("COULDN'T FIND USER NAMED ("+state.newTripMate+")")
+										console.log('FOUND USER: ', state.newTripMate);
+										newTrip.people.push(state.newTripMate);
+									} else {
+										console.log(
+											"COULDN'T FIND USER NAMED (" + state.newTripMate + ')'
+										);
 										changeErrorValue(
 											true,
 											'Cannot add user because they are not a Tripper app user'
 										);
-										return
+										return;
 									}
 								}
 								//add new tripID to current user's trip list
-								mockData.users[userName].trips.push(newTripId)
+								mockData.users[userName].trips.push(newTripId);
 								//add trip to trips Map
-								mockData.trips[newTripId] = newTrip
-								console.log(mockData.trips)
-								console.log(mockData.users[userName])
+								mockData.trips[newTripId] = newTrip;
+								console.log(mockData.trips);
+								console.log(mockData.users[userName]);
 								props.handler(false);
 							} else {
 								changeErrorValue(
@@ -123,6 +120,9 @@ const AddTrip = (props) => {
 						Add Trip Mate
 					</button>
 				</div>
+				<button aria-label='exit popup' className='exitButton' onClick={() => props.handler(false)}>
+					<img aria-disabled className='iconImg' src={exitIcon} />
+				</button>
 			</div>
 		</>
 	);
