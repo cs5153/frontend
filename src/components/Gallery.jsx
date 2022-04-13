@@ -6,8 +6,15 @@ import 'photoswipe/style.css';
 import ErrorMessage from './ErrorMessage';
 import { mockData } from '../helper/mockData';
 import jsCookie from 'js-cookie';
+import {useNavigate } from 'react-router';
+import '../css/FeatureSpace.css'
+import backArrow from '../images/arrow.png'
 
 const Gallery = ({ album }) => {
+
+	const navigate = useNavigate();
+
+
 	const [modalOpen, setModalOpen] = useState();
 	const [errorMessage, setErrorMessage] = useState('');
 	const [photoUrl, setPhotoUrl] = useState('');
@@ -57,9 +64,12 @@ const Gallery = ({ album }) => {
 
 	return (
 		<div
-			className='listContainer pswp-gallery p-2'
+			className='listContainer pswp-gallery p-2 galleryDiv'
 			id='albumGallery--responsive-images'
 		>
+			<button className='backButton' onClick={() => {navigate(-1)}}>
+					<img className='iconImg' src={backArrow} />
+			</button>
 			{album.photos.map((image, index) => (
 				<a
 					aria-label={`open trip image ${index + 1} in popup`}

@@ -152,3 +152,19 @@
 .delButton img {
     display: inline-block;
 }
+
+.backButton{
+    position: absolute;
+    top: 2rem;
+    left:2rem;
+    transform: translate(-50%, -50%);
+    background: none;
+    border: none;
+    height: 3rem;
+    width: 3rem;
+    padding: 0;
+  }
+
+  .galleryDiv{
+    padding-top: 5rem;   
+  }
