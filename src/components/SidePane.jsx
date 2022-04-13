@@ -36,7 +36,6 @@ const SidePane = () => {
   return (
     <>
       {state.showAddBox && <AddTrip handler={showBox} />}
-      {state.showFAQ && <HelpPage handler={showFAQBox} />}
 
       <div className="sidePaneContainer">
         <div className="profileSection">
@@ -60,9 +59,10 @@ const SidePane = () => {
 						className='clicklink'
 						onClick={() => showFAQBox(true)}
 					>
-						<p>Need Help?</p>
+						<p>Need Help?</p> 
 					</button>
         </div>
+        {state.showFAQ && <HelpPage handler={showFAQBox} />}
         <ul 
           className="tripList"
           aria-labelledby='myTrips'
