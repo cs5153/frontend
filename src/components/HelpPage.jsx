@@ -22,6 +22,8 @@ const HelpPage = (props) => {
                         <ul className='answers'>
                             <li tabIndex={0} >Select an existing trip by clicking on it's name from the side pane</li>
                             <li  tabIndex={0} >If You have no existing trips, click the "plus" button on the bottom right of the Side Pane and follow the instructions to create a new trip</li>
+                            <li  tabIndex={0} >Once you have selected your trip, you will be taken to the people view.</li>
+                            <li  tabIndex={0} >To delete the trip, click the red X button at the bottom of the people view.</li>
                         </ul>
                     </div>
 
@@ -31,6 +33,8 @@ const HelpPage = (props) => {
                             <li tabIndex={0} >Once you've selected a trip from the side pane, click the People tab</li>
                             <li tabIndex={0} >Next Select the "Plus" button on the bottom right of the people view</li>
                             <li tabIndex={0} >Follow the prompts and enter the username of the person you wish to add</li>
+                            <li tabIndex={0} >To delete a person, click the delete icon next to their info</li>
+                            <li tabIndex={0} >To remove yourself from the trip, click the remove my self from trip button at the bottom of the page</li>
                         </ul>
                     </div>
 
