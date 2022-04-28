@@ -15,7 +15,6 @@ function Photo({ propData }) {
     const [photoList, setphotoList] = React.useState([]);
     let totalAlbums = JSON.parse(JSON.stringify(mockData)).trips[cur].albums;
     let totalAlbums1= JSON.parse(log);
-    totalAlbums=totalAlbums1.trips[cur].albums;
 
     const [showPhoto, setshowPhoto] = React.useState(false);
     const [currentPhoto, setCurrentPhoto] = React.useState("");
@@ -23,7 +22,7 @@ function Photo({ propData }) {
     const [newAlbum, setNewAlbum] = React.useState("");
     const [showAlbums, setshowAlbums] = React.useState(true);
     const [albumArrayCount, setalbumArrayCount] = React.useState(totalAlbums);
-    const [key, setKey] = React.useState("");
+    const [key, setKey] = React.useState(0);
 
     const [time, setTime] = useState(Date.now());
 
@@ -55,10 +54,6 @@ function Photo({ propData }) {
             mockData.trips[cur].albums[key].photos.push(url);
             console.log(mockData);
             setphotoList(mockData.trips[cur].albums[key].photos)
-            // setphotoList(photoList => [...photoList, url])
-
-            // photoList.push(url);
-            // var temp = photoList;
             // setphotoList(temp);
 
             alert(`Your photo is currently uploading, this could take one minute`);
@@ -83,29 +78,21 @@ function Photo({ propData }) {
         } else {
             let obj = { name: newAlbum, photos: [] };
             mockData.trips[cur].albums.push(obj);
+            albumArrayCount.push(obj);
             writeData(mockData);
-            albumArrayCount[newAlbum]=obj;
-            // writeData(mockData);
 
-            setalbumArrayCount({...albumArrayCount});
-            // setalbumArrayCount(albumArrayCount => ({
-            //     ...albumArrayCount,
-            //     [newAlbum]: obj
-            // }));
-
-
-            // setalbumArrayCount(albumArrayCount => ({
-            //     ...albumArrayCount,
-            //     [newAlbum]: obj
-            // }));
-            console.log(mockData);
-            writeData(mockData);
+            setalbumArrayCount(albumArrayCount);
         }
     }
     function goToAlbum(key1) {
-        setKey(key1)
+        let totalAlbums = JSON.parse(JSON.stringify(mockData)).trips[cur].albums;
+        console.log(key);
+        console.log(key1);
+        console.log(mockData);
+        setKey(key1);
         setphotoList(albumArrayCount[key1].photos);
         setshowAlbums(false);
+
     }
     function closeAlbum() {
         setshowAlbums(true);
