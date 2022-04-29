@@ -122,7 +122,7 @@ const Gallery = ({ album }) => {
 							value={photoUrl}
 						/>
 						<div>OR</div>
-						<h6 id='photoFileTitle'>Upload photo file:</h6>
+						<h6 id='photoFileTitle'>Choose photo from File Explorer:</h6>
 						<input
 							aria-labelledby='photoFileTitle'
 							accept='image/*'

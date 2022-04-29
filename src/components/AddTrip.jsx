@@ -53,7 +53,7 @@ const AddTrip = (props) => {
 					/>
 				</div>
 				<div className='inputArea'>
-					<h6>User Name Of New Trip Mate</h6>
+					<h6>User Name Of New Trip Mate (*Optional)</h6>
 					<input
 						className='inputField'
 						placeholder='New Trip Mate UserName'
@@ -117,7 +117,7 @@ const AddTrip = (props) => {
 							}
 						}}
 					>
-						Add Trip Mate
+						Submit
 					</button>
 				</div>
 				<button aria-label='exit popup' className='exitButton' onClick={() => props.handler(false)}>
