@@ -11,11 +11,6 @@ import plusIcon from '../images/plus.png';
 import delIcon from '../images/garbage.png';
 
 const ListPopup = (props) => {
-	const myRef = useRef();
-
-	useEffect(() => {
-		myRef.current.focus();
-	}, []);
 
 	const [state, setState] = useState({
 		currentList: props.list,
@@ -39,7 +34,7 @@ const ListPopup = (props) => {
 	return (
 		<>
 			<div className='addModal'>
-				<h5 ref={myRef} tabIndex={0}>
+				<h5 tabIndex={0}>
 					{state.currentList.name}
 				</h5>
 				<div className='userList'>
@@ -58,6 +53,7 @@ const ListPopup = (props) => {
 				<div className='addListItemSection'>
 					<div className='addItemInput'>
 						<input
+							autoFocus={true}
 							className='inputField'
 							value={newListItem}
 							type='text'

@@ -49,6 +49,7 @@ const Chat = (props) => {
 					<div className='inputSection'>
 						<div className='messageInput'>
 							<input
+								autoFocus={true}
 								className='inputField'
 								value={state.currMessage}
 								type='text'
