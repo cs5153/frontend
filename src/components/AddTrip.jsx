@@ -53,10 +53,10 @@ const AddTrip = (props) => {
 					/>
 				</div>
 				<div className='inputArea'>
-					<h6>User Name Of New Trip Mate (*Optional)</h6>
+					<h6>User Name Of New Trip Mate (Optional)</h6>
 					<input
 						className='inputField'
-						placeholder='New Trip Mate UserName'
+						placeholder='New Trip Mate UserName (optional)'
 						onChange={(evt) => {
 							let copy = state;
 							copy.newTripMate = evt.target.value;
