@@ -31,6 +31,7 @@ const AddList = (props) => {
 				<div className='inputArea'>
 					<h6>Name of New List</h6>
 					<input
+						autoFocus={true}
 						className='inputField'
 						type='text'
 						placeholder='Name of New List'

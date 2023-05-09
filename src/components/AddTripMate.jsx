@@ -41,6 +41,7 @@ const AddTripMate = (props) => {
 				<div className='inputArea'>
 					<h6>User Name Of New Trip Mate</h6>
 					<input
+						autoFocus={true}
 						className='inputField'
 						type='New Trip Mate UserName'
 						placeholder='New Trip Mate UserName'
